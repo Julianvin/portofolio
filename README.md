@@ -1,16 +1,89 @@
-# React + Vite
+# 🚀 Personal Portfolio Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A premium, high-performance personal portfolio built with React 19, TailwindCSS v4, and advanced animations.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-blue?logo=react&style=flat-square)
+![Vite](https://img.shields.io/badge/Vite-Fast-purple?logo=vite&style=flat-square)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-cyan?logo=tailwindcss&style=flat-square)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Overview
 
-## React Compiler
+This project is a modern, responsive portfolio dashboard designed to showcase skills, projects, and professional background with a polished user experience. It features a "Spotlight" card design, seamless dark/light mode switching, and fluid entrance animations using GSAP and Framer Motion.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🌟 Key Features
 
-## Expanding the ESLint configuration
+- **🎨 Premium UI/UX**: clean, modern interface with glassmorphism and subtle details.
+- **🔦 Spotlight Interactions**: Interactive sidebar with mouse-following spotlight effects.
+- **🌓 Dynamic Theming**: Fully functional Light/Dark mode toggle with system preference detection.
+- **⚡ High Performance**: Powered by Vite and React 19 for instant load times.
+- **🎭 Advanced Animations**: Complex sequences and transitions using GSAP and Framer Motion.
+- **📱 Fully Responsive**: Optimized for all devices from mobile to desktop.
+- **📄 Resume Integration**: Direct download button for CV/Resume.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- **Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [TailwindCSS v4](https://tailwindcss.com/)
+- **Animations**:
+  - [GSAP](https://greensock.com/gsap/) (Complex sequences)
+  - [Framer Motion](https://www.framer.com/motion/) (Component transitions)
+- **Routing**: [React Router DOM v7](https://reactrouter.com/)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
+
+## 📂 Project Structure
+
+```bash
+src/
+├── components/
+│   ├── home/          # Home page specific components (Hero, Skills, etc.)
+│   ├── layout/        # Layout components (Sidebar, Layout wrapper)
+│   └── ui/            # Reusable UI components (SpotlightCard, ThemeProvider)
+├── pages/             # Route pages (Home, About, Projects, etc.)
+├── hooks/             # Custom React hooks
+└── App.jsx            # Main application entry and routing
+```
+
+## 🚀 Getting Started
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/portfolio.git
+   cd portfolio
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
+
+## 👤 Author
+
+**M. Delvin Julian**
+
+- **Role**: Software Developer #OPENTOWORK
+- **Location**: [Your Location Here]
+- **Contact**: [Your Email Here]
+
+---
+*Built with ❤️ using React*
