@@ -87,7 +87,7 @@ export default function Sidebar() {
     <aside ref={sidebarRef} className="w-full h-full pointer-events-none md:pointer-events-auto">
        
        {/* --- MOBILE FIXED HEADER --- */}
-       <div className="md:hidden fixed top-0 left-0 right-0 z-[60] px-4 py-3 flex items-center justify-between bg-white/80 dark:bg-[#0d1117]/90 backdrop-blur-xl border-b border-gray-200/50 dark:border-white/10 pointer-events-auto transition-all duration-300">
+       <div className="md:hidden fixed top-0 left-0 right-0 z-[60] px-4 py-2.5 flex items-center justify-between bg-white/40 dark:bg-[#0d1117]/50 backdrop-blur-2xl backdrop-saturate-150 border-b border-gray-200/30 dark:border-white/10 pointer-events-auto transition-all duration-300 shadow-sm shadow-black/5">
           {/* Left: Identity */}
           <div className="flex items-center gap-3">
              <div className="relative w-9 h-9 rounded-full overflow-hidden border border-gray-200 dark:border-white/20 shadow-sm">
