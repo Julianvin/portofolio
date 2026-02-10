@@ -18,7 +18,8 @@ export default function Layout() {
       {/* Central Container: Full Height App Shell */}
       <div className="w-full max-w-7xl h-full grid grid-cols-1 md:grid-cols-12 gap-8 relative z-10">
           {/* Left Column (Sidebar) - THE ANCHOR - Static */}
-          <div className="hidden md:block col-span-3 h-full pt-10 pl-8">
+          <div className="absolute inset-0 pointer-events-none md:pointer-events-auto md:static md:block col-span-3 h-full pt-4 md:pt-10 pl-4 md:pl-8 z-50 md:z-auto">
+              {/* Note: Sidebar component internally handles pointer-events for mobile button */}
               <Sidebar />
           </div>
 
