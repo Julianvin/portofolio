@@ -26,26 +26,34 @@ export default function CertificateModal({ item, onClose }) {
 
       <motion.div 
         layoutId={`card-container-${item.id}`}
-        className="relative z-10 w-full max-w-6xl overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-neutral-900"
+        className="relative z-10 w-full max-w-6xl h-auto md:max-h-[90vh] overflow-visible md:overflow-hidden rounded-none md:rounded-2xl bg-transparent shadow-none md:bg-white md:shadow-2xl md:dark:bg-neutral-900 flex flex-col md:flex-row"
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
       >
-        <div className="flex flex-col md:flex-row">
-          {/* Left Side: Image (Full Display) */}
-          <div className="relative bg-neutral-100 dark:bg-black md:w-3/4">
-            <motion.img
-              layoutId={`image-${item.id}`}
-              src={item.image}
-              alt={item.name}
-              className="w-full h-auto block"
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            />
-          </div>
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute right-4 top-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 transition-colors backdrop-blur-md border border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
+        >
+          <FiX className="h-5 w-5" />
+        </button>
+
+        {/* Left Side: Image (Full Display) */}
+        <motion.div 
+          layoutId={`image-container-${item.id}`}
+          className="relative bg-transparent w-full h-auto min-h-[50vh] max-h-[80vh] md:h-auto md:w-3/4 flex-shrink-0 flex items-center justify-center"
+        >
+          <img
+            src={item.image}
+            alt={item.name}
+            className="w-full h-full object-cover md:object-contain object-center block"
+          />
+        </motion.div>
 
           {/* Right Side: Details */}
           <motion.div 
-            className="flex flex-col bg-white md:w-1/4 relative dark:bg-neutral-900"
+            className="hidden md:flex flex-col flex-1 min-h-0 bg-white md:flex-none md:w-1/4 relative dark:bg-neutral-900"
             transition={{ 
-              duration: 0.4,
+              duration: 0.4, 
               ease: "easeOut"
             }}
             variants={{
@@ -65,14 +73,7 @@ export default function CertificateModal({ item, onClose }) {
             animate="visible"
             exit="exit"
           >
-            {/* Close Button (Inside Sidebar) */}
-            <button
-              onClick={onClose}
-              className="absolute right-4 top-4 z-20 rounded-full bg-black/10 p-2 text-black hover:bg-black/20 transition-colors dark:bg-white/10 dark:text-white dark:hover:bg-white/20"
-            >
-              <FiX className="h-5 w-5" />
-            </button>
-
+            {/* Close Button Removed (Moved to top) */}
             <div className="flex-1 overflow-y-auto p-8 pt-16">
                 {/* Header */}
                 <div className="mb-8">
@@ -142,7 +143,6 @@ export default function CertificateModal({ item, onClose }) {
                 </div>
             </div>
           </motion.div>
-        </div>
       </motion.div>
     </div>,
     document.body

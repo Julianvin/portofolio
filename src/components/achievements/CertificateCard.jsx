@@ -12,9 +12,11 @@ export default function CertificateCard({ item, onClick }) {
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       {/* Image Area */}
-      <div className="relative h-[180px] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
-        <motion.img
-          layoutId={`image-${item.id}`}
+      <motion.div 
+        layoutId={`image-container-${item.id}`}
+        className="relative h-[180px] w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800"
+      >
+        <img
           src={item.image}
           alt={item.name}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -26,7 +28,7 @@ export default function CertificateCard({ item, onClick }) {
             View detail <FiArrowRight />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Content Area */}
       <div className="p-4">
@@ -43,6 +45,10 @@ export default function CertificateCard({ item, onClick }) {
         >
           {item.issuing_organization}
         </motion.p>
+
+        <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+          {item.description || "Demonstrating proficiency and expertise in this field through best practices and efficient implementation."}
+        </p>
 
         <div className="mb-4 flex flex-wrap gap-2">
           <span className="rounded-full bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">

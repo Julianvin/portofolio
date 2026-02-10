@@ -8,7 +8,7 @@ export default function Achievements() {
   const [selectedAchievement, setSelectedAchievement] = useState(null);
 
   return (
-    <div className="min-h-screen container mx-auto px-4 py-24">
+    <div className="min-h-screen h-auto container mx-auto px-4 py-24">
       {/* Header */}
       <div className="mb-12 flex items-center gap-4">
          <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 dark:text-white">Achievements</h1>
