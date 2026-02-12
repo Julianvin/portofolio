@@ -1,34 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiDatabase, FiWind, FiCode, FiLayers, FiGlobe, FiSend, FiHardDrive } from 'react-icons/fi';
+import { FiWind, FiHardDrive } from 'react-icons/fi';
 import { 
   FaLaravel, FaPhp, FaBootstrap, FaGitAlt, FaGithub, FaJs, FaJava, FaHtml5, FaCss3
 } from 'react-icons/fa';
+import {
+  SiMysql, SiPostgresql, SiNodedotjs, SiGraphql, SiDocker, SiPostman
+} from 'react-icons/si';
+import { VscVscode } from 'react-icons/vsc';
 
 const STACKS = [
   // Core
   { name: 'Laravel', icon: FaLaravel, color: '#FF2D20', shadow: '#c71f14' },
   { name: 'PHP', icon: FaPhp, color: '#777BB4', shadow: '#5d608d' },
-  { name: 'MySQL', icon: FiDatabase, color: '#4479A1', shadow: '#305572' },
+  { name: 'MySQL', icon: SiMysql, color: '#4479A1', shadow: '#305572' },
   { name: 'Bootstrap', icon: FaBootstrap, color: '#7952B3', shadow: '#5e3f8e' },
   { name: 'Tailwind', icon: FiWind, color: '#38BDF8', shadow: '#0284c7' },
   // Languages
   { name: 'JavaScript', icon: FaJs, color: '#F7DF1E', shadow: '#d6c016' },
   { name: 'Java', icon: FaJava, color: '#007396', shadow: '#005772' },
-  { name: 'Dart', icon: FiCode, color: '#0175C2', shadow: '#015b96' },
+  { name: 'Node.js', icon: SiNodedotjs, color: '#339933', shadow: '#246b24' },
   { name: 'HTML', icon: FaHtml5, color: '#E34F26', shadow: '#b53b19' },
   { name: 'CSS', icon: FaCss3, color: '#1572B6', shadow: '#105689' },
-  { name: 'SQL', icon: FiDatabase, color: '#336791', shadow: '#264d6d' },
-  // Concepts
-  { name: 'REST API', icon: FiGlobe, color: '#10B981', shadow: '#059669' },
-  { name: 'MVC Arch', icon: FiLayers, color: '#8B5CF6', shadow: '#7c3aed' },
-  // Tools
+  { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791', shadow: '#264d6d' },
+  // Concepts & Tools
+  { name: 'GraphQL', icon: SiGraphql, color: '#E10098', shadow: '#b3007a' },
+  { name: 'Docker', icon: SiDocker, color: '#2496ED', shadow: '#1c76bd' },
   { name: 'Git', icon: FaGitAlt, color: '#F05032', shadow: '#c43c22' },
   { name: 'GitHub', icon: FaGithub, color: '#24292e', shadow: '#16191d' },
-  { name: 'VS Code', icon: FiCode, color: '#007ACC', shadow: '#005fa3' },
-  { name: 'Postman', icon: FiSend, color: '#FF6C37', shadow: '#d95325' },
+  { name: 'VS Code', icon: VscVscode, color: '#007ACC', shadow: '#005fa3' },
+  { name: 'Postman', icon: SiPostman, color: '#FF6C37', shadow: '#d95325' },
   { name: 'Laragon', icon: FiHardDrive, color: '#0E83CD', shadow: '#0a6aa6' },
-  { name: 'PgAdmin', icon: FiDatabase, color: '#336791', shadow: '#264d6d' },
 ];
 
 // Konfigurasi jumlah kolom per breakpoint
