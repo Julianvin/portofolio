@@ -47,7 +47,7 @@ export const achievements = [
     id: 5,
     name: "Pengenalan ke Manajemen Keuangan",
     issuing_organization: "Dicoding Indonesia",
-    issue_date: "2024",
+    issue_date: "January 2026",
     image: "/images/certificate/dicoding_introduction_financial.png",
     type: "Course",
     category: "Soft Skills",

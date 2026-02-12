@@ -1,43 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiLinkedin, FiGithub, FiInstagram, FiArrowUpRight } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-
-const contacts = [
-  { 
-    name: 'Instagram', 
-    value: '@devaajul', 
-    link: 'https://www.instagram.com/devaajul/', 
-    icon: FiInstagram, 
-    color: 'group-hover:text-[#E1306C]', // Instagram Pink
-    description: 'Follow my daily updates'
-  },
-  { 
-    name: 'LinkedIn', 
-    value: 'Delvin Julian', 
-    link: 'https://www.linkedin.com/in/delvinj', 
-    icon: FiLinkedin, 
-    color: 'group-hover:text-[#0077b5]', // LinkedIn Blue
-    description: 'Connect professionally'
-  },
-  { 
-    name: 'Email', 
-    value: 'mdelvinjulian@gmail.com', 
-    link: 'mailto:mdelvinjulian@gmail.com', 
-    icon: FiMail, 
-    color: 'group-hover:text-[#EA4335]', // Gmail Red
-    description: 'Send me a message' 
-  },
-  { 
-    name: 'GitHub', 
-    value: 'Julianvin', 
-    link: 'https://github.com/Julianvin', 
-    icon: FiGithub, 
-    color: 'group-hover:text-black dark:group-hover:text-white', // Github Black/White
-    description: 'Check out my code'
-  }
-];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -63,7 +29,44 @@ const itemVariants = {
 };
 
 export default function Contact() {
+  const { t } = useTranslation();
   useDocumentTitle('Contact | Delvin Julian');
+
+  const contacts = [
+    { 
+      name: 'Instagram', 
+      value: '@devaajul', 
+      link: 'https://www.instagram.com/devaajul/', 
+      icon: FiInstagram, 
+      color: 'group-hover:text-[#E1306C]', // Instagram Pink
+      description: t('contact.instagram_desc')
+    },
+    { 
+      name: 'LinkedIn', 
+      value: 'Delvin Julian', 
+      link: 'https://www.linkedin.com/in/delvinj', 
+      icon: FiLinkedin, 
+      color: 'group-hover:text-[#0077b5]', // LinkedIn Blue
+      description: t('contact.linkedin_desc')
+    },
+    { 
+      name: 'Email', 
+      value: 'mdelvinjulian@gmail.com', 
+      link: 'mailto:mdelvinjulian@gmail.com', 
+      icon: FiMail, 
+      color: 'group-hover:text-[#EA4335]', // Gmail Red
+      description: t('contact.email_desc') 
+    },
+    { 
+      name: 'GitHub', 
+      value: 'Julianvin', 
+      link: 'https://github.com/Julianvin', 
+      icon: FiGithub, 
+      color: 'group-hover:text-black dark:group-hover:text-white', // Github Black/White
+      description: t('contact.github_desc')
+    }
+  ];
+
   return (
     <div className="w-full min-h-[80vh] flex items-center justify-center px-4 md:px-20 py-12 md:py-16">
       <div className="max-w-4xl w-full">
@@ -76,10 +79,10 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[#0d1117] dark:text-[#e6edf3] mb-4">
-             Let's Connect
+             {t('contact.title')}
           </h1>
           <p className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-xl mx-auto leading-relaxed">
-             Whether you have a question, a project idea, or just want to say hello, feel free to reach out. I'm always open to new opportunities!
+             {t('contact.subtitle')}
           </p>
         </motion.div>
 

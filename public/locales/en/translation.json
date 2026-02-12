@@ -1,0 +1,85 @@
+{
+  "sidebar": {
+    "home": "Home",
+    "about": "About",
+    "achievements": "Achievements",
+    "projects": "Projects",
+    "dashboard": "Dashboard",
+    "chat": "Chat Room",
+    "contact": "Contact",
+    "copyright": "© {{year}} Delvin Julian"
+  },
+  "home": {
+    "greeting": "Hi, I'm",
+    "role": "Software Developer",
+    "location": "Based in Bogor, Indonesia",
+    "work_type": "Remote / Onsite",
+    "bio": "I'm a <1>Backend Developer</1> specialized in building secure, efficient, and scalable web systems. Proficient in <3>Laravel</3>, <5>PHP</5>, and <7>MySQL</7>, with a strong foundation in software developer from SMK Wikrama Bogor.",
+    "skills_title": "Skills",
+    "tech_stack": "Tech Stack"
+  },
+  "about": {
+    "title": "About",
+    "subtitle": "A brief introduction to who I am and my professional journey.",
+    "intro_title": "Introduction",
+    "intro_text_1": "I'm <1>Muhammad Delvin Julian</1>, a software developer dedicated to building impactful digital solutions. I specialize in <3>Backend Development</3> using Laravel, PHP, and MySQL, with a strong foundation in MVC architecture and RESTful API design.",
+    "intro_text_2": "Currently, I'm an undergraduate student at <1>SMK Wikrama Bogor</1>, driven by logic and performance optimizations.",
+    "career_title": "Career",
+    "career_toggle_show": "Show details",
+    "career_toggle_hide": "Hide details",
+    "education_title": "Education",
+    "career_items": [
+      {
+        "role": "Backend Developer Intern",
+        "company": "PT. HEXA WIRA UTAMA",
+        "period": "January 2025 - June 2025",
+        "summary": "Responsible for building backend logic and database management for internal company systems to improve operational efficiency.",
+        "details": [
+          { "title": "Project Management System Development", "desc": "Designed database and application logic for project management and employee task tracking features." },
+          { "title": "Admin Dashboard Integration", "desc": "Developed an interactive dashboard system displaying data charts, statistics, and company performance calculations automatically." },
+          { "title": "Inventory & Event Management", "desc": "Built system modules for company asset management and internal event planning." },
+          { "title": "Real-Time Communication Features", "desc": "Implemented internal chat systems to facilitate communication between users within the application." },
+          { "title": "Database Design (ERD)", "desc": "Created efficient Entity Relationship Diagrams (ERD) and managed MySQL database structures to ensure data integrity." }
+        ]
+      }
+    ],
+    "education_items": [
+       {
+           "school": "SMK WIKRAMA BOGOR",
+           "major": "Software Engineering (PPLG)",
+           "location": "Bogor, Indonesia",
+           "period": "July 2023 - Present"
+       }
+    ]
+  },
+  "achievements": {
+    "title": "Achievements",
+    "subtitle": "Certifications & Awards",
+    "view_detail": "View detail",
+    "credential_id": "Credential ID",
+    "type": "Type",
+    "category": "Category",
+    "issue_date": "Issue Date",
+    "show_credential": "Show Credential"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Project gallery coming soon..."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Analytics coming soon..."
+  },
+  "chat": {
+    "title": "Chat Room",
+    "subtitle": "Connect with me..."
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "subtitle": "Whether you have a question, a project idea, or just want to say hello, feel free to reach out. I'm always open to new opportunities!",
+    "instagram_desc": "Follow my daily updates",
+    "linkedin_desc": "Connect professionally",
+    "email_desc": "Send me a message",
+    "github_desc": "Check out my code"
+  }
+}

@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { FiX, FiExternalLink } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 export default function CertificateModal({ item, onClose }) {
+  const { t } = useTranslation();
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -95,7 +97,7 @@ export default function CertificateModal({ item, onClose }) {
                 <div className="space-y-6">
                 <div>
                     <span className="block text-xs font-bold uppercase tracking-wider text-neutral-500">
-                    Credential ID
+                    {t('achievements.credential_id')}
                     </span>
                     <span className="font-mono text-sm text-neutral-800 break-all dark:text-neutral-300">
                     {item.credential_id}
@@ -104,7 +106,7 @@ export default function CertificateModal({ item, onClose }) {
                 
                 <div>
                     <span className="block text-xs font-bold uppercase tracking-wider text-neutral-500">
-                    Type
+                    {t('achievements.type')}
                     </span>
                     <span className="text-sm font-medium text-neutral-800 dark:text-neutral-300">
                     {item.type}
@@ -113,7 +115,7 @@ export default function CertificateModal({ item, onClose }) {
 
                 <div>
                     <span className="block text-xs font-bold uppercase tracking-wider text-neutral-500">
-                    Category
+                    {t('achievements.category')}
                     </span>
                     <span className="text-sm font-medium text-neutral-800 dark:text-neutral-300">
                     {item.category}
@@ -122,7 +124,7 @@ export default function CertificateModal({ item, onClose }) {
 
                 <div>
                     <span className="block text-xs font-bold uppercase tracking-wider text-neutral-500">
-                    Issue Date
+                    {t('achievements.issue_date')}
                     </span>
                     <span className="text-sm font-medium text-neutral-800 dark:text-neutral-300">
                     {item.issue_date}
@@ -139,7 +141,7 @@ export default function CertificateModal({ item, onClose }) {
                       rel="noreferrer"
                       className="flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 px-6 py-3 font-bold text-white transition-transform hover:bg-neutral-800 active:scale-95 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                     >
-                      Show Credential <FiExternalLink />
+                      {t('achievements.show_credential')} <FiExternalLink />
                     </a>
                   </div>
                 )}

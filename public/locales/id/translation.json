@@ -1,0 +1,85 @@
+{
+  "sidebar": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "achievements": "Pencapaian",
+    "projects": "Proyek",
+    "dashboard": "Dashboard",
+    "chat": "Ruang Obrolan",
+    "contact": "Kontak",
+    "copyright": "© {{year}} Delvin Julian"
+  },
+  "home": {
+    "greeting": "Halo, saya",
+    "role": "Pengembang Perangkat Lunak",
+    "location": "Berbasis di Bogor, Indonesia",
+    "work_type": "Remote / Onsite",
+    "bio": "Saya adalah <1>Backend Developer</1> yang berspesialisasi dalam membangun sistem web yang aman, efisien, dan skalabel. Mahir dalam <3>Laravel</3>, <5>PHP</5>, dan <7>MySQL</7>, dengan fondasi kuat dalam pengembangan perangkat lunak dari SMK Wikrama Bogor.",
+    "skills_title": "Keahlian",
+    "tech_stack": "Tech Stack"
+  },
+  "about": {
+    "title": "Tentang",
+    "subtitle": "Singkat cerita tentang siapa saya dan perjalanan profesional saya.",
+    "intro_title": "Perkenalan",
+    "intro_text_1": "Saya <1>Muhammad Delvin Julian</1>, seorang pengembang perangkat lunak yang berdedikasi untuk membangun solusi digital yang berdampak. Saya berspesialisasi dalam <3>Backend Development</3> menggunakan Laravel, PHP, dan MySQL, dengan pemahaman kuat tentang arsitektur MVC dan desain API RESTful.",
+    "intro_text_2": "Saat ini, saya adalah siswa di <1>SMK Wikrama Bogor</1>, didorong oleh logika dan optimasi kinerja.",
+    "career_title": "Karir",
+    "career_toggle_show": "Tampilkan detail",
+    "career_toggle_hide": "Sembunyikan detail",
+    "education_title": "Pendidikan",
+    "career_items": [
+      {
+        "role": "Backend Developer Intern",
+        "company": "PT. HEXA WIRA UTAMA",
+        "period": "Januari 2025 - Juni 2025",
+        "summary": "Bertanggung jawab membangun logika backend dan manajemen database untuk sistem internal perusahaan guna meningkatkan efisiensi operasional.",
+        "details": [
+          { "title": "Pengembangan Sistem Manajemen Proyek", "desc": "Merancang database dan logika aplikasi untuk fitur pengelolaan proyek serta pelacakan tugas (task tracking) karyawan." },
+          { "title": "Integrasi Dashboard Admin", "desc": "Mengembangkan sistem dashboard interaktif yang menampilkan diagram data, statistik, dan perhitungan kinerja perusahaan secara otomatis." },
+          { "title": "Manajemen Inventaris & Event", "desc": "Membangun modul sistem untuk pengelolaan barang aset perusahaan dan fitur perencanaan event internal." },
+          { "title": "Fitur Komunikasi Real-Time", "desc": "Mengimplementasikan sistem chat internal untuk memfasilitasi komunikasi antar pengguna dalam aplikasi." },
+          { "title": "Perancangan Database (ERD)", "desc": "Membuat Entity Relationship Diagram (ERD) yang efisien dan mengelola struktur database MySQL untuk memastikan integritas data." }
+        ]
+      }
+    ],
+    "education_items": [
+       {
+           "school": "SMK WIKRAMA BOGOR",
+           "major": "Rekayasa Perangkat Lunak (PPLG)",
+           "location": "Bogor, Indonesia",
+           "period": "Juli 2023 - Sekarang"
+       }
+    ]
+  },
+  "achievements": {
+    "title": "Pencapaian",
+    "subtitle": "Sertifikasi & Penghargaan",
+    "view_detail": "Lihat detail",
+    "credential_id": "ID Kredensial",
+    "type": "Tipe",
+    "category": "Kategori",
+    "issue_date": "Tanggal Terbit",
+    "show_credential": "Lihat Kredensial"
+  },
+  "projects": {
+    "title": "Proyek",
+    "subtitle": "Galeri proyek segera hadir..."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Analitik segera hadir..."
+  },
+  "chat": {
+    "title": "Ruang Obrolan",
+    "subtitle": "Terhubung dengan saya..."
+  },
+  "contact": {
+    "title": "Mari Terhubung",
+    "subtitle": "Baik Anda memiliki pertanyaan, ide proyek, atau sekadar ingin menyapa, jangan ragu untuk menghubungi. Saya selalu terbuka untuk peluang baru!",
+    "instagram_desc": "Ikuti update harian saya",
+    "linkedin_desc": "Terhubung secara profesional",
+    "email_desc": "Kirimkan saya pesan",
+    "github_desc": "Lihat kode saya"
+  }
+}
