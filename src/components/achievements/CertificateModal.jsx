@@ -131,16 +131,18 @@ export default function CertificateModal({ item, onClose }) {
                 </div>
 
                 {/* Action Button */}
-                <div className="mt-8 pt-8 border-t border-neutral-100 dark:border-neutral-800">
-                <a
-                    href={item.url_credential}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 px-6 py-3 font-bold text-white transition-transform hover:bg-neutral-800 active:scale-95 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
-                >
-                    Show Credential <FiExternalLink />
-                </a>
-                </div>
+                {item.url_credential && (
+                  <div className="mt-8 pt-8 border-t border-neutral-100 dark:border-neutral-800">
+                    <a
+                      href={item.url_credential}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 px-6 py-3 font-bold text-white transition-transform hover:bg-neutral-800 active:scale-95 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                    >
+                      Show Credential <FiExternalLink />
+                    </a>
+                  </div>
+                )}
             </div>
           </motion.div>
       </motion.div>
