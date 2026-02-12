@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { GoLocation, GoCalendar, GoChevronDown } from 'react-icons/go';
 import { motion, AnimatePresence } from 'framer-motion';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const responsibilities = [
   {
@@ -27,6 +28,7 @@ const responsibilities = [
 ];
 
 export default function About() {
+  useDocumentTitle('About | Delvin Julian');
   const containerRef = useRef(null);
   const [isCareerOpen, setIsCareerOpen] = useState(false);
 

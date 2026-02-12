@@ -4,8 +4,10 @@ import { gsap } from 'gsap';
 import CertificateCard from '../components/achievements/CertificateCard';
 import CertificateModal from '../components/achievements/CertificateModal';
 import { achievements } from '../components/achievements/data';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function Achievements() {
+  useDocumentTitle('Achievements | Delvin Julian');
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const containerRef = useRef(null);
 

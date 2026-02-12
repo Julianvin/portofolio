@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { GoOrganization, GoLocation } from 'react-icons/go';
 import Skills from '../components/home/Skills';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function Home() {
+  useDocumentTitle('Delvin Julian | Software Developer');
   const containerRef = useRef(null);
   const [skillsReady, setSkillsReady] = useState(false);
 

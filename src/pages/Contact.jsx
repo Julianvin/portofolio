@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiLinkedin, FiGithub, FiInstagram, FiArrowUpRight } from 'react-icons/fi';
 import SpotlightCard from '../components/ui/SpotlightCard';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const contacts = [
   { 
@@ -62,6 +63,7 @@ const itemVariants = {
 };
 
 export default function Contact() {
+  useDocumentTitle('Contact | Delvin Julian');
   return (
     <div className="w-full min-h-[80vh] flex items-center justify-center px-4 md:px-20 py-12 md:py-16">
       <div className="max-w-4xl w-full">
