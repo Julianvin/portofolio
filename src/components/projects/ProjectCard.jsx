@@ -7,6 +7,7 @@ export default function ProjectCard({ project, index, onClick, t }) {
   return (
     <motion.div
       layoutId={`project-card-${project.id}`}
+      onClick={onClick}
       className="cursor-pointer group"
       variants={{
         hidden: { opacity: 0, y: 40, scale: 0.95 },
@@ -33,7 +34,7 @@ export default function ProjectCard({ project, index, onClick, t }) {
         spotlightColor="rgba(59, 130, 246, 0.12)"
       >
         {/* Thumbnail */}
-        <div className="relative overflow-hidden" onClick={onClick}>
+        <div className="relative overflow-hidden">
           <motion.img
             layoutId={`project-image-${project.id}`}
             src={project.image}
