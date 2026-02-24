@@ -64,11 +64,53 @@
   },
   "projects": {
     "title": "Proyek",
-    "subtitle": "Galeri proyek segera hadir..."
+    "subtitle": "Website portofolio personal saya — pengalaman premium dan interaktif yang dibangun dengan teknologi frontend modern.",
+    "view_project": "Lihat Proyek",
+    "overview": "Gambaran Umum",
+    "role_title": "Peran & Tanggung Jawab",
+    "features_title": "Fitur Utama",
+    "demo": "Demo Langsung",
+    "github": "Repositori GitHub",
+    "private_project": "Proyek privat / internal",
+    "items": {
+      "portfolio": {
+        "title": "Portofolio Personal",
+        "tagline": "Portofolio developer premium dengan animasi halus, tema gelap, dan komponen UI interaktif.",
+        "description": "Website portofolio personal yang sepenuhnya kustom, dirancang dan dikembangkan dari awal. Dibangun dengan React 19, Tailwind CSS v4, dan Framer Motion untuk menciptakan pengalaman yang premium, cepat, dan memukau secara visual. Situs ini memiliki layout sidebar mengambang, animasi masuk bertenaga GSAP, ikon skill 3D interaktif dengan fisika spring, transisi elemen bersama di halaman Projects, dashboard analitik real-time yang didukung Umami, dan dukungan internasionalisasi penuh untuk Bahasa Inggris dan Indonesia.",
+        "role": "Frontend Developer & Designer — Bertanggung jawab atas seluruh desain dan pengembangan portofolio ini. Saat ini dalam fase desain dan pengembangan, terus melakukan iterasi pada UI/UX untuk mencapai estetika kelas dunia. Menangani semuanya mulai dari arsitektur komponen, koreografi animasi, layout responsif, hingga integrasi layanan pihak ketiga seperti Umami Analytics.",
+        "features": [
+          "Transisi halaman halus dengan animasi shared element Framer Motion",
+          "Animasi masuk bertingkat bertenaga GSAP di halaman beranda",
+          "Grid ikon skill 3D interaktif dengan fisika spring dan efek hover",
+          "Layout sidebar mengambang dengan navigasi mobile responsif",
+          "Desain mode gelap dengan glassmorphism dan latar belakang gradient orb",
+          "Internasionalisasi (i18n) mendukung Bahasa Inggris dan Indonesia",
+          "Dashboard analitik real-time dengan integrasi Recharts dan API Umami",
+          "Efek hover SpotlightCard dengan cahaya radial mengikuti mouse",
+          "Fungsionalitas unduh Resume/CV",
+          "Deploy di Vercel dengan CDN global instan"
+        ]
+      }
+    }
   },
   "dashboard": {
-    "title": "Dashboard",
-    "subtitle": "Analitik segera hadir..."
+    "title": "Analitik Situs",
+    "subtitle": "Lalu lintas real-time, tampilan halaman, dan interaksi pengunjung di seluruh portofolio — didukung oleh analitik yang mengutamakan privasi.",
+    "period": "30 hari terakhir",
+    "demo_mode": "Data demo",
+    "powered_by": "Analitik didukung oleh Umami — analitik web open-source yang mengutamakan privasi.",
+    "chart_title": "Ringkasan Bulanan",
+    "chart_subtitle": "Sesi dan tampilan halaman harian selama 30 hari terakhir",
+    "stats": {
+      "pageviews": "Tampilan Halaman",
+      "visitors": "Pengunjung",
+      "visits": "Kunjungan",
+      "countries": "Negara"
+    },
+    "legend": {
+      "sessions": "Sesi",
+      "pageviews": "Tampilan Halaman"
+    }
   },
   "chat": {
     "title": "Ruang Obrolan",

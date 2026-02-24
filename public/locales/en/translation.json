@@ -64,11 +64,53 @@
   },
   "projects": {
     "title": "Projects",
-    "subtitle": "Project gallery coming soon..."
+    "subtitle": "My personal portfolio website — a premium, interactive experience built with modern frontend technologies.",
+    "view_project": "View Project",
+    "overview": "Overview",
+    "role_title": "Role & Responsibilities",
+    "features_title": "Key Features",
+    "demo": "Live Demo",
+    "github": "GitHub Repository",
+    "private_project": "Private / Internal project",
+    "items": {
+      "portfolio": {
+        "title": "Personal Portfolio",
+        "tagline": "A premium developer portfolio with smooth animations, dark theme, and interactive UI components.",
+        "description": "A fully custom personal portfolio website designed and developed from scratch. Built with React 19, Tailwind CSS v4, and Framer Motion to create a premium, fast, and visually stunning experience. The site features a floating sidebar layout, GSAP-powered entrance animations, interactive 3D skill icons with spring physics, shared element transitions on the Projects page, a real-time analytics dashboard powered by Umami, and full internationalization support for English and Indonesian.",
+        "role": "Frontend Developer & Designer — Responsible for the complete design and development of this portfolio. Currently in the design and development phase, continuously iterating on the UI/UX to achieve a world-class aesthetic. Handling everything from the component architecture, animation choreography, responsive layouts, to the integration of third-party services like Umami Analytics.",
+        "features": [
+          "Smooth page transitions with Framer Motion shared element animations",
+          "GSAP-powered cascading entrance animations on the homepage",
+          "Interactive 3D skill icon grid with spring physics and hover effects",
+          "Floating sidebar layout with responsive mobile navigation",
+          "Dark mode design with glassmorphism and gradient orb backgrounds",
+          "Internationalization (i18n) supporting English and Indonesian",
+          "Real-time analytics dashboard with Recharts and Umami API integration",
+          "SpotlightCard hover effect with mouse-following radial glow",
+          "Resume/CV download functionality",
+          "Deployed on Vercel with instant global CDN"
+        ]
+      }
+    }
   },
   "dashboard": {
-    "title": "Dashboard",
-    "subtitle": "Analytics coming soon..."
+    "title": "Site Analytics",
+    "subtitle": "Real-time traffic, page views, and visitor interactions across the entire portfolio — powered by privacy-first analytics.",
+    "period": "Last 30 days",
+    "demo_mode": "Demo data",
+    "powered_by": "Analytics powered by Umami — privacy-first, open-source web analytics.",
+    "chart_title": "Monthly Overview",
+    "chart_subtitle": "Daily sessions and pageviews over the last 30 days",
+    "stats": {
+      "pageviews": "Page Views",
+      "visitors": "Visitors",
+      "visits": "Visits",
+      "countries": "Countries"
+    },
+    "legend": {
+      "sessions": "Sessions",
+      "pageviews": "Page Views"
+    }
   },
   "chat": {
     "title": "Chat Room",
