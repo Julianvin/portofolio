@@ -100,7 +100,7 @@
     "demo_mode": "Demo data",
     "powered_by": "Analytics powered by Umami — privacy-first, open-source web analytics.",
     "chart_title": "Monthly Overview",
-    "chart_subtitle": "Daily sessions and pageviews over the last 30 days",
+    "chart_subtitle": "Sessions and pageviews over the last 6 months",
     "stats": {
       "pageviews": "Page Views",
       "visitors": "Visitors",

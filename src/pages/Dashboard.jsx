@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import CountUp from 'react-countup';
 import {
   FiEye, FiUsers, FiMousePointer, FiGlobe, FiBarChart2
 } from 'react-icons/fi';
@@ -19,25 +20,45 @@ const headers = {
   Accept: 'application/json',
 };
 
-// ── Custom tooltip ─────────────────────────────────────────────────
+// ── 6-month timeframe ──────────────────────────────────────────────
+const END_AT = Date.now();
+const START_AT = END_AT - 180 * 24 * 60 * 60 * 1000;
+
+// ── Custom Tooltip ─────────────────────────────────────────────────
 function CustomTooltip({ active, payload, label }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-xl border border-[#27272a] bg-[#0d0d12]/95 backdrop-blur-md px-4 py-3 shadow-2xl">
-      <p className="text-xs font-semibold text-zinc-300 mb-2">{label}</p>
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900/90 backdrop-blur-lg px-4 py-3 shadow-2xl shadow-black/50">
+      <p className="text-[11px] font-semibold uppercase tracking-wider text-zinc-400 mb-2.5">
+        {label}
+      </p>
       {payload.map((entry) => (
-        <div key={entry.dataKey} className="flex items-center gap-2 text-sm">
+        <div key={entry.dataKey} className="flex items-center gap-2.5 text-sm py-0.5">
           <span
-            className="w-2.5 h-2.5 rounded-full"
-            style={{ backgroundColor: entry.color }}
+            className="w-2 h-2 rounded-full ring-2 ring-offset-1 ring-offset-zinc-900"
+            style={{ backgroundColor: entry.color, ringColor: entry.color }}
           />
-          <span className="text-zinc-400 capitalize">{entry.dataKey}</span>
-          <span className="ml-auto font-mono font-semibold text-zinc-100">
+          <span className="text-zinc-400 capitalize text-xs">{entry.dataKey}</span>
+          <span className="ml-auto font-mono font-bold text-blue-300 text-sm">
             {entry.value.toLocaleString()}
           </span>
         </div>
       ))}
     </div>
+  );
+}
+
+// ── Animated Stat Number ───────────────────────────────────────────
+function AnimatedNumber({ value }) {
+  return (
+    <CountUp
+      end={value}
+      duration={2.2}
+      separator=","
+      useEasing
+      enableScrollSpy
+      scrollSpyOnce
+    />
   );
 }
 
@@ -68,6 +89,16 @@ const cardVariants = {
   },
 };
 
+// ── Helpers ────────────────────────────────────────────────────────
+function formatXAxisDate(dateStr) {
+  // dateStr will be like "Aug 15" or "2024-08-15" — handle both
+  const d = new Date(dateStr);
+  if (!isNaN(d)) {
+    return d.toLocaleDateString('en-US', { month: 'short' });
+  }
+  return dateStr;
+}
+
 // ── Main Component ─────────────────────────────────────────────────
 export default function Dashboard() {
   const { t } = useTranslation();
@@ -83,13 +114,11 @@ export default function Dashboard() {
   });
 
   useEffect(() => {
-    const endAt = Date.now();
-    const startAt = endAt - 30 * 24 * 60 * 60 * 1000;
-    const params = `startAt=${startAt}&endAt=${endAt}`;
+    const params = `startAt=${START_AT}&endAt=${END_AT}`;
 
     const statsUrl = `${API_BASE}/${WEBSITE_ID}/stats?${params}`;
     const metricsUrl = `${API_BASE}/${WEBSITE_ID}/metrics?type=country&${params}`;
-    const pageviewsUrl = `${API_BASE}/${WEBSITE_ID}/pageviews?unit=day&${params}`;
+    const pageviewsUrl = `${API_BASE}/${WEBSITE_ID}/pageviews?unit=month&${params}`;
 
     Promise.all([
       fetch(statsUrl, { headers }).then((r) => {
@@ -106,20 +135,18 @@ export default function Dashboard() {
       }),
     ])
       .then(([statsData, countriesData, pageviewsData]) => {
-        // Merge stats + country count
         setStats({
           ...statsData,
           countries: Array.isArray(countriesData) ? countriesData.length : 0,
         });
 
-        // Merge pageviews + sessions arrays into chart data
         const pvArr = pageviewsData?.pageviews || [];
         const sessArr = pageviewsData?.sessions || [];
         const merged = pvArr.map((pv, i) => {
           const date = new Date(pv.x);
           const label = date.toLocaleDateString('en-US', {
             month: 'short',
-            day: 'numeric',
+            year: '2-digit',
           });
           return {
             date: label,
@@ -134,34 +161,30 @@ export default function Dashboard() {
         console.error('Umami fetch failed:', err);
         setError(err.message);
         setLoading(false);
-        // Fallback demo data
         setStats({
           pageviews: { value: 1247 },
           visitors: { value: 386 },
           visits: { value: 524 },
           countries: 12,
         });
+        // Fallback: 6-month demo data
+        const months = ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb'];
         setChartData(
-          Array.from({ length: 30 }, (_, i) => {
-            const d = new Date(Date.now() - (29 - i) * 86400000);
-            return {
-              date: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-              sessions: Math.floor(Math.random() * 30 + 5),
-              pageviews: Math.floor(Math.random() * 60 + 10),
-            };
-          })
+          months.map((m) => ({
+            date: m,
+            sessions: Math.floor(Math.random() * 250 + 50),
+            pageviews: Math.floor(Math.random() * 600 + 100),
+          }))
         );
       });
   }, []);
 
   const getStatValue = (key) => {
-    if (!stats) return '—';
-    if (key === 'countries') {
-      return (stats.countries ?? 0).toLocaleString();
-    }
+    if (!stats) return 0;
+    if (key === 'countries') return stats.countries ?? 0;
     const val = stats[key];
-    if (typeof val === 'object' && val !== null) return (val.value ?? 0).toLocaleString();
-    return (val ?? 0).toLocaleString();
+    if (typeof val === 'object' && val !== null) return val.value ?? 0;
+    return val ?? 0;
   };
 
   const toggleSeries = useCallback((dataKey) => {
@@ -203,41 +226,44 @@ export default function Dashboard() {
         animate="visible"
         className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10"
       >
-        {STAT_CARDS.map((card) => (
-          <motion.div
-            key={card.key}
-            variants={cardVariants}
-            className="relative group rounded-2xl bg-[#f6f8fa] dark:bg-zinc-900/50 border border-[#d0d7de] dark:border-zinc-800 p-5 overflow-hidden transition-colors hover:border-zinc-600 dark:hover:border-zinc-700"
-          >
-            {/* Subtle glow on hover */}
-            <div
-              className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"
-              style={{ backgroundColor: card.accentColor }}
-            />
+        {STAT_CARDS.map((card) => {
+          const numericValue = getStatValue(card.key);
+          return (
+            <motion.div
+              key={card.key}
+              variants={cardVariants}
+              className="relative group rounded-2xl bg-[#f6f8fa] dark:bg-zinc-900/50 border border-[#d0d7de] dark:border-zinc-800 p-5 overflow-hidden transition-colors hover:border-zinc-600 dark:hover:border-zinc-700"
+            >
+              {/* Subtle glow on hover */}
+              <div
+                className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-3xl opacity-0 group-hover:opacity-20 transition-opacity duration-500"
+                style={{ backgroundColor: card.accentColor }}
+              />
 
-            <div className="relative z-10">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-medium uppercase tracking-wider text-[#656d76] dark:text-zinc-400">
-                  {t(`dashboard.stats.${card.key}`)}
-                </span>
-                <card.icon
-                  className="w-4 h-4"
-                  style={{ color: card.accentColor }}
-                />
+              <div className="relative z-10">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-medium uppercase tracking-wider text-[#656d76] dark:text-zinc-400">
+                    {t(`dashboard.stats.${card.key}`)}
+                  </span>
+                  <card.icon
+                    className="w-4 h-4"
+                    style={{ color: card.accentColor }}
+                  />
+                </div>
+                {loading ? (
+                  <div className="h-9 w-20 rounded-lg bg-zinc-800/50 animate-pulse" />
+                ) : (
+                  <p
+                    className="text-3xl font-bold tracking-tight"
+                    style={{ color: card.accentColor }}
+                  >
+                    <AnimatedNumber value={numericValue} />
+                  </p>
+                )}
               </div>
-              {loading ? (
-                <div className="h-9 w-20 rounded-lg bg-zinc-800/50 animate-pulse" />
-              ) : (
-                <p
-                  className="text-3xl font-bold tracking-tight"
-                  style={{ color: card.accentColor }}
-                >
-                  {getStatValue(card.key)}
-                </p>
-              )}
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </motion.div>
 
       {/* ── Bar Chart Section ─────────────────────────────── */}
@@ -290,42 +316,52 @@ export default function Dashboard() {
         ) : (
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={chartData} barCategoryGap="20%">
+              <defs>
+                <linearGradient id="barGradientSessions" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#1e40af" />
+                  <stop offset="100%" stopColor="#1e3a8a" />
+                </linearGradient>
+                <linearGradient id="barGradientPageviews" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#60a5fa" />
+                  <stop offset="100%" stopColor="#3b82f6" />
+                </linearGradient>
+              </defs>
               <CartesianGrid
                 strokeDasharray="3 3"
                 stroke="#27272a"
+                strokeOpacity={0.4}
                 vertical={false}
               />
               <XAxis
                 dataKey="date"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 11, fill: '#71717a' }}
+                tick={{ fontSize: 12, fill: '#71717a', fontWeight: 500 }}
                 dy={10}
-                interval="preserveStartEnd"
               />
               <YAxis
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: '#71717a' }}
+                tick={{ fontSize: 12, fill: '#52525b' }}
                 dx={-10}
                 width={45}
               />
               <Tooltip
                 content={<CustomTooltip />}
-                cursor={{ fill: 'rgba(59, 130, 246, 0.05)', radius: 8 }}
+                cursor={{ fill: 'rgba(59, 130, 246, 0.04)', radius: 8 }}
               />
               <Bar
                 dataKey="sessions"
-                fill="#1e3a8a"
+                fill="url(#barGradientSessions)"
                 radius={[4, 4, 0, 0]}
-                maxBarSize={32}
+                maxBarSize={40}
                 hide={hiddenSeries.sessions}
               />
               <Bar
                 dataKey="pageviews"
-                fill="#3b82f6"
+                fill="url(#barGradientPageviews)"
                 radius={[4, 4, 0, 0]}
-                maxBarSize={32}
+                maxBarSize={40}
                 hide={hiddenSeries.pageviews}
               />
             </BarChart>

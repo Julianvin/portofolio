@@ -100,7 +100,7 @@
     "demo_mode": "Data demo",
     "powered_by": "Analitik didukung oleh Umami — analitik web open-source yang mengutamakan privasi.",
     "chart_title": "Ringkasan Bulanan",
-    "chart_subtitle": "Sesi dan tampilan halaman harian selama 30 hari terakhir",
+    "chart_subtitle": "Sesi dan tampilan halaman selama 6 bulan terakhir",
     "stats": {
       "pageviews": "Tampilan Halaman",
       "visitors": "Pengunjung",
