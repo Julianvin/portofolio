@@ -53,7 +53,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 className="w-full h-56 md:h-72 object-cover object-top"
                 transition={spring}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#161b22] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#f6f8fa] dark:from-[#161b22] via-transparent to-transparent" />
             </div>
 
             {/* Content Body */}
@@ -61,7 +61,7 @@ export default function ProjectDetail({ project, onClose, t }) {
               {/* Title */}
               <motion.h2
                 layoutId={`project-title-${project.id}`}
-                className="text-2xl md:text-3xl font-bold text-white mb-2"
+                className="text-2xl md:text-3xl font-bold text-[#0d1117] dark:text-white mb-2"
                 transition={spring}
               >
                 {t(`projects.items.${project.id}.title`)}
@@ -71,7 +71,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-[#7d8590] text-base mb-5"
+                className="text-[#656d76] dark:text-[#7d8590] text-base mb-5"
               >
                 {t(`projects.items.${project.id}.tagline`)}
               </motion.p>
@@ -88,7 +88,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0d1117] hover:bg-[#1c2128] border border-[#30363d] hover:border-[#484f58] text-[#e6edf3] font-medium text-sm transition-colors duration-200"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#24292e] dark:bg-[#0d1117] hover:bg-[#1c2128] border border-[#d0d7de] dark:border-[#30363d] hover:border-[#484f58] text-white font-medium text-sm transition-colors duration-200"
                   >
                     <FiGithub className="w-4 h-4" />
                     {t('projects.github')}
@@ -117,7 +117,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 {project.techStack.map((tech) => (
                   <span
                     key={tech.name}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 border border-[#30363d] text-[#e6edf3]"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 dark:bg-white/5 border border-[#d0d7de] dark:border-[#30363d] text-[#0d1117] dark:text-[#e6edf3]"
                   >
                     <tech.icon className="w-4 h-4" style={{ color: tech.color }} />
                     {tech.name}
@@ -132,10 +132,10 @@ export default function ProjectDetail({ project, onClose, t }) {
                 transition={{ delay: 0.35 }}
                 className="mb-8"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#7d8590] mb-3">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#656d76] dark:text-[#7d8590] mb-3">
                   {t('projects.overview')}
                 </h3>
-                <p className="text-[#e6edf3] leading-relaxed text-base">
+                <p className="text-[#1f2328] dark:text-[#e6edf3] leading-relaxed text-base">
                   {t(`projects.items.${project.id}.description`)}
                 </p>
               </motion.div>
@@ -147,10 +147,10 @@ export default function ProjectDetail({ project, onClose, t }) {
                 transition={{ delay: 0.4 }}
                 className="mb-8"
               >
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#7d8590] mb-3">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#656d76] dark:text-[#7d8590] mb-3">
                   {t('projects.role_title')}
                 </h3>
-                <p className="text-[#e6edf3] leading-relaxed text-base">
+                <p className="text-[#1f2328] dark:text-[#e6edf3] leading-relaxed text-base">
                   {t(`projects.items.${project.id}.role`)}
                 </p>
               </motion.div>
@@ -161,14 +161,14 @@ export default function ProjectDetail({ project, onClose, t }) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45 }}
               >
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#7d8590] mb-3">
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-[#656d76] dark:text-[#7d8590] mb-3">
                   {t('projects.features_title')}
                 </h3>
                 <ul className="space-y-2.5">
                   {Array.isArray(features) && features.map((feature, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 text-[#e6edf3]"
+                      className="flex items-start gap-3 text-[#1f2328] dark:text-[#e6edf3]"
                     >
                       <FiChevronRight className="w-4 h-4 mt-1 text-blue-500 shrink-0" />
                       <span className="leading-relaxed">{feature}</span>
