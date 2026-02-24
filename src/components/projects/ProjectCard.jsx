@@ -10,16 +10,13 @@ export default function ProjectCard({ project, index, onClick, t }) {
       onClick={onClick}
       className="cursor-pointer group"
       variants={{
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        hidden: { y: 20, opacity: 0 },
         visible: {
-          opacity: 1,
           y: 0,
-          scale: 1,
+          opacity: 1,
           transition: {
             type: 'spring',
-            stiffness: 300,
-            damping: 30,
-            delay: index * 0.08,
+            stiffness: 100,
           },
         },
       }}
