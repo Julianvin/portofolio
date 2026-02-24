@@ -24,8 +24,6 @@ const STACKS = [
   { name: 'CSS', icon: FaCss3, color: '#1572B6', shadow: '#105689' },
   { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791', shadow: '#264d6d' },
   // Concepts & Tools
-  { name: 'GraphQL', icon: SiGraphql, color: '#E10098', shadow: '#b3007a' },
-  { name: 'Docker', icon: SiDocker, color: '#2496ED', shadow: '#1c76bd' },
   { name: 'Git', icon: FaGitAlt, color: '#F05032', shadow: '#c43c22' },
   { name: 'GitHub', icon: FaGithub, color: '#24292e', shadow: '#16191d' },
   { name: 'VS Code', icon: VscVscode, color: '#007ACC', shadow: '#005fa3' },
