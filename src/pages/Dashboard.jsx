@@ -146,7 +146,6 @@ export default function Dashboard() {
           const date = new Date(pv.x);
           const label = date.toLocaleDateString('en-US', {
             month: 'short',
-            year: '2-digit',
           });
           return {
             date: label,
@@ -352,16 +351,18 @@ export default function Dashboard() {
               />
               <Bar
                 dataKey="sessions"
+                stackId="stack"
                 fill="url(#barGradientSessions)"
-                radius={[4, 4, 0, 0]}
-                maxBarSize={40}
+                radius={[0, 0, 0, 0]}
+                maxBarSize={48}
                 hide={hiddenSeries.sessions}
               />
               <Bar
                 dataKey="pageviews"
+                stackId="stack"
                 fill="url(#barGradientPageviews)"
                 radius={[4, 4, 0, 0]}
-                maxBarSize={40}
+                maxBarSize={48}
                 hide={hiddenSeries.pageviews}
               />
             </BarChart>
