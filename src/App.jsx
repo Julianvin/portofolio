@@ -6,7 +6,6 @@ import About from './pages/About';
 import Achievements from './pages/Achievements';
 import Projects from './pages/Projects';
 import Dashboard from './pages/Dashboard';
-import ChatRoom from './pages/ChatRoom';
 import Contact from './pages/Contact';
 import GreetingLoader from './components/ui/GreetingLoader';
 
@@ -24,7 +23,6 @@ function App() {
             <Route path="achievements" element={<Achievements />} />
             <Route path="projects" element={<Projects />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="chat" element={<ChatRoom />} />
             <Route path="contact" element={<Contact />} />
           </Route>
         </Routes>

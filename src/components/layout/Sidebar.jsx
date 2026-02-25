@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMessageSquare, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiDownload, FiMenu, FiX } from 'react-icons/fi';
 import { gsap } from 'gsap';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../ui/ThemeProvider';
@@ -17,7 +17,6 @@ export default function Sidebar() {
     { name: t('sidebar.achievements'), path: '/achievements', icon: FiBriefcase }, 
     { name: t('sidebar.projects'), path: '/projects', icon: FiFolder },
     { name: t('sidebar.dashboard'), path: '/dashboard', icon: FiLayout },
-    { name: t('sidebar.chat'), path: '/chat', icon: FiMessageSquare },
     { name: t('sidebar.contact'), path: '/contact', icon: FiMail },
   ];
 

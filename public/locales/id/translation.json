@@ -5,7 +5,6 @@
     "achievements": "Pencapaian",
     "projects": "Proyek",
     "dashboard": "Dashboard",
-    "chat": "Ruang Obrolan",
     "contact": "Kontak",
     "copyright": "© {{year}} Delvin Julian"
   },
@@ -111,10 +110,6 @@
       "sessions": "Sesi",
       "pageviews": "Tampilan Halaman"
     }
-  },
-  "chat": {
-    "title": "Ruang Obrolan",
-    "subtitle": "Terhubung dengan saya..."
   },
   "contact": {
     "title": "Mari Terhubung",
