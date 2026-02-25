@@ -34,7 +34,7 @@ export function ThemeProvider({ children, defaultTheme = 'dark', storageKey = 'v
   };
 
   return (
-    <ThemeContext.Provider value={value} {...children}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   );
