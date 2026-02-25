@@ -15,12 +15,12 @@ import ProtectedRoute from './admin/components/ProtectedRoute';
 import AdminLayout from './admin/components/AdminLayout';
 import Login from './admin/pages/Login';
 import AdminDashboard from './admin/pages/AdminDashboard';
-import AdminProjects from './admin/pages/AdminProjects';
-import ProjectForm from './admin/pages/ProjectForm';
-import AdminTechStacks from './admin/pages/AdminTechStacks';
-import TechStackForm from './admin/pages/TechStackForm';
-import ExperiencesList from './admin/pages/ExperiencesList';
-import ExperienceForm from './admin/pages/ExperienceForm';
+// import AdminProjects from './admin/pages/AdminProjects';
+// import ProjectForm from './admin/pages/ProjectForm';
+// import AdminTechStacks from './admin/pages/AdminTechStacks';
+// import TechStackForm from './admin/pages/TechStackForm';
+// import ExperiencesList from './admin/pages/ExperiencesList';
+// import ExperienceForm from './admin/pages/ExperienceForm';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +52,7 @@ function App() {
               }
             >
               <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="projects" element={<AdminProjects />} />
+              {/* <Route path="projects" element={<AdminProjects />} />
               <Route path="projects/new" element={<ProjectForm />} />
               <Route path="projects/:id/edit" element={<ProjectForm />} />
               <Route path="tech-stacks" element={<AdminTechStacks />} />
@@ -60,7 +60,7 @@ function App() {
               <Route path="tech-stacks/:id/edit" element={<TechStackForm />} />
               <Route path="experiences" element={<ExperiencesList />} />
               <Route path="experiences/new" element={<ExperienceForm />} />
-              <Route path="experiences/:id/edit" element={<ExperienceForm />} />
+              <Route path="experiences/:id/edit" element={<ExperienceForm />} /> */}
             </Route>
           </Routes>
         </AuthProvider>
