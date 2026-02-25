@@ -14,7 +14,7 @@ export default function ProjectDetail({ project, onClose, t }) {
     };
   }, []);
 
-  const features = t(`projects.items.${project.id}.features`, { returnObjects: true });
+  const features = project.features || [];
 
   return (
     <>
@@ -49,7 +49,7 @@ export default function ProjectDetail({ project, onClose, t }) {
               <motion.img
                 layoutId={`project-image-${project.id}`}
                 src={project.image}
-                alt={t(`projects.items.${project.id}.title`)}
+                alt={project.title}
                 className="w-full h-56 md:h-72 object-cover object-top"
                 transition={spring}
               />
@@ -64,7 +64,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 className="text-2xl md:text-3xl font-bold text-[#0d1117] dark:text-white mb-2"
                 transition={spring}
               >
-                {t(`projects.items.${project.id}.title`)}
+                {project.title}
               </motion.h2>
 
               <motion.p
@@ -73,7 +73,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 transition={{ delay: 0.2 }}
                 className="text-[#656d76] dark:text-[#7d8590] text-base mb-5"
               >
-                {t(`projects.items.${project.id}.tagline`)}
+                {project.tagline}
               </motion.p>
 
               {/* Action Buttons — at the top, immediately visible */}
@@ -119,7 +119,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                     key={tech.name}
                     className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 dark:bg-white/5 border border-[#d0d7de] dark:border-[#30363d] text-[#0d1117] dark:text-[#e6edf3]"
                   >
-                    <tech.icon className="w-4 h-4" style={{ color: tech.color }} />
+                    <tech.icon iconIdentifier={tech.iconIdentifier} className="w-4 h-4" style={{ color: tech.color }} />
                     {tech.name}
                   </span>
                 ))}
@@ -136,7 +136,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                   {t('projects.overview')}
                 </h3>
                 <p className="text-[#1f2328] dark:text-[#e6edf3] leading-relaxed text-base">
-                  {t(`projects.items.${project.id}.description`)}
+                  {project.description}
                 </p>
               </motion.div>
 
@@ -151,7 +151,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                   {t('projects.role_title')}
                 </h3>
                 <p className="text-[#1f2328] dark:text-[#e6edf3] leading-relaxed text-base">
-                  {t(`projects.items.${project.id}.role`)}
+                  {[project.role, ...(project.responsibilities || [])].filter(Boolean).join(' — ')}
                 </p>
               </motion.div>
 

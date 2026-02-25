@@ -35,7 +35,7 @@ export default function ProjectCard({ project, index, onClick, t }) {
           <motion.img
             layoutId={`project-image-${project.id}`}
             src={project.image}
-            alt={t(`projects.items.${project.id}.title`)}
+            alt={project.title}
             className="w-full h-48 object-cover object-top transition-transform duration-500 group-hover:scale-105"
           />
           {/* Hover overlay gradient */}
@@ -56,12 +56,12 @@ export default function ProjectCard({ project, index, onClick, t }) {
             layoutId={`project-title-${project.id}`}
             className="text-lg font-bold text-[#0d1117] dark:text-[#e6edf3] mb-1 line-clamp-1"
           >
-            {t(`projects.items.${project.id}.title`)}
+            {project.title}
           </motion.h3>
 
           {/* Tagline */}
           <p className="text-sm text-[#656d76] dark:text-[#7d8590] mb-4 line-clamp-2 leading-relaxed">
-            {t(`projects.items.${project.id}.tagline`)}
+            {project.tagline}
           </p>
 
           {/* Tech Stack + Action Buttons Row */}
@@ -74,6 +74,7 @@ export default function ProjectCard({ project, index, onClick, t }) {
                   className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] text-[#656d76] dark:text-[#7d8590] transition-colors duration-200 group-hover:border-gray-300 dark:group-hover:border-[#484f58]"
                 >
                   <tech.icon
+                    iconIdentifier={tech.iconIdentifier}
                     className="w-3.5 h-3.5"
                     style={{ color: tech.color }}
                   />

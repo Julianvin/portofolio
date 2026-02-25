@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import PROJECTS from '../data/projectsData';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectDetail from '../components/projects/ProjectDetail';
+import { getPublicProjects } from '../admin/services/projectService';
+import DynamicIcon from '../admin/components/DynamicIcon';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -17,10 +18,62 @@ const containerVariants = {
   },
 };
 
+const TECH_COLORS = {
+  FaReact: '#61DAFB',
+  SiTailwindcss: '#06B6D4',
+  SiFramer: '#0055FF',
+  IoLogoJavascript: '#F7DF1E',
+  FaNodeJs: '#339933',
+  FaGolang: '#00ADD8',
+};
+
+function getIconColor(iconIdentifier) {
+  return TECH_COLORS[iconIdentifier] || '#656d76';
+}
+
 export default function Projects() {
   const { t } = useTranslation();
   useDocumentTitle(`${t('projects.title')} | Delvin Julian`);
+  
+  const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const rawProjects = await getPublicProjects();
+        const adaptedProjects = rawProjects.map((p) => ({
+          id: p.id,
+          image: p.image_url,
+          title: p.title,
+          tagline: p.short_description,
+          description: p.overview,
+          role: p.role,
+          features: p.key_features || [],
+          responsibilities: typeof p.responsibilities === 'string'
+            ? p.responsibilities.split('\n').map(r => r.trim()).filter(Boolean)
+            : (Array.isArray(p.responsibilities) ? p.responsibilities : []),
+          techStack: p.tech_stacks?.map((ts) => ({
+            name: ts.name,
+            iconIdentifier: ts.icon_identifier,
+            color: getIconColor(ts.icon_identifier),
+            icon: DynamicIcon // we pass the component reference or handle it inside ProjectCard
+          })) || [],
+          demoUrl: p.live_demo_url || null,
+          githubUrl: p.github_url || null,
+        }));
+        setProjects(adaptedProjects);
+      } catch (err) {
+        console.error("Failed to load projects:", err);
+        setError("Failed to load projects. Please try again later.");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    loadProjects();
+  }, []);
 
   return (
     <LayoutGroup>
@@ -40,23 +93,32 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Project Grid — responsive two columns */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {PROJECTS.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              onClick={() => setSelectedProject(project)}
-              t={t}
-            />
-          ))}
-        </motion.div>
+        {isLoading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="w-8 h-8 rounded-full border-4 border-zinc-200 dark:border-zinc-800 border-t-blue-500 animate-spin" />
+          </div>
+        ) : error ? (
+          <div className="text-center text-red-500 p-8 bg-red-500/10 rounded-2xl border border-red-500/20">
+            {error}
+          </div>
+        ) : (
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                onClick={() => setSelectedProject(project)}
+                t={t}
+              />
+            ))}
+          </motion.div>
+        )}
 
         {/* Expanded Detail Overlay */}
         <AnimatePresence>
