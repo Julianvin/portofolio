@@ -1,0 +1,17 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "executionArgs": {
+    "projectName": "portofolio",
+    "projectPath": "d:\\project\\portofolio",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-eJyQPgDlkcSffVf7jPMAlfj6vtg-hHt8KHaBlAb7meeOIDHXcXwS2Kw-r8CafF0PqqNk6i9dVLG4Do6eirdAFQwOiR1052BrAxa14ZA0fNkIugDoBL0IwrDrWliRgjUJDCs"
+    }
+  },
+  "serverPort": 50877,
+  "proxy": "http://3fc51b38-177a-4a94-9df5-464b756b0605:42ug7yolF4GSPGpk0HWeYabKbkslpiTH@tun.testsprite.com:8080"
+}

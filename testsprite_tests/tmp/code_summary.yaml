@@ -1,0 +1,59 @@
+version: "2"
+type: frontend
+tech_stack:
+  - React
+  - Vite
+  - Tailwind CSS
+  - React Router DOM
+  - Framer Motion
+routes:
+  - path: /
+    file: src/pages/Home.jsx
+    auth_required: false
+    description: Portfolio home page
+  - path: /about
+    file: src/pages/About.jsx
+    auth_required: false
+    description: About page
+  - path: /achievements
+    file: src/pages/Achievements.jsx
+    auth_required: false
+    description: Achievements page
+  - path: /projects
+    file: src/pages/Projects.jsx
+    auth_required: false
+    description: Projects page
+  - path: /dashboard
+    file: src/pages/Dashboard.jsx
+    auth_required: false
+    description: Dashboard page
+  - path: /contact
+    file: src/pages/Contact.jsx
+    auth_required: false
+    description: Contact page
+features:
+  - name: Navigation
+    description: Navigate between different portfolio sections
+    files:
+      - src/components/layout/Layout.jsx
+      - src/App.jsx
+    entry_route: /
+    user_interactions:
+      - Click on navigation links to switch pages
+    api_calls: []
+    auth_required: false
+  - name: View Portfolio Pages
+    description: View various content pages of the portfolio
+    files:
+      - src/pages/Home.jsx
+      - src/pages/About.jsx
+      - src/pages/Projects.jsx
+      - src/pages/Dashboard.jsx
+      - src/pages/Contact.jsx
+    entry_route: /
+    user_interactions:
+      - Scroll through content
+      - Interact with UI elements like buttons and cards
+    api_calls: []
+    auth_required: false
+known_limitations: []

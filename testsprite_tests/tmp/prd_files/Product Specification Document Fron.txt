@@ -1,0 +1,22 @@
+Product Specification Document: Frontend Portfolio Website
+
+1. Overview
+This document outlines the frontend behaviour and expected outcomes for a personal portfolio website. The primary focus for automated testing is the UI/UX, animations, responsiveness, and core interactive features.
+
+2. Layout & Navigation
+- Responsive Floating Sidebar: The application features a floating sidebar for desktop viewports and a collapsed mobile navigation menu for smaller screens. Routing must work seamlessly across all breakpoints.
+- Dark Mode & Aesthetics: The default theme is dark mode, utilising glassmorphism effects and gradient orb backgrounds. These styling elements must render correctly without breaking the layout or obscuring text.
+
+3. Core Interactions & Animations
+- Page Transitions: Framer Motion is used for shared element animations between route changes. Transitions should be smooth and not cause UI freezing or layout shifts.
+- Entrance Animations: The homepage utilises GSAP for cascading entrance animations. Elements should load sequentially upon the initial page render.
+- 3D Skill Icon Grid: The skills section features a 3D grid with spring physics and hover effects. Hovering over icons must trigger the expected physics-based movement.
+- SpotlightCard: Specific cards feature a mouse-following radial glow hover effect. The glow must track the cursor position accurately within the card boundaries.
+
+4. Features & Functionality
+- Localisation (i18n): The website supports both English and Indonesian. Toggling the language switch must instantly translate the static text on the UI.
+- Analytics Dashboard: A real-time dashboard fetches data via the Umami API and displays it using Recharts. The charts must render the data correctly upon load.
+- Resume/CV Download: A dedicated button allows users to download a Resume/CV file. Clicking this button must successfully trigger a file download.
+
+5. Deployment Environment
+- The application is deployed on Vercel. Tests should account for standard CDN delivery speeds and behaviours.

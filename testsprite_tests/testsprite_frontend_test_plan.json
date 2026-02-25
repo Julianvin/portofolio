@@ -1,0 +1,1965 @@
+[
+  {
+    "id": "TC001",
+    "title": "Navigate from Home to Projects using sidebar navigation",
+    "description": "Verifies that clicking the Projects navigation link routes to /projects and renders Projects page content.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Navigate from Home to Dashboard using sidebar navigation",
+    "description": "Verifies that clicking the Dashboard navigation link routes to /dashboard and renders Dashboard page content.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Dashboard\" in the navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Dashboard\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Mobile menu: open collapsed menu and navigate to Contact",
+    "description": "Verifies that the collapsed mobile menu can be opened and used to navigate to /contact with Contact content visible.",
+    "category": "Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on the mobile menu toggle button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"mobile navigation menu\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Contact\" in the mobile navigation menu"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/contact\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Direct navigation to About route loads About page content",
+    "description": "Verifies that the About page renders correctly when loaded directly via its static route.",
+    "category": "Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /about"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Navigation link failure scenario: click About but remain on Home",
+    "description": "Validates expected behavior for a known navigation failure scenario where clicking About does not change route or page content.",
+    "category": "Navigation",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"About\" in the navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Home\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Navigate from Home to Achievements using navigation",
+    "description": "Verifies that clicking the Achievements navigation link routes to /achievements and renders Achievements page content.",
+    "category": "Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Achievements\" in the navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/achievements\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Achievements\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Navigate from Projects to Contact using in-app navigation (no direct URL)",
+    "description": "Verifies in-app navigation works across pages by moving from Projects to Contact via navigation links.",
+    "category": "Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Contact\" in the navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/contact\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Projects: Open a project card to view details/expanded content",
+    "description": "Verifies a user can browse the Projects list and open a project card to see more details or expanded content.",
+    "category": "View Portfolio Pages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the project list section"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the project list"
+      },
+      {
+        "type": "action",
+        "description": "Click a project card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Project details\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Description\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Projects: Open and close expanded project content",
+    "description": "Verifies a project card expansion can be opened and then dismissed without breaking the page.",
+    "category": "View Portfolio Pages",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the project list section"
+      },
+      {
+        "type": "action",
+        "description": "Click a project card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Project details\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Press Escape"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Project details\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "About: View skills and biography sections",
+    "description": "Verifies the About page renders biography and skills content and remains readable while scrolling.",
+    "category": "View Portfolio Pages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /about"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the biography section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Biography\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the skills section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Skills\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "About: Interact with a UI button or card and see the expected response",
+    "description": "Verifies an interactive UI element on the About page responds (e.g., expands, reveals content, or changes visible state).",
+    "category": "View Portfolio Pages",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /about"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to a section that contains an interactive card or button"
+      },
+      {
+        "type": "action",
+        "description": "Click a visible UI button or card on the About page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"More\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Expanded details\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Achievements: Scroll through achievements list and confirm content is visible",
+    "description": "Verifies the Achievements page loads and the achievements list content is visible while scrolling.",
+    "category": "View Portfolio Pages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /achievements"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Achievements\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the achievements list section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Achievements list\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through the achievements list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Award\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Achievements: Verify images and text render without visible broken placeholders",
+    "description": "Verifies achievements entries show readable text and visible images (no obvious missing/broken image presentation).",
+    "category": "View Portfolio Pages",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /achievements"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Achievements\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the first achievement entry"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Achievement title\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Achievement image\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Achievement description\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Projects: Negative interaction check—click a UI element that should not produce a broken state",
+    "description": "Verifies clicking a secondary UI element on Projects does not result in visible broken UI (e.g., missing image placeholder text or error text).",
+    "category": "View Portfolio Pages",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the project list section"
+      },
+      {
+        "type": "action",
+        "description": "Click a visible secondary UI element within a project card (for example, an icon, tag, or small button)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"404\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Error\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Not Found\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Dashboard: View analytics dashboard content renders",
+    "description": "Verifies the Dashboard page loads and key dashboard content is visible.",
+    "category": "View Portfolio Pages",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Dashboard\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Analytics\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll through dashboard content"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Dashboard card\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Contact: View contact page and confirm key contact UI elements are visible",
+    "description": "Verifies the Contact page loads and shows contact content or a contact form area.",
+    "category": "View Portfolio Pages",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Contact form\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Message\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Send\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Default dark mode theme renders correctly on Home",
+    "description": "Verifies the Home page loads in dark mode with key aesthetics visible and readable.",
+    "category": "Dark Mode & Aesthetics",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme toggle\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"glassmorphism card or panel\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"gradient background or orb\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Theme toggle switches from dark to light mode on Home",
+    "description": "Verifies clicking the theme toggle changes the visible UI to light mode without breaking basic navigation visibility.",
+    "category": "Dark Mode & Aesthetics",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme toggle\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"theme toggle\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"light mode indicator\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"page content area\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Theme toggle switches back to dark mode after enabling light mode",
+    "description": "Verifies the theme can be toggled back to dark mode and the UI remains readable.",
+    "category": "Dark Mode & Aesthetics",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme toggle\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"theme toggle\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"light mode indicator\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"theme toggle\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"dark mode indicator\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Theme persists while navigating from Home to Projects via UI navigation",
+    "description": "Verifies after toggling theme, navigating to another page via clicks keeps the UI readable and themed.",
+    "category": "Dark Mode & Aesthetics",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme toggle\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"theme toggle\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"light mode indicator\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click link \"Projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"page heading\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"light mode indicator\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Theme toggle does not obscure content on About page after navigation",
+    "description": "Verifies that after changing theme on Home and navigating to About, text and key sections remain visible.",
+    "category": "Dark Mode & Aesthetics",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"theme toggle\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"light mode indicator\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click link \"About\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"page heading\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"primary content section\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Detect theme rendering error: content becomes unreadable after switching to light mode",
+    "description": "Checks for a regression where toggling to light mode causes missing/overlapped content or unreadable UI.",
+    "category": "Dark Mode & Aesthetics",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme toggle\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"theme toggle\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"page content area\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"navigation bar\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"no full-page overlay blocking content\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Theme toggle remains functional and UI remains visible on Dashboard",
+    "description": "Verifies theme switching works on a secondary route and does not break layout or hide dashboard content.",
+    "category": "Dark Mode & Aesthetics",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme toggle\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"dashboard content area\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"theme toggle\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"light mode indicator\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"dashboard content area\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Route transition animation from Home to About is smooth and completes",
+    "description": "Verifies that navigating from Home to About via the primary navigation shows a visible transition and lands on the About page without UI freeze.",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"About\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"About page main heading\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Route transition animation from Home to Projects is smooth and content renders correctly",
+    "description": "Verifies that navigating from Home to Projects shows a visible transition and the Projects content appears without missing or overlapping sections.",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Primary navigation bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Projects\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Project list or project grid\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Shared element transition behaves correctly when navigating Home to Projects",
+    "description": "Verifies that any shared element animation (e.g., hero/project card image/title) completes and the destination element is visible and stable on Projects.",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Featured project card or featured project section\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Projects\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Project list or project grid\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"A project card image or title\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Quick successive navigation does not freeze the UI (Home -> About -> Projects)",
+    "description": "Verifies that consecutive route transitions do not leave the UI stuck mid-transition and final route content is interactive and visible.",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"About\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Projects\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Project list or project grid\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Transitions remain stable when scrolling after navigation (Home -> Achievements)",
+    "description": "Verifies that after a route transition, the page can be scrolled and content remains stable (no major layout shift that breaks readability).",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Achievements\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/achievements\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Achievements\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the bottom of the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Footer\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "No blank screen during transition (Home -> Contact)",
+    "description": "Verifies that route transition does not result in a prolonged blank page and the destination content becomes visible promptly.",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Contact\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/contact\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Contact form\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Primary navigation bar\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "Return navigation transition is smooth (About -> Home)",
+    "description": "Verifies that navigating back to Home via navigation from About triggers a smooth transition and Home content is shown correctly.",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /about"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Home\" navigation link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Home hero section\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Primary navigation bar\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC031",
+    "title": "Detect transition failure symptoms (abrupt shift or frozen UI) when going Home -> About",
+    "description": "Verifies that the transition does not freeze and that About content appears and remains usable shortly after navigation, indicating no failure.",
+    "category": "Page Transitions (Framer Motion)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Primary navigation bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"About\" navigation link"
+      },
+      {
+        "type": "action",
+        "description": "Wait for element \"About page main heading\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"About page main heading\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC032",
+    "title": "Homepage entrance animations play sequentially on first load",
+    "description": "Verifies that the homepage entrance animation sequence cascades in a visible, staged order on initial render.",
+    "category": "Entrance Animations (GSAP)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Home page main heading\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Hero section\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Primary call-to-action button\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Skills section\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC033",
+    "title": "Entrance animations show a clear cascade order (top content before lower sections)",
+    "description": "Verifies that above-the-fold content appears before below-the-fold sections as part of a sequential entrance.",
+    "category": "Entrance Animations (GSAP)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Hero section\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to \"Projects section\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Projects section\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to \"Contact section\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Contact section\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC034",
+    "title": "Homepage remains usable during entrance animations (no blocking overlay)",
+    "description": "Verifies that entrance animations do not block interaction and the page is navigable while animations run.",
+    "category": "Entrance Animations (GSAP)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Top navigation bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"About\" in the top navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"About page heading\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC035",
+    "title": "Entrance animations do not prevent navigation to Projects from the homepage",
+    "description": "Verifies that user can navigate away from the homepage while entrance animations are occurring without errors.",
+    "category": "Entrance Animations (GSAP)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Top navigation bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the top navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Projects page heading\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC036",
+    "title": "Entrance animations do not break localization text rendering on homepage",
+    "description": "Verifies that animated elements still show readable text content (not blank) after initial render.",
+    "category": "Entrance Animations (GSAP)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Home page main heading\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Hero description text\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC037",
+    "title": "Switch language on Home page from English to Indonesian updates UI text instantly",
+    "description": "Verifies the language switch control updates visible Home page UI text to Indonesian without a page reload.",
+    "category": "Localisation (i18n)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"language switch\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC038",
+    "title": "Switch language on Home page from Indonesian back to English restores UI text",
+    "description": "Verifies the language switch control can toggle back to English and the UI updates accordingly.",
+    "category": "Localisation (i18n)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC039",
+    "title": "Switch language on Projects page updates project UI strings to Indonesian",
+    "description": "Verifies that switching language on the Projects page translates visible labels and UI strings to Indonesian.",
+    "category": "Localisation (i18n)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"language switch\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC040",
+    "title": "Language preference persists when navigating from Home to About after switching to Indonesian",
+    "description": "Verifies that after switching language, navigating to another route keeps the selected language applied.",
+    "category": "Localisation (i18n)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"About\" link in the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"language switch\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC041",
+    "title": "Language preference persists when navigating from Projects to Home after switching to Indonesian",
+    "description": "Verifies that switching language on Projects keeps Indonesian text when returning to Home via navigation.",
+    "category": "Localisation (i18n)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Home\" link in the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC042",
+    "title": "Language switch control is available across key pages (Home, Projects, Contact)",
+    "description": "Verifies that the language switch control is visible on multiple pages where users can access it.",
+    "category": "Localisation (i18n)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"language switch\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Projects\" link in the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"language switch\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Contact\" link in the main navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"language switch\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC043",
+    "title": "No partial or untranslated key navigation strings after switching to Indonesian on Home page",
+    "description": "Detects i18n coverage gaps by verifying multiple expected Indonesian navigation labels appear after switching.",
+    "category": "Localisation (i18n)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Home\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Beranda\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Tentang\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Kontak\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC044",
+    "title": "No partial or untranslated key page headings after switching to Indonesian on Projects page",
+    "description": "Detects i18n coverage gaps on Projects by verifying an Indonesian heading appears and the English heading disappears.",
+    "category": "Localisation (i18n)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"language switch\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Proyek\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"project list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC045",
+    "title": "Dashboard renders analytics charts with populated data",
+    "description": "Verifies the analytics dashboard shows visible charts populated with fetched analytics data.",
+    "category": "Analytics Dashboard (Umami + Recharts)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Analytics\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Visits chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Pageviews chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Top pages\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Top referrers\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC046",
+    "title": "Dashboard shows loading state while analytics data is fetching",
+    "description": "Verifies the dashboard shows a loading indicator/state before charts fully render.",
+    "category": "Analytics Dashboard (Umami + Recharts)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Loading\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Loading indicator\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for element \"Visits chart\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Visits chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Loading\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC047",
+    "title": "Dashboard handles API failure by showing an error state",
+    "description": "Verifies the dashboard shows an error message and placeholder/empty visualizations when analytics data cannot be loaded.",
+    "category": "Analytics Dashboard (Umami + Recharts)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"Failed\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Failed\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Try again\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Visits chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"No data\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC048",
+    "title": "Dashboard retry action attempts to recover from an error state",
+    "description": "Verifies the dashboard provides a retry action after an error and transitions away from the error state when data loads.",
+    "category": "Analytics Dashboard (Umami + Recharts)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"Try again\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Try again\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Try again\""
+      },
+      {
+        "type": "action",
+        "description": "Wait for element \"Visits chart\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Visits chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Try again\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC049",
+    "title": "Dashboard renders chart containers even when there is no analytics data",
+    "description": "Verifies the dashboard still renders chart sections with empty/placeholder messaging when the dataset is empty.",
+    "category": "Analytics Dashboard (Umami + Recharts)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Wait for element \"Visits chart\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Visits chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Pageviews chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"No data\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Top pages\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC050",
+    "title": "Dashboard page has expected title and stable route",
+    "description": "Verifies the dashboard loads on the correct route and presents a clear page title/header for analytics.",
+    "category": "Analytics Dashboard (Umami + Recharts)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page title contains \"Dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Analytics\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Visits chart\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Pageviews chart\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC051",
+    "title": "Resume/CV download button is discoverable and labeled clearly on Contact",
+    "description": "Verifies the download button is easy to locate and has clear visible labeling on the Contact page.",
+    "category": "Resume/CV Download",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Resume/CV download\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Download\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"CV\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC052",
+    "title": "Home page loads with core assets visible and within an acceptable time",
+    "description": "Verifies the Home page renders key visible UI elements promptly, indicating JS/CSS/assets are delivered successfully via CDN.",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify page title contains \"Portfolio\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Site header navigation\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Hero section\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for \"2\" seconds"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Main content area\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC053",
+    "title": "Home page renders styled layout (no obvious unstyled content)",
+    "description": "Validates that CSS is applied by checking for typical styled UI elements being visible and properly laid out (proxy for CSS asset delivery).",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Site header navigation\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Primary call-to-action button\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Footer\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to \"Footer\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Contact\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Page content is readable (not blank)\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC054",
+    "title": "Subsequent navigation to Projects is fast and content loads without blank states",
+    "description": "Ensures client-side navigation and cached CDN assets allow quick transition from Home to Projects with visible content.",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Site header navigation\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the header navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for \"1\" seconds"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Projects list or projects grid\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC055",
+    "title": "Cross-page navigation sequence remains smooth (Home -> About -> Achievements)",
+    "description": "Checks multiple route transitions for consistent rendering, indicating assets remain available and cached during navigation.",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"About\" in the header navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/about\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"About page main heading\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Achievements\" in the header navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/achievements\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Achievements list\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC056",
+    "title": "Refresh on Projects page still loads content (CDN-delivered build artifacts available)",
+    "description": "Validates the deployed build serves required JS/CSS on a direct page load, not only via client-side navigation.",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Projects list or projects grid\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for \"2\" seconds"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Site header navigation\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC057",
+    "title": "Graceful handling: broken image/asset does not crash page rendering",
+    "description": "Ensures that if an image/asset fails to load, the page still renders surrounding UI and navigation remains usable (graceful degradation).",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Main content area\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to \"Projects preview section\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Projects preview cards\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Projects\" in the header navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/projects\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Projects list or projects grid\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC058",
+    "title": "Graceful handling: missing styles should be detectable as a visible broken UI signal",
+    "description": "Provides a visible failure signal check to catch cases where CSS fails to deliver (e.g., unstyled page still shows raw text).",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Site header navigation\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Primary call-to-action button\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"About\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"About\" in the header navigation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"About page main heading\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Page layout sections (not a single unformatted text block)\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC059",
+    "title": "Dashboard route loads without missing-asset blank screen",
+    "description": "Verifies a heavier/interactive page still renders key visible elements, indicating asset delivery and hydration are working in production.",
+    "category": "Deployment & Asset Delivery (Vercel/CDN)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dashboard\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Dashboard\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Dashboard content area\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for \"2\" seconds"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Site header navigation\" is visible"
+      }
+    ]
+  }
+]
