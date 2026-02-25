@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiWind, FiHardDrive } from 'react-icons/fi';
+import { FiHardDrive } from 'react-icons/fi';
 import { 
   FaLaravel, FaPhp, FaBootstrap, FaGitAlt, FaGithub, FaJs, FaJava, FaHtml5, FaCss3
 } from 'react-icons/fa';
 import {
-  SiMysql, SiPostgresql, SiNodedotjs, SiGraphql, SiDocker, SiPostman
+  SiMysql, SiPostgresql, SiNodedotjs, SiGraphql, SiDocker, SiPostman, SiTailwindcss
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
 
@@ -15,7 +15,7 @@ const STACKS = [
   { name: 'PHP', icon: FaPhp, color: '#777BB4', shadow: '#5d608d' },
   { name: 'MySQL', icon: SiMysql, color: '#4479A1', shadow: '#305572' },
   { name: 'Bootstrap', icon: FaBootstrap, color: '#7952B3', shadow: '#5e3f8e' },
-  { name: 'Tailwind', icon: FiWind, color: '#38BDF8', shadow: '#0284c7' },
+  { name: 'Tailwind', icon: SiTailwindcss, color: '#38BDF8', shadow: '#0284c7' },
   // Languages
   { name: 'JavaScript', icon: FaJs, color: '#F7DF1E', shadow: '#d6c016' },
   { name: 'Java', icon: FaJava, color: '#007396', shadow: '#005772' },
