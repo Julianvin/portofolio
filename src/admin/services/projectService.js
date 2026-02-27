@@ -19,7 +19,9 @@ export async function fetchProjects(page = 1, limit = 10) {
         tech_stacks (
           id,
           name,
-          icon_identifier
+          icon_identifier,
+          color
+
         )
       )
     `)
@@ -52,7 +54,9 @@ export async function getPublicProjects() {
         tech_stacks (
           id,
           name,
-          icon_identifier
+          icon_identifier,
+          color
+
         )
       )
     `)

@@ -21,6 +21,17 @@ export async function fetchExperiences(page = 1, limit = 10) {
   return { data: data || [], total: count || 0 };
 }
 
+// ── Fetch all public experiences ──
+export async function getPublicExperiences() {
+  const { data, error } = await supabase
+    .from('experiences')
+    .select('*')
+    .order('start_date', { ascending: false });
+
+  if (error) throw error;
+  return data || [];
+}
+
 // ── Fetch single experience by ID ──
 export async function fetchExperienceById(id) {
   const { data, error } = await supabase

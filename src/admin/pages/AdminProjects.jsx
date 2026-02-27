@@ -53,15 +53,15 @@ export default function AdminProjects() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Projects</h1>
-          <p className="text-sm text-zinc-500 mt-1">{total} project{total !== 1 ? 's' : ''} total</p>
+          <h1 className="text-2xl font-bold text-white">Proyek</h1>
+          <p className="text-sm text-zinc-500 mt-1">Total {total} proyek</p>
         </div>
         <button
           onClick={() => navigate('/admin/projects/new')}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors cursor-pointer"
         >
           <FiPlus className="w-4 h-4" />
-          New Project
+          Proyek Baru
         </button>
       </div>
 
@@ -79,10 +79,10 @@ export default function AdminProjects() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-zinc-800">
-                <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Project</th>
+                <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Proyek</th>
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 hidden md:table-cell">Tech Stack</th>
-                <th className="text-center px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 hidden sm:table-cell">Pinned</th>
-                <th className="text-right px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Actions</th>
+                <th className="text-center px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 hidden sm:table-cell">Disematkan</th>
+                <th className="text-right px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -98,7 +98,7 @@ export default function AdminProjects() {
               ) : projects.length === 0 ? (
                 <tr>
                   <td colSpan={4} className="px-6 py-16 text-center text-zinc-500">
-                    No projects yet. Create your first one!
+                    Belum ada proyek. Buat yang pertama!
                   </td>
                 </tr>
               ) : (
@@ -163,7 +163,7 @@ export default function AdminProjects() {
         {totalPages > 1 && (
           <div className="flex items-center justify-between px-6 py-4 border-t border-zinc-800">
             <span className="text-xs text-zinc-500">
-              Page {page} of {totalPages}
+              Halaman {page} dari {totalPages}
             </span>
             <div className="flex items-center gap-2">
               <button
@@ -193,9 +193,9 @@ export default function AdminProjects() {
             <div className="w-12 h-12 rounded-2xl bg-red-500/15 border border-red-500/25 flex items-center justify-center mb-4">
               <FiTrash2 className="w-6 h-6 text-red-400" />
             </div>
-            <h3 className="text-lg font-bold text-white mb-2">Delete Project</h3>
+            <h3 className="text-lg font-bold text-white mb-2">Hapus Proyek</h3>
             <p className="text-sm text-zinc-400 mb-6">
-              Are you sure you want to delete <strong className="text-white">"{deleteModal.title}"</strong>? This action cannot be undone.
+              Apakah Anda yakin ingin menghapus <strong className="text-white">"{deleteModal.title}"</strong>? Tindakan ini tidak dapat dibatalkan.
             </p>
             <div className="flex items-center gap-3">
               <button
@@ -203,7 +203,7 @@ export default function AdminProjects() {
                 disabled={deleting}
                 className="flex-1 px-4 py-2.5 rounded-xl bg-zinc-800 border border-zinc-700 text-sm font-medium text-zinc-300 hover:bg-zinc-700 transition-colors cursor-pointer disabled:opacity-50"
               >
-                Cancel
+                Batal
               </button>
               <button
                 onClick={handleDelete}
@@ -213,7 +213,7 @@ export default function AdminProjects() {
                 {deleting ? (
                   <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                 ) : (
-                  'Delete'
+                  'Hapus'
                 )}
               </button>
             </div>

@@ -32,10 +32,10 @@ export async function fetchTechStackById(id) {
 }
 
 // ── Create tech stack ──
-export async function createTechStack({ name, icon_identifier }) {
+export async function createTechStack({ name, icon_identifier, color }) {
   const { data, error } = await supabase
     .from('tech_stacks')
-    .insert({ name, icon_identifier })
+    .insert({ name, icon_identifier, color })
     .select()
     .single();
 
@@ -44,10 +44,10 @@ export async function createTechStack({ name, icon_identifier }) {
 }
 
 // ── Update tech stack ──
-export async function updateTechStack(id, { name, icon_identifier }) {
+export async function updateTechStack(id, { name, icon_identifier, color }) {
   const { data, error } = await supabase
     .from('tech_stacks')
-    .update({ name, icon_identifier })
+    .update({ name, icon_identifier, color })
     .eq('id', id)
     .select()
     .single();

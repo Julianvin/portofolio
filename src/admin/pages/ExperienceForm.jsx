@@ -32,7 +32,7 @@ export default function ExperienceForm() {
         setFormData({
           role: data.role || '',
           company_name: data.company_name || '',
-          start_date: data.start_date ? data.start_date.split('T')[0] : '', // Format for input type="date"
+          start_date: data.start_date ? data.start_date.split('T')[0] : '',
           end_date: data.end_date ? data.end_date.split('T')[0] : '',
           description: data.description || '',
           image_url: data.image_url || '',
@@ -166,10 +166,10 @@ export default function ExperienceForm() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-bold text-white">
-            {isEdit ? 'Edit Experience' : 'New Experience'}
+            {isEdit ? 'Edit Pengalaman' : 'Pengalaman Baru'}
           </h1>
           <p className="text-sm text-zinc-500 mt-1">
-            {isEdit ? 'Update career details' : 'Add a new career entry'}
+            {isEdit ? 'Perbarui detail karir' : 'Tambah entri karir baru'}
           </p>
         </div>
         <button
@@ -177,7 +177,7 @@ export default function ExperienceForm() {
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-medium transition-colors cursor-pointer"
         >
           <FiX className="w-4 h-4" />
-          Cancel
+          Batal
         </button>
       </div>
 
@@ -192,7 +192,7 @@ export default function ExperienceForm() {
         <div className="bg-zinc-900/50 border border-zinc-800 rounded-2xl p-6 space-y-6">
           
           <div className="space-y-2">
-            <label className="text-sm font-medium text-zinc-300">Company Logo (Optional)</label>
+            <label className="text-sm font-medium text-zinc-300">Logo Perusahaan (Opsional)</label>
             <div className="flex items-start gap-6">
               <div className="shrink-0">
                 {formData.image_url ? (
@@ -215,7 +215,7 @@ export default function ExperienceForm() {
                     ) : (
                       <FiUploadCloud className="w-4 h-4" />
                     )}
-                    <span>{uploading ? 'Uploading...' : 'Upload Logo'}</span>
+                    <span>{uploading ? 'Mengunggah...' : 'Unggah Logo'}</span>
                     <input
                       type="file"
                       accept="image/*"
@@ -230,20 +230,20 @@ export default function ExperienceForm() {
                       onClick={() => handleChange({ target: { name: 'image_url', value: '' } })}
                       className="text-sm text-red-400 hover:text-red-300 transition-colors cursor-pointer"
                     >
-                      Remove
+                      Hapus
                     </button>
                   )}
                 </div>
                 <p className="text-xs text-zinc-500">
-                  Recommended: Square image, max 5MB. PNG, JPG, or WebP.
+                  Direkomendasikan: Gambar persegi, maks 5MB. PNG, JPG, atau WebP.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
-              <label htmlFor="role" className="text-sm font-medium text-zinc-300">Role *</label>
+              <label htmlFor="role" className="text-sm font-medium text-zinc-300">Peran *</label>
               <input
                 id="role"
                 type="text"
@@ -252,11 +252,14 @@ export default function ExperienceForm() {
                 onChange={handleChange}
                 required
                 className="w-full bg-[#0a0a0a] border border-zinc-800 rounded-xl px-4 py-2.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                placeholder="e.g. Senior Frontend Engineer"
+                placeholder="misal: Senior Fullstack Engineer"
               />
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
-              <label htmlFor="company_name" className="text-sm font-medium text-zinc-300">Company Name *</label>
+              <label htmlFor="company_name" className="text-sm font-medium text-zinc-300">Nama Perusahaan *</label>
               <input
                 id="company_name"
                 type="text"
@@ -272,7 +275,7 @@ export default function ExperienceForm() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="start_date" className="text-sm font-medium text-zinc-300">Start Date *</label>
+              <label htmlFor="start_date" className="text-sm font-medium text-zinc-300">Tanggal Mulai *</label>
               <input
                 id="start_date"
                 type="date"
@@ -285,7 +288,7 @@ export default function ExperienceForm() {
               />
             </div>
             <div className="space-y-2 relative">
-              <label htmlFor="end_date" className="text-sm font-medium text-zinc-300">End Date</label>
+              <label htmlFor="end_date" className="text-sm font-medium text-zinc-300">Tanggal Berakhir</label>
               <input
                 id="end_date"
                 type="date"
@@ -304,27 +307,27 @@ export default function ExperienceForm() {
                   onChange={handleCheckboxChange}
                   className="rounded border-zinc-700 bg-zinc-900 text-blue-600 focus:ring-blue-500"
                 />
-                Currently working here
+                Masih bekerja di sini
               </label>
             </div>
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-zinc-300">Short Description</label>
+            <label className="text-sm font-medium text-zinc-300">Deskripsi Singkat</label>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleChange}
               rows="3"
               className="w-full bg-[#0a0a0a] border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-y"
-              placeholder="Brief summary of the role..."
+              placeholder="Ringkasan singkat tentang peran tersebut..."
             />
           </div>
 
           {/* Dynamic Responsibilities Array */}
           <div className="space-y-4 pt-4 border-t border-zinc-800/80">
             <div className="flex items-center justify-between">
-              <label className="text-sm font-medium text-zinc-300">Responsibilities</label>
+              <label className="text-sm font-medium text-zinc-300">Tanggung Jawab</label>
             </div>
             
             <div className="space-y-3">
@@ -335,7 +338,7 @@ export default function ExperienceForm() {
                       type="text"
                       value={item}
                       onChange={(e) => handleResponsibilityChange(index, e.target.value)}
-                      placeholder={`Responsibility #${index + 1}`}
+                      placeholder={`Tanggung Jawab #${index + 1}`}
                       className="w-full bg-[#0a0a0a] border border-zinc-800 rounded-xl px-4 py-2 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                       data-testid={`responsibility-input-${index}`}
                     />
@@ -359,7 +362,7 @@ export default function ExperienceForm() {
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition-colors w-fit border border-blue-500/20 cursor-pointer"
             >
               <FiPlus className="w-4 h-4" />
-              Add Item
+              Tambah Item
             </button>
           </div>
         </div>
@@ -375,7 +378,7 @@ export default function ExperienceForm() {
             ) : (
               <FiSave className="w-5 h-5" />
             )}
-            Save Experience
+            Simpan Pengalaman
           </button>
         </div>
       </form>

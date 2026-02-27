@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
-import { useTranslation } from 'react-i18next';
 import CertificateCard from '../components/achievements/CertificateCard';
 import CertificateModal from '../components/achievements/CertificateModal';
 import { achievements } from '../components/achievements/data';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 export default function Achievements() {
-  const { t } = useTranslation();
-  useDocumentTitle('Achievements | Delvin Julian');
+  useDocumentTitle('Pencapaian | Delvin Julian');
   const [selectedAchievement, setSelectedAchievement] = useState(null);
   const containerRef = useRef(null);
 
@@ -59,10 +57,10 @@ export default function Achievements() {
     <div ref={containerRef} className="max-w-4xl">
       {/* Header */}
       <div className="mb-8 md:mb-12 flex items-center gap-4">
-         <h1 className="animate-header text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white">{t('achievements.title')}</h1>
+         <h1 className="animate-header text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white">Pencapaian</h1>
          <div className="animate-divider h-px flex-grow bg-neutral-200 dark:bg-neutral-800"></div>
          <span className="animate-subtitle text-neutral-500 font-mono text-sm uppercase tracking-widest hidden md:block dark:text-neutral-400">
-            {t('achievements.subtitle')}
+            Sertifikasi & Penghargaan
          </span>
       </div>
 

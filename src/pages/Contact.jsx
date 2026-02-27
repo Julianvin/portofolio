@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiMail, FiLinkedin, FiGithub, FiInstagram, FiArrowUpRight } from 'react-icons/fi';
-import { useTranslation } from 'react-i18next';
 import SpotlightCard from '../components/ui/SpotlightCard';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
@@ -29,8 +28,7 @@ const itemVariants = {
 };
 
 export default function Contact() {
-  const { t } = useTranslation();
-  useDocumentTitle('Contact | Delvin Julian');
+  useDocumentTitle('Kontak | Delvin Julian');
 
   const contacts = [
     { 
@@ -39,7 +37,7 @@ export default function Contact() {
       link: 'https://www.instagram.com/devaajul/', 
       icon: FiInstagram, 
       color: 'group-hover:text-[#E1306C]', // Instagram Pink
-      description: t('contact.instagram_desc')
+      description: 'Mari berteman di Instagram'
     },
     { 
       name: 'LinkedIn', 
@@ -47,7 +45,7 @@ export default function Contact() {
       link: 'https://www.linkedin.com/in/delvinj', 
       icon: FiLinkedin, 
       color: 'group-hover:text-[#0077b5]', // LinkedIn Blue
-      description: t('contact.linkedin_desc')
+      description: 'Mari terhubung secara profesional'
     },
     { 
       name: 'Email', 
@@ -55,7 +53,7 @@ export default function Contact() {
       link: 'mailto:mdelvinjulian@gmail.com', 
       icon: FiMail, 
       color: 'group-hover:text-[#EA4335]', // Gmail Red
-      description: t('contact.email_desc') 
+      description: 'Kirimkan saya pesan email' 
     },
     { 
       name: 'GitHub', 
@@ -63,7 +61,7 @@ export default function Contact() {
       link: 'https://github.com/Julianvin', 
       icon: FiGithub, 
       color: 'group-hover:text-black dark:group-hover:text-white', // Github Black/White
-      description: t('contact.github_desc')
+      description: 'Lihat proyek open-source saya'
     }
   ];
 
@@ -79,10 +77,10 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[#0d1117] dark:text-[#e6edf3] mb-4">
-             {t('contact.title')}
+             Hubungi Saya
           </h1>
           <p className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-xl mx-auto leading-relaxed">
-             {t('contact.subtitle')}
+             Punya pertanyaan atau ingin bekerja sama? Saya selalu terbuka untuk diskusi baru.
           </p>
         </motion.div>
 

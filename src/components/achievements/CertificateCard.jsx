@@ -1,11 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
-import { useTranslation } from 'react-i18next';
 import SpotlightCard from '../ui/SpotlightCard';
 
 export default function CertificateCard({ item, onClick }) {
-  const { t } = useTranslation();
   return (
     <motion.div
       layoutId={`card-container-${item.id}`}
@@ -29,7 +27,7 @@ export default function CertificateCard({ item, onClick }) {
           {/* Overlay */}
           <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <div className="flex items-center gap-2 text-sm font-medium text-white">
-              {t('achievements.view_detail')} <FiArrowRight />
+              Lihat Detail <FiArrowRight />
             </div>
           </div>
         </motion.div>
@@ -71,7 +69,7 @@ export default function CertificateCard({ item, onClick }) {
 
           <div className="border-t border-neutral-100 pt-3 dark:border-neutral-800">
             <p className="text-xs text-neutral-400">
-              {t('achievements.issue_date')} {item.issue_date}
+              Diterbitkan: {item.issue_date}
             </p>
           </div>
         </div>
