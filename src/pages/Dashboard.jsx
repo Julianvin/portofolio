@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import CountUp from 'react-countup';
 import {
   FiEye, FiUsers, FiMousePointer, FiGlobe, FiBarChart2
@@ -101,8 +100,7 @@ function formatXAxisDate(dateStr) {
 
 // ── Main Component ─────────────────────────────────────────────────
 export default function Dashboard() {
-  const { t } = useTranslation();
-  useDocumentTitle(`${t('dashboard.title')} | Delvin Julian`);
+  useDocumentTitle(`Statistik | Delvin Julian`);
 
   const [stats, setStats] = useState(null);
   const [chartData, setChartData] = useState([]);
@@ -204,16 +202,16 @@ export default function Dashboard() {
             <FiBarChart2 className="w-5 h-5 text-blue-500" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#0d1117] dark:text-[#e6edf3]">
-            {t('dashboard.title')}
+            Statistik Pengunjung
           </h1>
         </div>
         <p className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-2xl leading-relaxed">
-          {t('dashboard.subtitle')}
+          Ikhtisar performa portofolio dan interaksi pengunjung.
         </p>
 
         {error && (
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 border border-amber-500/20 text-amber-400 mt-4">
-            {t('dashboard.demo_mode')}
+            Mode Demo (Gagal terhubung ke API)
           </span>
         )}
       </motion.div>
@@ -242,7 +240,12 @@ export default function Dashboard() {
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs font-medium uppercase tracking-wider text-[#656d76] dark:text-zinc-400">
-                    {t(`dashboard.stats.${card.key}`)}
+                    {{
+                      pageviews: 'Tampilan Halaman',
+                      visitors: 'Pengunjung Unik',
+                      visits: 'Kunjungan',
+                      countries: 'Negara',
+                    }[card.key]}
                   </span>
                   <card.icon
                     className="w-4 h-4"
@@ -276,10 +279,10 @@ export default function Dashboard() {
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
           <div>
             <h2 className="text-lg font-bold text-[#0d1117] dark:text-[#e6edf3]">
-              {t('dashboard.chart_title')}
+              Tren Pengunjung
             </h2>
             <p className="text-sm text-[#656d76] dark:text-zinc-500 mt-0.5">
-              {t('dashboard.chart_subtitle')}
+              Statistik tampilan halaman & sesi per bulan.
             </p>
           </div>
           {/* Interactive Legend */}
@@ -292,7 +295,7 @@ export default function Dashboard() {
               }`}
             >
               <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#1e3a8a' }} />
-              <span className="text-xs text-zinc-400">{t('dashboard.legend.sessions')}</span>
+              <span className="text-xs text-zinc-400">Sesi</span>
             </button>
             <button
               type="button"
@@ -302,7 +305,7 @@ export default function Dashboard() {
               }`}
             >
               <span className="w-3 h-3 rounded-sm" style={{ backgroundColor: '#3b82f6' }} />
-              <span className="text-xs text-zinc-400">{t('dashboard.legend.pageviews')}</span>
+              <span className="text-xs text-zinc-400">Tampilan Halaman</span>
             </button>
           </div>
         </div>
@@ -377,7 +380,7 @@ export default function Dashboard() {
         transition={{ delay: 0.6 }}
         className="mt-6 text-center text-xs text-[#656d76] dark:text-[#484f58]"
       >
-        {t('dashboard.powered_by')}
+        Ditenagai oleh Umami Analytics
       </motion.p>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectDetail from '../components/projects/ProjectDetail';
@@ -21,8 +20,7 @@ const containerVariants = {
 
 
 export default function Projects() {
-  const { t } = useTranslation();
-  useDocumentTitle(`${t('projects.title')} | Delvin Julian`);
+  useDocumentTitle(`Proyek | Delvin Julian`);
   
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -75,10 +73,10 @@ export default function Projects() {
           className="mb-10"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[#0d1117] dark:text-[#e6edf3] mb-3">
-            {t('projects.title')}
+            Proyek
           </h1>
           <p className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-2xl leading-relaxed">
-            {t('projects.subtitle')}
+            Kumpulan karya dan proyek yang telah saya kerjakan.
           </p>
         </motion.div>
 
@@ -103,7 +101,6 @@ export default function Projects() {
                 project={project}
                 index={index}
                 onClick={() => setSelectedProject(project)}
-                t={t}
               />
             ))}
           </motion.div>
@@ -115,7 +112,6 @@ export default function Projects() {
             <ProjectDetail
               project={selectedProject}
               onClose={() => setSelectedProject(null)}
-              t={t}
             />
           )}
         </AnimatePresence>

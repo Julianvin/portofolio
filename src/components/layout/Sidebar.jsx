@@ -2,22 +2,20 @@ import React, { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiDownload, FiMenu, FiX } from 'react-icons/fi';
 import { gsap } from 'gsap';
-import { useTranslation } from 'react-i18next';
 import { useTheme } from '../ui/ThemeProvider';
 import SpotlightCard from '../ui/SpotlightCard';
 
 export default function Sidebar() {
-  const { t, i18n } = useTranslation();
   const { theme, setTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const navItems = [
-    { name: t('sidebar.home'), path: '/', icon: FiHome },
-    { name: t('sidebar.about'), path: '/about', icon: FiUser },
-    { name: t('sidebar.achievements'), path: '/achievements', icon: FiBriefcase }, 
-    { name: t('sidebar.projects'), path: '/projects', icon: FiFolder },
-    { name: t('sidebar.dashboard'), path: '/dashboard', icon: FiLayout },
-    { name: t('sidebar.contact'), path: '/contact', icon: FiMail },
+    { name: 'Beranda', path: '/', icon: FiHome },
+    { name: 'Tentang', path: '/about', icon: FiUser },
+    { name: 'Pencapaian', path: '/achievements', icon: FiBriefcase }, 
+    { name: 'Proyek', path: '/projects', icon: FiFolder },
+    { name: 'Dashboard', path: '/dashboard', icon: FiLayout },
+    { name: 'Kontak', path: '/contact', icon: FiMail },
   ];
 
   // Refs for animations
@@ -81,10 +79,6 @@ export default function Sidebar() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
-  };
-
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
   };
 
   return (
@@ -157,22 +151,6 @@ export default function Sidebar() {
                 </NavLink>
               ))}
               
-              {/* Language Switcher Mobile */}
-              <div className="mobile-nav-item mt-8 flex items-center gap-4">
-                <button 
-                  onClick={() => i18n.changeLanguage('id')}
-                  className={`text-xl font-bold ${i18n.language === 'id' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}`}
-                >
-                  ID
-                </button>
-                <div className="w-px h-6 bg-gray-300 dark:bg-gray-700"></div>
-                <button 
-                  onClick={() => i18n.changeLanguage('en')}
-                  className={`text-xl font-bold ${i18n.language === 'en' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}`}
-                >
-                  EN
-                </button>
-              </div>
           </div>
        </div>
 
@@ -262,27 +240,10 @@ export default function Sidebar() {
                   ))}
               </nav>
   
-              {/* Footer + Language Switcher */}
+              {/* Footer */}
               <div className="pt-4 mt-2 border-t border-gray-200 dark:border-[#1a1a1a] flex flex-col items-center gap-3">
-                  {/* Language Switcher */}
-                  <div className="flex items-center gap-3 text-xs font-bold">
-                    <button 
-                      onClick={() => changeLanguage('id')}
-                      className={`transition-colors ${i18n.language === 'id' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
-                    >
-                      ID
-                    </button>
-                    <span className="text-gray-300 dark:text-gray-700">|</span>
-                    <button 
-                      onClick={() => changeLanguage('en')}
-                      className={`transition-colors ${i18n.language === 'en' ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'}`}
-                    >
-                      EN
-                    </button>
-                  </div>
-
                   <p className="text-[10px] text-gray-500 dark:text-gray-600 uppercase tracking-widest leading-relaxed font-bold text-center">
-                      {t('sidebar.copyright', { year: 2026 })}
+                      © 2026 Delvin Julian • Built with Love
                   </p>
               </div>
         </SpotlightCard>

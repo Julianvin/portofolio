@@ -4,7 +4,7 @@ import { FiExternalLink, FiGithub, FiX, FiChevronRight } from 'react-icons/fi';
 
 const spring = { type: 'spring', stiffness: 300, damping: 30 };
 
-export default function ProjectDetail({ project, onClose, t }) {
+export default function ProjectDetail({ project, onClose }) {
   // Lock body scroll when detail is open
   useEffect(() => {
     const mainEl = document.querySelector('main');
@@ -91,7 +91,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#24292e] dark:bg-[#0d1117] hover:bg-[#1c2128] border border-[#d0d7de] dark:border-[#30363d] hover:border-[#484f58] text-white font-medium text-sm transition-colors duration-200"
                   >
                     <FiGithub className="w-4 h-4" />
-                    {t('projects.github')}
+                    GitHub
                   </a>
                 )}
                 {project.demoUrl && (
@@ -102,7 +102,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-colors duration-200"
                   >
                     <FiExternalLink className="w-4 h-4" />
-                    {t('projects.demo')}
+                    Live Demo
                   </a>
                 )}
               </motion.div>
@@ -138,7 +138,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 className="mb-8"
               >
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-[#656d76] dark:text-[#7d8590] mb-3">
-                  {t('projects.overview')}
+                  Ringkasan Proyek
                 </h3>
                 <p className="text-[#1f2328] dark:text-[#e6edf3] leading-relaxed text-base">
                   {project.description}
@@ -153,7 +153,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 className="mb-8"
               >
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-[#656d76] dark:text-[#7d8590] mb-3">
-                  {t('projects.role_title')}
+                  Peran & Tanggung Jawab
                 </h3>
                 <p className="text-[#1f2328] dark:text-[#e6edf3] leading-relaxed text-base">
                   {[project.role, ...(project.responsibilities || [])].filter(Boolean).join(' — ')}
@@ -167,7 +167,7 @@ export default function ProjectDetail({ project, onClose, t }) {
                 transition={{ delay: 0.45 }}
               >
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-[#656d76] dark:text-[#7d8590] mb-3">
-                  {t('projects.features_title')}
+                  Fitur Utama
                 </h3>
                 <ul className="space-y-2.5">
                   {Array.isArray(features) && features.map((feature, i) => (

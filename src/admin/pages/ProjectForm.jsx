@@ -184,7 +184,7 @@ export default function ProjectForm() {
           <FiArrowLeft className="w-4 h-4" />
         </button>
         <h1 className="text-2xl font-bold text-white">
-          {isEdit ? 'Edit Project' : 'New Project'}
+          {isEdit ? 'Edit Proyek' : 'Proyek Baru'}
         </h1>
       </div>
 
@@ -200,7 +200,7 @@ export default function ProjectForm() {
       {success && (
         <div className="flex items-center gap-2 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
           <FiCheck className="w-4 h-4 shrink-0" />
-          {isEdit ? 'Project updated!' : 'Project created!'} Redirecting...
+          {isEdit ? 'Proyek diperbarui!' : 'Proyek dibuat!'} Mengalihkan...
         </div>
       )}
 
@@ -208,17 +208,17 @@ export default function ProjectForm() {
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Info Card */}
         <div className="rounded-2xl bg-zinc-900/50 border border-zinc-800 p-6 space-y-5">
-          <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Basic Info</h2>
+          <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Info Dasar</h2>
 
-          <Field label="Title *" value={form.title} onChange={(v) => handleChange('title', v)} placeholder="My Awesome Project" />
+          <Field label="Judul *" value={form.title} onChange={(v) => handleChange('title', v)} placeholder="Proyek Keren Saya" />
 
-          <Field label="Short Description *" value={form.short_description} onChange={(v) => handleChange('short_description', v)} placeholder="A brief tagline..." />
+          <Field label="Deskripsi Singkat *" value={form.short_description} onChange={(v) => handleChange('short_description', v)} placeholder="Tagline singkat..." />
 
-          <TextArea label="Overview" value={form.overview} onChange={(v) => handleChange('overview', v)} placeholder="Detailed project description..." rows={4} />
+          <TextArea label="Ikhtisar" value={form.overview} onChange={(v) => handleChange('overview', v)} placeholder="Deskripsi proyek detail..." rows={4} />
 
-          <Field label="Role" value={form.role} onChange={(v) => handleChange('role', v)} placeholder="Full Stack Developer" />
+          <Field label="Peran" value={form.role} onChange={(v) => handleChange('role', v)} placeholder="Full Stack Developer" />
 
-          <TextArea label="Responsibilities" value={form.responsibilities} onChange={(v) => handleChange('responsibilities', v)} placeholder="What you were responsible for..." rows={3} />
+          <TextArea label="Tanggung Jawab" value={form.responsibilities} onChange={(v) => handleChange('responsibilities', v)} placeholder="Tanggung jawab Anda..." rows={3} />
 
           {/* Pinned toggle */}
           <div className="flex items-center gap-3">
@@ -233,13 +233,13 @@ export default function ProjectForm() {
                 form.is_pinned ? 'translate-x-4' : 'translate-x-0'
               }`} />
             </button>
-            <span className="text-sm text-zinc-400">Pin this project</span>
+            <span className="text-sm text-zinc-400">Sematkan proyek ini</span>
           </div>
         </div>
 
         {/* Image Upload Card */}
         <div className="rounded-2xl bg-zinc-900/50 border border-zinc-800 p-6 space-y-5">
-          <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Project Image</h2>
+          <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Gambar Proyek</h2>
 
           {/* Preview */}
           {form.image_url && (
@@ -287,11 +287,11 @@ export default function ProjectForm() {
               ) : (
                 <>
                   <FiUploadCloud className="w-4 h-4" />
-                  {form.image_url ? 'Replace Image' : 'Upload Image'}
+                  {form.image_url ? 'Ganti Gambar' : 'Unggah Gambar'}
                 </>
               )}
             </label>
-            <p className="text-xs text-zinc-600 mt-2">PNG, JPG, WebP — Max 5MB</p>
+            <p className="text-xs text-zinc-600 mt-2">PNG, JPG, WebP — Maks 5MB</p>
           </div>
 
           {/* Read-only URL display */}
@@ -315,13 +315,13 @@ export default function ProjectForm() {
 
         {/* Key Features Card */}
         <div className="rounded-2xl bg-zinc-900/50 border border-zinc-800 p-6 space-y-4">
-          <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Key Features</h2>
+          <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Fitur Utama</h2>
           {form.key_features.map((feature, i) => (
             <div key={i} className="flex items-center gap-2">
               <input
                 value={feature}
                 onChange={(e) => handleFeatureChange(i, e.target.value)}
-                placeholder={`Feature ${i + 1}`}
+                placeholder={`Fitur ${i + 1}`}
                 className="flex-1 px-4 py-2.5 rounded-xl bg-zinc-800/50 border border-zinc-700 text-sm text-white placeholder-zinc-600 outline-none focus:border-blue-500/50 transition-colors"
               />
               {form.key_features.length > 1 && (
@@ -341,14 +341,14 @@ export default function ProjectForm() {
             className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
           >
             <FiPlus className="w-4 h-4" />
-            Add Feature
+            Tambah Fitur
           </button>
         </div>
 
         {/* Tech Stack Picker Card */}
         <div className="rounded-2xl bg-zinc-900/50 border border-zinc-800 p-6 space-y-4">
           <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">
-            Tech Stack ({selectedTechIds.length} selected)
+            Tech Stack ({selectedTechIds.length} dipilih)
           </h2>
           <div className="flex flex-wrap gap-2">
             {allTechStacks.map((tech) => {
@@ -393,7 +393,7 @@ export default function ProjectForm() {
             ) : (
               <>
                 <FiSave className="w-4 h-4" />
-                {isEdit ? 'Update Project' : 'Create Project'}
+                {isEdit ? 'Perbarui Proyek' : 'Buat Proyek'}
               </>
             )}
           </button>

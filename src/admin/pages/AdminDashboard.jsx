@@ -33,17 +33,17 @@ export default function AdminDashboard() {
               <FiUser className="w-6 h-6 text-blue-400" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-white">Welcome, Admin</h1>
-              <p className="text-sm text-zinc-500">You are logged in to the admin panel</p>
+              <h1 className="text-2xl font-bold text-white">Selamat Datang, Admin</h1>
+              <p className="text-sm text-zinc-500">Anda masuk ke panel admin</p>
             </div>
           </div>
           <div className="flex items-center gap-3 mt-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-green-500/10 border border-green-500/20 text-green-400">
               <FiActivity className="w-3 h-3" />
-              Session Active
+              Sesi Aktif
             </span>
             <span className="text-xs text-zinc-600">
-              {new Date().toLocaleDateString('en-US', {
+              {new Date().toLocaleDateString('id-ID', {
                 weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
               })}
             </span>
@@ -55,7 +55,7 @@ export default function AdminDashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="rounded-2xl bg-zinc-900/50 border border-zinc-800 p-6 hover:border-zinc-700 transition-colors">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">Projects</span>
+            <span className="text-xs font-medium uppercase tracking-wider text-zinc-500">Proyek</span>
             <FiFolder className="w-4 h-4 text-blue-400" />
           </div>
           {loading ? (
@@ -83,9 +83,9 @@ export default function AdminDashboard() {
         >
           <FiArrowRight className="w-6 h-6 text-zinc-500 group-hover:text-blue-400 mb-3 transition-colors" />
           <h3 className="text-sm font-bold text-white group-hover:text-blue-400 mb-1 transition-colors">
-            Manage Projects
+            Kelola Proyek
           </h3>
-          <p className="text-xs text-zinc-500">Create, edit, and manage your portfolio projects.</p>
+          <p className="text-xs text-zinc-500">Buat, edit, dan kelola proyek portofolio Anda.</p>
         </div>
       </div>
     </div>

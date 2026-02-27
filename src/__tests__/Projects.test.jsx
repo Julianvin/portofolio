@@ -2,17 +2,6 @@ import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 
-// ── Mock react-i18next ──
-let mockLanguage = 'en';
-vi.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (key) => key,
-    i18n: {
-      language: mockLanguage,
-      changeLanguage: (lang) => { mockLanguage = lang; },
-    },
-  }),
-}));
 
 // ── Helper to filter non-DOM props from framer-motion ──
 function filterDomProps(props) {
@@ -106,7 +95,6 @@ import Projects from '../pages/Projects';
 
 describe('Projects — Bilingual Rendering', () => {
   beforeEach(() => {
-    mockLanguage = 'en';
     mockProjectsData = MOCK_PROJECTS_FULL;
   });
 
@@ -130,7 +118,6 @@ describe('Projects — Bilingual Rendering', () => {
   });
 
   it('renders project card with tech stack badge', async () => {
-    mockLanguage = 'en';
     render(<Projects />);
 
     await waitFor(() => {
