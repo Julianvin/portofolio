@@ -252,7 +252,7 @@ export default function ExperienceForm() {
                 onChange={handleChange}
                 required
                 className="w-full bg-[#0a0a0a] border border-zinc-800 rounded-xl px-4 py-2.5 text-white placeholder-zinc-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                placeholder="e.g. Senior Frontend Engineer"
+                placeholder="misal: Senior Fullstack Engineer"
               />
             </div>
           </div>

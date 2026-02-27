@@ -78,7 +78,7 @@ export default function About() {
         <h2 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">Kisah Saya</h2>
         <div className="prose prose-invert max-w-none text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
           <p>
-            Halo! Saya <span className="text-gray-900 dark:text-white font-medium">Delvin Julian</span>, seorang Pengembang Frontend yang berdedikasi untuk menciptakan antarmuka web yang intuitif dan menarik secara visual. Perjalanan saya dimulai dengan rasa ingin tahu tentang bagaimana hal-hal bekerja di balik layar, yang kemudian berkembang menjadi hasrat untuk membangun <span className="text-gray-900 dark:text-white font-medium">solusi digital yang elegan</span>.
+            Halo! Saya <span className="text-gray-900 dark:text-white font-medium">Delvin Julian</span>, seorang Pengembang Fullstack yang berdedikasi untuk menciptakan aplikasi web yang intuitif dan berorientasi pengguna. Perjalanan saya dimulai dengan rasa ingin tahu tentang bagaimana hal-hal bekerja di balik layar, yang kemudian berkembang menjadi hasrat untuk membangun <span className="text-gray-900 dark:text-white font-medium">solusi digital yang elegan dan skalabel</span>.
           </p>
           <p className="mt-4">
             Saya percaya bahwa teknologi harus memberdayakan orang lain, dan saya berusaha untuk mencapainya dengan menulis <span className="text-gray-900 dark:text-white font-medium">kode yang bersih dan efisien</span> serta terus mempelajari teknologi terbaru.
