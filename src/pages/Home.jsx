@@ -62,7 +62,7 @@ export default function Home() {
       {/* Bio Text */}
       <section className="mb-20">
           <p className="bio-animate text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light max-w-3xl">
-              Fokus pada <span className="text-gray-900 dark:text-white font-medium">Pengembangan Fullstack</span> dan Desain UI yang modern. Saya senang membangun <span className="text-gray-900 dark:text-white">aplikasi web yang skalabel</span>, <span className="text-gray-900 dark:text-white">responsif</span>, dan <span className="text-gray-900 dark:text-white">berorientasi pengguna</span>.
+            Memadukan <span className="text-gray-900 dark:text-white font-medium">logika sistem yang solid</span> dengan antarmuka UI yang interaktif. Saya berfokus merancang <span className="text-gray-900 dark:text-white">solusi teknologi end-to-end</span> yang <span className="text-gray-900 dark:text-white">berperforma tinggi</span>, <span className="text-gray-900 dark:text-white">aman</span>, dan <span className="text-gray-900 dark:text-white">mudah dikembangkan</span>.
           </p>
       </section>
 
