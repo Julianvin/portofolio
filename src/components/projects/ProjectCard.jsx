@@ -71,7 +71,12 @@ export default function ProjectCard({ project, index, onClick, t }) {
               {project.techStack.map((tech) => (
                 <span
                   key={tech.name}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white dark:bg-[#0d1117] border border-gray-200 dark:border-[#30363d] text-[#656d76] dark:text-[#7d8590] transition-colors duration-200 group-hover:border-gray-300 dark:group-hover:border-[#484f58]"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border transition-colors duration-200"
+                  style={{ 
+                    backgroundColor: `${tech.color}10`, // ~6% opacity
+                    borderColor: `${tech.color}30`,      // ~18% opacity
+                    color: tech.color // Keeping name same color as icon for consistency
+                  }}
                 >
                   <tech.icon
                     iconIdentifier={tech.iconIdentifier}

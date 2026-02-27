@@ -19,8 +19,8 @@ import AdminProjects from './admin/pages/AdminProjects';
 import ProjectForm from './admin/pages/ProjectForm';
 import AdminTechStacks from './admin/pages/AdminTechStacks';
 import TechStackForm from './admin/pages/TechStackForm';
-// import ExperiencesList from './admin/pages/ExperiencesList';
-// import ExperienceForm from './admin/pages/ExperienceForm';
+import ExperiencesList from './admin/pages/ExperiencesList';
+import ExperienceForm from './admin/pages/ExperienceForm';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,9 +58,9 @@ function App() {
               <Route path="tech-stacks" element={<AdminTechStacks />} />
               <Route path="tech-stacks/new" element={<TechStackForm />} />
               <Route path="tech-stacks/:id/edit" element={<TechStackForm />} />
-              {/* <Route path="experiences" element={<ExperiencesList />} />
+              <Route path="experiences" element={<ExperiencesList />} />
               <Route path="experiences/new" element={<ExperienceForm />} />
-              <Route path="experiences/:id/edit" element={<ExperienceForm />} /> */}
+              <Route path="experiences/:id/edit" element={<ExperienceForm />} />
             </Route>
           </Routes>
         </AuthProvider>

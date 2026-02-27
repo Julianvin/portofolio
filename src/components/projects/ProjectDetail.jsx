@@ -117,7 +117,12 @@ export default function ProjectDetail({ project, onClose, t }) {
                 {project.techStack.map((tech) => (
                   <span
                     key={tech.name}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 dark:bg-white/5 border border-[#d0d7de] dark:border-[#30363d] text-[#0d1117] dark:text-[#e6edf3]"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-200"
+                    style={{ 
+                      backgroundColor: `${tech.color}15`, // ~8% opacity
+                      borderColor: `${tech.color}40`,      // ~25% opacity
+                      color: tech.color
+                    }}
                   >
                     <tech.icon iconIdentifier={tech.iconIdentifier} className="w-4 h-4" style={{ color: tech.color }} />
                     {tech.name}

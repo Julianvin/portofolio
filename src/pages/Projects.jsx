@@ -18,18 +18,7 @@ const containerVariants = {
   },
 };
 
-const TECH_COLORS = {
-  FaReact: '#61DAFB',
-  SiTailwindcss: '#06B6D4',
-  SiFramer: '#0055FF',
-  IoLogoJavascript: '#F7DF1E',
-  FaNodeJs: '#339933',
-  FaGolang: '#00ADD8',
-};
 
-function getIconColor(iconIdentifier) {
-  return TECH_COLORS[iconIdentifier] || '#656d76';
-}
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -58,8 +47,8 @@ export default function Projects() {
           techStack: p.tech_stacks?.map((ts) => ({
             name: ts.name,
             iconIdentifier: ts.icon_identifier,
-            color: getIconColor(ts.icon_identifier),
-            icon: DynamicIcon // we pass the component reference or handle it inside ProjectCard
+            color: ts.color || '#656d76',
+            icon: DynamicIcon
           })) || [],
           demoUrl: p.live_demo_url || null,
           githubUrl: p.github_url || null,

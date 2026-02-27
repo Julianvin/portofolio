@@ -80,6 +80,7 @@ export default function AdminTechStacks() {
               <tr className="border-b border-zinc-800">
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 w-16">Icon</th>
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Name</th>
+                <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 w-16">Color</th>
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 hidden sm:table-cell">Identifier</th>
                 <th className="text-right px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Actions</th>
               </tr>
@@ -90,6 +91,7 @@ export default function AdminTechStacks() {
                   <tr key={i} className="border-b border-zinc-800/50">
                     <td className="px-6 py-4"><div className="h-8 w-8 rounded bg-zinc-800 animate-pulse" /></td>
                     <td className="px-6 py-4"><div className="h-5 w-32 rounded bg-zinc-800 animate-pulse" /></td>
+                    <td className="px-6 py-4"><div className="h-5 w-8 rounded-full bg-zinc-800 animate-pulse" /></td>
                     <td className="px-6 py-4 hidden sm:table-cell"><div className="h-5 w-24 rounded bg-zinc-800 animate-pulse" /></td>
                     <td className="px-6 py-4"><div className="h-5 w-20 ml-auto rounded bg-zinc-800 animate-pulse" /></td>
                   </tr>
@@ -103,10 +105,23 @@ export default function AdminTechStacks() {
                   <tr key={ts.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/20 transition-colors">
                     <td className="px-6 py-4">
                       <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center">
-                        <DynamicIcon iconIdentifier={ts.icon_identifier} size={18} className="text-blue-400" />
+                        <DynamicIcon 
+                          iconIdentifier={ts.icon_identifier} 
+                          size={18} 
+                          style={{ color: ts.color || '#656d76' }} 
+                        />
                       </div>
                     </td>
                     <td className="px-6 py-4 font-semibold text-white">{ts.name}</td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-2">
+                        <div 
+                          className="w-4 h-4 rounded-full border border-zinc-700/50" 
+                          style={{ backgroundColor: ts.color || '#656d76' }} 
+                        />
+                        <code className="text-[10px] text-zinc-500 font-mono">{ts.color || '#656d76'}</code>
+                      </div>
+                    </td>
                     <td className="px-6 py-4 hidden sm:table-cell">
                       <code className="text-xs px-2 py-1 rounded bg-zinc-800 text-zinc-400 font-mono">{ts.icon_identifier}</code>
                     </td>

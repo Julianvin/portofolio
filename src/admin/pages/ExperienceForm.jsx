@@ -32,7 +32,7 @@ export default function ExperienceForm() {
         setFormData({
           role: data.role || '',
           company_name: data.company_name || '',
-          start_date: data.start_date ? data.start_date.split('T')[0] : '', // Format for input type="date"
+          start_date: data.start_date ? data.start_date.split('T')[0] : '',
           end_date: data.end_date ? data.end_date.split('T')[0] : '',
           description: data.description || '',
           image_url: data.image_url || '',
@@ -241,7 +241,7 @@ export default function ExperienceForm() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
               <label htmlFor="role" className="text-sm font-medium text-zinc-300">Role *</label>
               <input
@@ -255,6 +255,9 @@ export default function ExperienceForm() {
                 placeholder="e.g. Senior Frontend Engineer"
               />
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6">
             <div className="space-y-2">
               <label htmlFor="company_name" className="text-sm font-medium text-zinc-300">Company Name *</label>
               <input

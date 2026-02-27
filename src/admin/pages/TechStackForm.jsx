@@ -11,6 +11,7 @@ export default function TechStackForm() {
 
   const [name, setName] = useState('');
   const [iconIdentifier, setIconIdentifier] = useState('');
+  const [color, setColor] = useState('#656d76');
   const [loading, setLoading] = useState(isEdit);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
@@ -24,6 +25,7 @@ export default function TechStackForm() {
         const ts = await fetchTechStackById(id);
         setName(ts.name || '');
         setIconIdentifier(ts.icon_identifier || '');
+        setColor(ts.color || '#656d76');
       } catch (err) {
         setError(err.message);
       } finally {
@@ -44,7 +46,11 @@ export default function TechStackForm() {
 
     setSaving(true);
     try {
-      const payload = { name: name.trim(), icon_identifier: iconIdentifier.trim() };
+      const payload = { 
+        name: name.trim(), 
+        icon_identifier: iconIdentifier.trim(),
+        color: color.trim() || '#656d76'
+      };
       if (isEdit) {
         await updateTechStack(id, payload);
       } else {
@@ -127,9 +133,9 @@ export default function TechStackForm() {
               {/* Live icon preview */}
               <div className="w-11 h-11 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center shrink-0" title="Icon preview">
                 <DynamicIcon
-                  iconIdentifier={iconIdentifier.trim()}
-                  size={22}
-                  className="text-blue-400"
+                   iconIdentifier={iconIdentifier.trim()}
+                   size={22}
+                   style={{ color: color }}
                 />
               </div>
             </div>
@@ -139,6 +145,37 @@ export default function TechStackForm() {
                 react-icons
               </a>
               {' '}— e.g. <code className="text-zinc-400">FaReact</code>, <code className="text-zinc-400">SiTailwindcss</code>, <code className="text-zinc-400">FiGithub</code>
+            </p>
+          </div>
+
+          {/* Color Picker */}
+          <div>
+            <label htmlFor="ts-color" className="block text-xs font-medium text-zinc-400 mb-2 uppercase tracking-wider">Brand Color</label>
+            <div className="flex items-center gap-3">
+              <div className="relative flex-1">
+                <input
+                  id="ts-color"
+                  type="text"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                  placeholder="#656d76"
+                  className="w-full px-4 py-2.5 rounded-xl bg-zinc-800/50 border border-zinc-700 text-sm text-white placeholder-zinc-600 outline-none focus:border-blue-500/50 transition-colors pl-10 font-mono"
+                />
+                <div 
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border border-zinc-700"
+                  style={{ backgroundColor: color }}
+                />
+              </div>
+              <input
+                type="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                className="w-11 h-11 rounded-xl bg-zinc-800 border border-zinc-700 p-1 cursor-pointer"
+                title="Choose color"
+              />
+            </div>
+            <p className="text-xs text-zinc-600 mt-2">
+              Standard hex code for the brand's primary color.
             </p>
           </div>
         </div>

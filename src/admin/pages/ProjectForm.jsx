@@ -211,9 +211,13 @@ export default function ProjectForm() {
           <h2 className="text-sm font-bold text-zinc-300 uppercase tracking-wider">Basic Info</h2>
 
           <Field label="Title *" value={form.title} onChange={(v) => handleChange('title', v)} placeholder="My Awesome Project" />
+
           <Field label="Short Description *" value={form.short_description} onChange={(v) => handleChange('short_description', v)} placeholder="A brief tagline..." />
+
           <TextArea label="Overview" value={form.overview} onChange={(v) => handleChange('overview', v)} placeholder="Detailed project description..." rows={4} />
+
           <Field label="Role" value={form.role} onChange={(v) => handleChange('role', v)} placeholder="Full Stack Developer" />
+
           <TextArea label="Responsibilities" value={form.responsibilities} onChange={(v) => handleChange('responsibilities', v)} placeholder="What you were responsible for..." rows={3} />
 
           {/* Pinned toggle */}

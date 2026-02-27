@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FiMail, FiLock, FiArrowRight, FiAlertTriangle, FiShield } from 'react-icons/fi';
 
 export default function Login() {
-  const { login, isLocked, lockRemaining, isAuthenticated } = useAuth();
+  const { login, isAuthenticated, loading: authLoading } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
@@ -13,10 +13,11 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   // If already authenticated, redirect
-  if (isAuthenticated) {
-    navigate('/admin/dashboard', { replace: true });
-    return null;
-  }
+  useEffect(() => {
+    if (!authLoading && isAuthenticated) {
+      navigate('/admin/dashboard', { replace: true });
+    }
+  }, [isAuthenticated, authLoading, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +52,15 @@ export default function Login() {
     }
   };
 
+  // Show nothing while checking auth status
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
+        <div className="w-8 h-8 rounded-full border-4 border-zinc-800 border-t-blue-500 animate-spin" />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background accents */}
@@ -82,7 +92,7 @@ export default function Login() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  disabled={isLocked || loading}
+                  disabled={loading}
                   placeholder="admin@example.com"
                   autoComplete="email"
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-zinc-800/50 border border-zinc-700 text-sm text-white placeholder-zinc-600 outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/25 transition-all duration-200 disabled:opacity-50"
@@ -102,7 +112,7 @@ export default function Login() {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  disabled={isLocked || loading}
+                  disabled={loading}
                   placeholder="••••••••"
                   autoComplete="current-password"
                   className="w-full pl-11 pr-4 py-3 rounded-xl bg-zinc-800/50 border border-zinc-700 text-sm text-white placeholder-zinc-600 outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/25 transition-all duration-200 disabled:opacity-50"
@@ -110,26 +120,18 @@ export default function Login() {
               </div>
             </div>
 
-            {/* Error / Lock message */}
-            {(error || isLocked) && (
-              <div className={`flex items-start gap-2.5 p-3.5 rounded-xl text-sm ${
-                isLocked
-                  ? 'bg-red-500/10 border border-red-500/20 text-red-400'
-                  : 'bg-amber-500/10 border border-amber-500/20 text-amber-400'
-              }`}>
+            {/* Error message */}
+            {error && (
+              <div className="flex items-start gap-2.5 p-3.5 rounded-xl text-sm bg-amber-500/10 border border-amber-500/20 text-amber-400">
                 <FiAlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
-                <span>
-                  {isLocked
-                    ? `🔒 Account locked. Try again in ${lockRemaining}s.`
-                    : error}
-                </span>
+                <span>{error}</span>
               </div>
             )}
 
             {/* Submit */}
             <button
               type="submit"
-              disabled={isLocked || loading}
+              disabled={loading}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
             >
               {loading ? (
