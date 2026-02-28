@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import SpotlightCard from '../ui/SpotlightCard';
+import TechPill from '../ui/TechPill';
 
 export default function ProjectCard({ project, index, onClick }) {
   return (
@@ -65,26 +66,11 @@ export default function ProjectCard({ project, index, onClick }) {
           </p>
 
           {/* Tech Stack + Action Buttons Row */}
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             {/* Tech Stack Badges */}
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
-                <span
-                  key={tech.name}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border transition-colors duration-200"
-                  style={{ 
-                    backgroundColor: `${tech.color}10`, // ~6% opacity
-                    borderColor: `${tech.color}30`,      // ~18% opacity
-                    color: tech.color // Keeping name same color as icon for consistency
-                  }}
-                >
-                  <tech.icon
-                    iconIdentifier={tech.iconIdentifier}
-                    className="w-3.5 h-3.5"
-                    style={{ color: tech.color }}
-                  />
-                  {tech.name}
-                </span>
+                <TechPill key={tech.name} tech={tech} />
               ))}
             </div>
 
