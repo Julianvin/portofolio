@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiDownload, FiMenu, FiX } from 'react-icons/fi';
 import { MdVerified } from 'react-icons/md';
+import { motion, LayoutGroup } from 'framer-motion';
 import { gsap } from 'gsap';
 import { useTheme } from '../ui/ThemeProvider';
 import SpotlightCard from '../ui/SpotlightCard';
@@ -85,28 +86,38 @@ export default function Sidebar() {
   return (
     <aside ref={sidebarRef} className="w-full h-full pointer-events-none md:pointer-events-auto">
        
+       <LayoutGroup>
        {/* --- MOBILE FIXED HEADER --- */}
-       <div className="md:hidden fixed top-0 left-0 right-0 z-[60] px-4 py-2.5 flex items-center justify-between bg-white/40 dark:bg-[#0d1117]/50 backdrop-blur-2xl backdrop-saturate-150 border-b border-gray-200/30 dark:border-white/10 pointer-events-auto transition-all duration-300 shadow-sm shadow-black/5">
-          {/* Left: Identity */}
-          <div className="flex items-center gap-3">
-             <div className="relative w-9 h-9 rounded-full overflow-hidden border border-gray-200 dark:border-white/20 shadow-sm">
-                <img src="/images/fotoprofile.png" alt="Profile" className="w-full h-full object-cover" />
-             </div>
-             <div className="flex flex-col">
-                <span className="text-sm font-bold text-gray-900 dark:text-white leading-none mb-0.5">Delvin Julian</span>
-                <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400">@Julianvin</span>
-             </div>
-          </div>
+       <div className="md:hidden fixed top-0 left-0 right-0 z-[60] px-4 py-2.5 flex items-center justify-between bg-white/40 dark:bg-[#0d1117]/50 backdrop-blur-2xl backdrop-saturate-150 border-b border-gray-200/30 dark:border-white/10 pointer-events-auto shadow-sm shadow-black/5">
+          {/* Left: Identity — conditionally rendered here when menu is CLOSED */}
+          {!isMobileMenuOpen && (
+            <motion.div 
+              layoutId="profile-container"
+              className="flex items-center gap-3"
+              transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+            >
+               <motion.div layoutId="profile-avatar" className="relative w-9 h-9 rounded-full overflow-hidden border border-gray-200 dark:border-white/20 shadow-sm">
+                  <img src="/images/fotoprofile.png" alt="Profile" className="w-full h-full object-cover" />
+               </motion.div>
+               <motion.div layoutId="profile-text" className="flex flex-col">
+                  <span className="text-sm font-bold text-gray-900 dark:text-white leading-none mb-0.5">Delvin Julian</span>
+                  <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400">@Julianvin</span>
+               </motion.div>
+            </motion.div>
+          )}
+          {/* Spacer when profile has flown away */}
+          {isMobileMenuOpen && <div className="w-[140px]" />}
 
           {/* Right: Actions */}
           <div className="flex items-center gap-2">
-             {/* CV Download */}
+             {/* CV Download — pill with text */}
              <a 
                href="/Cv_Delvin_Julian.pdf" 
                download 
-               className="w-9 h-9 flex items-center justify-center bg-[#fbbf24] text-black rounded-full shadow-sm active:scale-95 transition-transform"
+               className="flex items-center gap-1.5 px-3 py-1.5 bg-[#fbbf24] hover:bg-[#f59e0b] text-black rounded-full shadow-sm active:scale-95 transition-all text-xs font-bold"
              >
-                <FiDownload className="w-4 h-4" />
+                <FiDownload className="w-3.5 h-3.5" />
+                <span>CV</span>
              </a>
              
              {/* Theme Toggle */}
@@ -134,6 +145,24 @@ export default function Sidebar() {
          style={{ clipPath: "circle(0% at 100% 0%)" }} 
        >
           <div ref={menuItemsRef} className="flex flex-col gap-6 items-center w-full px-8">
+              
+              {/* Profile — flies here when menu is OPEN */}
+              {isMobileMenuOpen && (
+                <motion.div 
+                  layoutId="profile-container"
+                  className="flex flex-col items-center text-center mb-8"
+                  transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                >
+                   <motion.div layoutId="profile-avatar" className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-green-500/30 shadow-[0_0_25px_rgba(34,197,94,0.15)] mb-3">
+                      <img src="/images/fotoprofile.png" alt="Profile" className="w-full h-full object-cover" />
+                   </motion.div>
+                   <motion.div layoutId="profile-text" className="flex flex-col items-center">
+                      <span className="text-lg font-bold text-gray-900 dark:text-white leading-tight">M. Delvin Julian</span>
+                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mt-0.5">@Julianvin</span>
+                   </motion.div>
+                </motion.div>
+              )}
+
               {navItems.map((item) => (
                 <NavLink 
                   key={item.path} 
@@ -154,6 +183,7 @@ export default function Sidebar() {
               
           </div>
        </div>
+       </LayoutGroup>
 
        {/* --- DESKTOP SIDEBAR CONTENT --- */}
        <div ref={desktopContainerRef} className="hidden md:flex w-full h-full">
