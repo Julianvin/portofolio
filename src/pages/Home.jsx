@@ -49,13 +49,27 @@ export default function Home() {
               Halo, Saya <br/>
               <span className="text-blue-600 dark:text-blue-500">Muhammad Delvin Julian</span>
           </h1>
-          <div className="hero-animate flex flex-wrap items-center gap-6 text-sm text-gray-600 dark:text-gray-400 font-medium">
-              <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] shadow-sm dark:shadow-none">
-                  <GoLocation className="w-4 h-4" /> Bogor, Indonesia
-              </span>
-              <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white dark:bg-[#111] border border-gray-200 dark:border-[#222] shadow-sm dark:shadow-none">
-                    <GoOrganization className="w-4 h-4" /> Tersedia untuk bekerja
-              </span>
+          <div className="hero-animate flex flex-wrap items-center gap-4 md:gap-6 text-xs md:text-sm text-gray-700 dark:text-gray-300 font-medium">
+              {/* Location Pill */}
+              <div className="relative group cursor-default">
+                  <span className="relative flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border bg-gray-50 dark:bg-white/5 border-gray-200 dark:border-white/10 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_4px_15px_-3px_rgba(59,130,246,0.3)] group-hover:border-blue-500/30">
+                      <GoLocation className="w-4 h-4 text-blue-500 transition-transform duration-300 group-hover:scale-110" /> 
+                      Bogor, Indonesia
+                  </span>
+              </div>
+              
+              {/* Open To Work Pill */}
+              <div className="relative group cursor-pointer mt-1 md:mt-0">
+                  {/* Outer pulsating glow */}
+                  <div className="absolute -inset-0.5 bg-green-500/40 dark:bg-green-500/30 rounded-full blur-md animate-pulse"></div>
+                  <span className="relative flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border bg-white dark:bg-[#161b22] border-green-300 dark:border-green-500/30 text-green-700 dark:text-green-400 transition-transform duration-300 hover:-translate-y-1">
+                      <span className="relative flex h-2.5 w-2.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                      </span>
+                      <span className="font-bold tracking-wide">Tersedia untuk bekerja</span>
+                  </span>
+              </div>
           </div>
       </section>
 
