@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { MdVerified } from 'react-icons/md';
 import { gsap } from 'gsap';
 import { useTheme } from '../ui/ThemeProvider';
 import SpotlightCard from '../ui/SpotlightCard';
@@ -159,37 +160,26 @@ export default function Sidebar() {
          <SpotlightCard className="flex flex-col gap-6 p-4 rounded-3xl transition-all duration-300 pointer-events-auto bg-transparent border border-transparent hover:border-white/5 h-fit w-full" spotlightColor="rgba(255, 255, 255, 0.06)">
               {/* Header: Profile & Identity */}
               <div className="flex flex-col items-center">
-                  <div className="relative group cursor-default mb-4">
-                      <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200 dark:border-[#222] transition-transform duration-700 ease-in-out group-hover:scale-105 relative">
+                  <div className="relative group cursor-default mb-4 flex flex-col items-center">
+                      <div className="w-24 h-24 rounded-full overflow-hidden transition-transform duration-700 ease-in-out group-hover:scale-105 relative border-2 border-green-500/20 dark:border-green-500/20 shadow-[0_0_20px_rgba(34,197,94,0.15)]">
                            <img src="/images/fotoprofile.png" alt="Profile" className="w-full h-full object-cover" />
                            
-                           {/* Badge */}
-                           <div className="absolute inset-0 z-10 w-full h-full pointer-events-none scale-105">
-                              <svg viewBox="0 0 100 100" className="w-full h-full">
-                                  <defs>
-                                      <path id="badge-path" d="M 10,50 A 40,40 0 0,0 90,50" fill="none" />
-                                      <linearGradient id="badge-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                          <stop offset="0%" stopColor="#47b972" stopOpacity="0" />
-                                          <stop offset="15%" stopColor="#47b972" stopOpacity="1" />
-                                          <stop offset="85%" stopColor="#47b972" stopOpacity="1" />
-                                          <stop offset="100%" stopColor="#47b972" stopOpacity="0" />
-                                      </linearGradient>
-                                  </defs>
-                                  <path d="M 10,50 A 40,40 0 0,0 90,50" stroke="url(#badge-gradient)" strokeWidth="15" fill="none" transform="rotate(25 50 50)" strokeLinecap="round" />
-                                  <text fontSize="10" fontWeight="bold" fill="white" dy="4" letterSpacing="1">
-                                      <textPath href="#badge-path" startOffset="50%" textAnchor="middle" transform="rotate(25 50 50)">
-                                          #OPENTOWORK
-                                      </textPath>
-                                  </text>
-                              </svg>
-                           </div>
+                           {/* SVG #OPENTOWORK Curved Banner */}
+                           <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
+                                <path id="opentowork-path" d="M 6 50 A 44 44 0 0 0 94 50" fill="none" stroke="#22c55e" strokeWidth="16" />
+                                <text fontSize="10.5" fontWeight="bold" fill="white" letterSpacing="0.5">
+                                    <textPath href="#opentowork-path" startOffset="50%" textAnchor="middle" dy="4">
+                                        #OPENTOWORK
+                                    </textPath>
+                                </text>
+                           </svg>
                       </div>
                   </div>
                   
                   <div className="text-center">
-                      <div className="flex items-center justify-center gap-2">
+                      <div className="flex items-center justify-center gap-1.5">
                           <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">M. Delvin Julian</h1>
-                          <FiCheckCircle className="text-blue-500 w-5 h-5 fill-current" />
+                          <MdVerified className="text-[#1d9bf0] w-5 h-5 flex-shrink-0" />
                       </div>
                       <p className="text-sm text-gray-500 mt-1">@Julianvin</p>
                   </div>
