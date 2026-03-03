@@ -2,17 +2,19 @@ import { supabase } from '../../lib/supabase';
 import { clearCache } from '../../hooks/useCachedFetch';
 
 // ── Fetch paginated tech stacks ──
-export async function fetchTechStacks(page = 1, limit = 20) {
+export async function fetchTechStacks(page = 1, limit = 20, search = '') {
   const from = (page - 1) * limit;
   const to = from + limit - 1;
 
-  const { count } = await supabase
+  let query = supabase
     .from('tech_stacks')
-    .select('*', { count: 'exact', head: true });
+    .select('*', { count: 'exact' });
 
-  const { data, error } = await supabase
-    .from('tech_stacks')
-    .select('*')
+  if (search) {
+    query = query.or(`name.ilike.%${search}%,icon_identifier.ilike.%${search}%`);
+  }
+
+  const { data, count, error } = await query
     .order('name')
     .range(from, to);
 

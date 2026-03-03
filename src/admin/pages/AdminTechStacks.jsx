@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchTechStacks, deleteTechStack } from '../services/techStackService';
 import DynamicIcon from '../components/DynamicIcon';
-import { FiPlus, FiEdit2, FiTrash2, FiChevronLeft, FiChevronRight, FiAlertTriangle, FiSearch } from 'react-icons/fi';
+import { FiPlus, FiEdit2, FiTrash2, FiChevronLeft, FiChevronRight, FiAlertTriangle, FiSearch, FiX } from 'react-icons/fi';
 
 export default function AdminTechStacks() {
   const navigate = useNavigate();
@@ -13,25 +13,24 @@ export default function AdminTechStacks() {
   const [error, setError] = useState(null);
   const [deleteModal, setDeleteModal] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [deleting, setDeleting] = useState(false);
   const limit = 20;
 
-  // Performance-Optimized Client-Side Filtering
-  const filteredStacks = useMemo(() => {
-    if (!searchQuery.trim()) return stacks;
-    
-    const query = searchQuery.toLowerCase();
-    return stacks.filter(ts => 
-      ts.name.toLowerCase().includes(query) || 
-      (ts.icon_identifier && ts.icon_identifier.toLowerCase().includes(query))
-    );
-  }, [stacks, searchQuery]);
+  // Debounce search query
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+      setPage(1); // Reset to first page on search
+    }, 500);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const result = await fetchTechStacks(page, limit);
+      const result = await fetchTechStacks(page, limit, debouncedQuery);
       setStacks(result.data);
       setTotal(result.total);
     } catch (err) {
@@ -39,7 +38,7 @@ export default function AdminTechStacks() {
     } finally {
       setLoading(false);
     }
-  }, [page]);
+  }, [page, debouncedQuery]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -61,41 +60,45 @@ export default function AdminTechStacks() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+      {/* Header & Search */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Tech Stacks</h1>
-          <p className="text-sm text-zinc-500 mt-1">{total} item{total !== 1 ? 's' : ''} total</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Tech Stacks</h1>
+          <p className="text-sm text-zinc-500 mt-1">
+            {total} item{total !== 1 ? 's' : ''} total
+            {debouncedQuery && <span className="ml-1 text-blue-400 font-medium">found for "{debouncedQuery}"</span>}
+          </p>
         </div>
-        <button
-          onClick={() => navigate('/admin/tech-stacks/new')}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors cursor-pointer"
-        >
-          <FiPlus className="w-4 h-4" />
-          New Tech Stack
-        </button>
-      </div>
+        
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 w-4 h-4" />
+            <input
+              type="text"
+              placeholder="Search tech or identifier..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 pr-4 py-2 bg-zinc-900/50 border border-zinc-800 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all w-full md:w-64"
+            />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition-colors cursor-pointer"
+              >
+                <FiX className="w-4 h-4" />
+              </button>
+            )}
+          </div>
 
-      {/* Search Bar */}
-      <div className="relative group">
-        <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-zinc-500 group-focus-within:text-blue-400 transition-colors">
-          <FiSearch className="w-4 h-4" />
-        </div>
-        <input
-          type="text"
-          placeholder="Search technologies by name or identifier..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl py-3 pl-11 pr-4 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all"
-        />
-        {searchQuery && (
-          <button 
-            onClick={() => setSearchQuery('')}
-            className="absolute inset-y-0 right-4 flex items-center text-zinc-500 hover:text-white transition-colors cursor-pointer text-xs"
+          <button
+            onClick={() => navigate('/admin/tech-stacks/new')}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all hover:shadow-lg hover:shadow-blue-900/20 active:scale-95 cursor-pointer shrink-0"
           >
-            Clear
+            <FiPlus className="w-4 h-4" />
+            <span className="hidden sm:inline">New Tech Stack</span>
+            <span className="sm:hidden">New</span>
           </button>
-        )}
+        </div>
       </div>
 
       {/* Error */}
@@ -130,7 +133,7 @@ export default function AdminTechStacks() {
                     <td className="px-6 py-4"><div className="h-5 w-20 ml-auto rounded bg-zinc-800 animate-pulse" /></td>
                   </tr>
                 ))
-              ) : filteredStacks.length === 0 ? (
+              ) : stacks.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="px-6 py-16 text-center">
                     <div className="flex flex-col items-center gap-2">
@@ -139,9 +142,9 @@ export default function AdminTechStacks() {
                       </div>
                       <p className="text-zinc-400 font-medium">No results found</p>
                       <p className="text-sm text-zinc-600">
-                        {stacks.length === 0 
+                        {!debouncedQuery 
                           ? "No tech stacks yet. Create your first one!" 
-                          : `Tidak ada teknologi yang cocok dengan '${searchQuery}'`}
+                          : `Tidak ada teknologi yang cocok dengan '${debouncedQuery}'`}
                       </p>
                       {searchQuery && (
                         <button 
@@ -155,7 +158,7 @@ export default function AdminTechStacks() {
                   </td>
                 </tr>
               ) : (
-                filteredStacks.map((ts) => (
+                stacks.map((ts) => (
                   <tr key={ts.id} className="border-b border-zinc-800/50 hover:bg-zinc-800/20 transition-colors">
                     <td className="px-6 py-4">
                       <div className="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center">
