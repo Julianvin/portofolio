@@ -117,7 +117,7 @@ export default function Achievements() {
   }, [isLoading]); // Re-run GSAP when loading finishes
 
   return (
-    <div ref={containerRef} className="max-w-4xl">
+    <div ref={containerRef} className="max-w-4xl pt-20 md:pt-0">
       {/* Header */}
       <div className="mb-8 md:mb-12 flex items-center gap-4">
          <h1 className="animate-header text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white">Pencapaian</h1>
@@ -128,7 +128,7 @@ export default function Achievements() {
       </div>
 
       {/* Search & Filter Toolbar */}
-      <div className="animate-filters mb-8 flex flex-col md:flex-row gap-4 items-center relative z-[100]">
+      <div className="animate-filters mb-8 flex flex-col md:flex-row gap-4 items-center relative z-10">
         {/* Search Input */}
         <div className="relative w-full">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400" />
