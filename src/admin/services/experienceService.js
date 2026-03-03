@@ -1,4 +1,5 @@
 import { supabase } from '../../lib/supabase';
+import { clearCache } from '../../hooks/useCachedFetch';
 
 // ── Fetch paginated experiences ──
 export async function fetchExperiences(page = 1, limit = 10) {
@@ -59,6 +60,7 @@ export async function createExperience(experienceData) {
     .single();
 
   if (error) throw error;
+  clearCache('publicExperiences');
   return data;
 }
 
@@ -77,6 +79,7 @@ export async function updateExperience(id, experienceData) {
     .single();
 
   if (error) throw error;
+  clearCache('publicExperiences');
   return data;
 }
 
@@ -88,6 +91,7 @@ export async function deleteExperience(id) {
     .eq('id', id);
 
   if (error) throw error;
+  clearCache('publicExperiences');
 }
 
 // ── Upload experience logo to Supabase Storage ──

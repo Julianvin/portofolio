@@ -1,4 +1,5 @@
 import { supabase } from '../../lib/supabase';
+import { clearCache } from '../../hooks/useCachedFetch';
 
 // ── Fetch paginated projects with tech stacks ──
 export async function fetchProjects(page = 1, limit = 10) {
@@ -127,6 +128,7 @@ export async function createProject(projectData, techStackIds = []) {
     }
   }
 
+  clearCache('publicProjects');
   return project;
 }
 
@@ -171,6 +173,7 @@ export async function updateProject(id, projectData, techStackIds = []) {
     }
   }
 
+  clearCache('publicProjects');
   return project;
 }
 
@@ -181,6 +184,7 @@ export async function deleteProject(id) {
 
   const { error } = await supabase.from('projects').delete().eq('id', id);
   if (error) throw error;
+  clearCache('publicProjects');
 }
 
 // ── Fetch all tech stacks (for form picker) ──

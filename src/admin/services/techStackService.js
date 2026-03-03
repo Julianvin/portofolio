@@ -1,4 +1,5 @@
 import { supabase } from '../../lib/supabase';
+import { clearCache } from '../../hooks/useCachedFetch';
 
 // ── Fetch paginated tech stacks ──
 export async function fetchTechStacks(page = 1, limit = 20) {
@@ -40,6 +41,7 @@ export async function createTechStack({ name, icon_identifier, color }) {
     .single();
 
   if (error) throw error;
+  clearCache('techStacks');
   return data;
 }
 
@@ -53,6 +55,7 @@ export async function updateTechStack(id, { name, icon_identifier, color }) {
     .single();
 
   if (error) throw error;
+  clearCache('techStacks');
   return data;
 }
 
@@ -63,4 +66,5 @@ export async function deleteTechStack(id) {
 
   const { error } = await supabase.from('tech_stacks').delete().eq('id', id);
   if (error) throw error;
+  clearCache('techStacks');
 }
