@@ -3,13 +3,14 @@ import { gsap } from 'gsap';
 import { GoLocation, GoCalendar, GoChevronDown } from 'react-icons/go';
 import { motion, AnimatePresence } from 'framer-motion';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import useCachedFetch from '../hooks/useCachedFetch';
+import { getPublicExperiences } from '../admin/services/experienceService';
 
 export default function About() {
   useDocumentTitle('Tentang Saya | Delvin Julian');
   const containerRef = useRef(null);
   
-  const [experiences, setExperiences] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: experiences, isLoading } = useCachedFetch('publicExperiences', getPublicExperiences);
   const [expandedItems, setExpandedItems] = useState({});
 
   // Helper to toggle detail for a specific item
@@ -29,19 +30,6 @@ export default function About() {
   };
 
   useEffect(() => {
-    async function loadExperiences() {
-      try {
-        const { getPublicExperiences } = await import('../admin/services/experienceService');
-        const data = await getPublicExperiences();
-        setExperiences(data);
-      } catch (err) {
-        console.error("Failed to load experiences:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    loadExperiences();
-
     const ctx = gsap.context(() => {
       // Small delay to ensure items are in DOM if loading finishes fast
       setTimeout(() => {

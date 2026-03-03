@@ -96,6 +96,7 @@ import Projects from '../pages/Projects';
 describe('Projects — Bilingual Rendering', () => {
   beforeEach(() => {
     mockProjectsData = MOCK_PROJECTS_FULL;
+    sessionStorage.clear();
   });
 
   it('renders project content', async () => {

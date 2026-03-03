@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { supabase } from '../../lib/supabase';
+import useCachedFetch from '../../hooks/useCachedFetch';
 import TechPill from '../ui/TechPill';
 
 // ── Animation variants ──
@@ -31,27 +32,17 @@ const pillVariants = {
 
 // ── Main Component ──
 export default function Skills({ ready = false }) {
-  const [techStacks, setTechStacks] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadTechStacks() {
-      try {
-        const { data, error } = await supabase
-          .from('tech_stacks')
-          .select('*')
-          .order('name');
-
-        if (error) throw error;
-        setTechStacks(data || []);
-      } catch (err) {
-        console.error('Failed to load tech stacks:', err);
-      } finally {
-        setLoading(false);
-      }
+  const { data: techStacks, isLoading: loading } = useCachedFetch(
+    'techStacks',
+    async () => {
+      const { data, error } = await supabase
+        .from('tech_stacks')
+        .select('*')
+        .order('name');
+      if (error) throw error;
+      return data || [];
     }
-    loadTechStacks();
-  }, []);
+  );
 
   // Loading skeleton
   if (loading) {

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import useCachedFetch from '../hooks/useCachedFetch';
 import ProjectCard from '../components/projects/ProjectCard';
 import ProjectDetail from '../components/projects/ProjectDetail';
 import { getPublicProjects } from '../admin/services/projectService';
@@ -17,50 +18,37 @@ const containerVariants = {
   },
 };
 
-
-
 export default function Projects() {
   useDocumentTitle(`Proyek | Delvin Julian`);
   
-  const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    async function loadProjects() {
-      try {
-        const rawProjects = await getPublicProjects();
-        const adaptedProjects = rawProjects.map((p) => ({
-          id: p.id,
-          image: p.image_url,
-          title: p.title,
-          tagline: p.short_description,
-          description: p.overview,
-          role: p.role,
-          features: p.key_features || [],
-          responsibilities: typeof p.responsibilities === 'string'
-            ? p.responsibilities.split('\n').map(r => r.trim()).filter(Boolean)
-            : (Array.isArray(p.responsibilities) ? p.responsibilities : []),
-          techStack: p.tech_stacks?.map((ts) => ({
-            name: ts.name,
-            iconIdentifier: ts.icon_identifier,
-            color: ts.color || '#656d76',
-            icon: DynamicIcon
-          })) || [],
-          demoUrl: p.live_demo_url || null,
-          githubUrl: p.github_url || null,
-        }));
-        setProjects(adaptedProjects);
-      } catch (err) {
-        console.error("Failed to load projects:", err);
-        setError("Failed to load projects. Please try again later.");
-      } finally {
-        setIsLoading(false);
-      }
+  const { data: projects, isLoading, error } = useCachedFetch(
+    'publicProjects',
+    async () => {
+      const rawProjects = await getPublicProjects();
+      return rawProjects.map((p) => ({
+        id: p.id,
+        image: p.image_url,
+        title: p.title,
+        tagline: p.short_description,
+        description: p.overview,
+        role: p.role,
+        features: p.key_features || [],
+        responsibilities: typeof p.responsibilities === 'string'
+          ? p.responsibilities.split('\n').map(r => r.trim()).filter(Boolean)
+          : (Array.isArray(p.responsibilities) ? p.responsibilities : []),
+        techStack: p.tech_stacks?.map((ts) => ({
+          name: ts.name,
+          iconIdentifier: ts.icon_identifier,
+          color: ts.color || '#656d76',
+          icon: DynamicIcon
+        })) || [],
+        demoUrl: p.live_demo_url || null,
+        githubUrl: p.github_url || null,
+      }));
     }
-    loadProjects();
-  }, []);
+  );
 
   return (
     <LayoutGroup>

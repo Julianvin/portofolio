@@ -144,24 +144,30 @@ export default function Sidebar() {
          className="md:hidden fixed inset-0 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl z-[50] flex flex-col justify-center items-center pointer-events-auto"
          style={{ clipPath: "circle(0% at 100% 0%)" }} 
        >
-          <div ref={menuItemsRef} className="flex flex-col gap-6 items-center w-full px-8">
+          <div ref={menuItemsRef} className="flex flex-col gap-6 items-start w-full pl-10 pr-6">
               
               {/* Profile — flies here when menu is OPEN */}
               {isMobileMenuOpen && (
                 <motion.div 
                   layoutId="profile-container"
-                  className="flex flex-col items-center text-center mb-8"
+                  className="flex flex-col items-start text-left mb-2"
                   transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                 >
-                   <motion.div layoutId="profile-avatar" className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-green-500/30 shadow-[0_0_25px_rgba(34,197,94,0.15)] mb-3">
+                   <motion.div layoutId="profile-avatar" className="relative w-20 h-20 rounded-full overflow-hidden border border-gray-200 dark:border-white/10 shadow-sm mb-3">
                       <img src="/images/fotoprofile.png" alt="Profile" className="w-full h-full object-cover" />
                    </motion.div>
-                   <motion.div layoutId="profile-text" className="flex flex-col items-center">
-                      <span className="text-lg font-bold text-gray-900 dark:text-white leading-tight">M. Delvin Julian</span>
-                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mt-0.5">@Julianvin</span>
+                   <motion.div layoutId="profile-text" className="flex flex-col items-start">
+                      <div className="flex items-center justify-start gap-1.5">
+                          <span className="text-lg font-bold text-gray-900 dark:text-white leading-none">M. Delvin Julian</span>
+                          <MdVerified className="text-[#1d9bf0] w-5 h-5 flex-shrink-0" />
+                      </div>
+                      <span className="text-xs font-medium text-gray-500 dark:text-gray-400 mt-1 leading-none">@Julianvin</span>
                    </motion.div>
                 </motion.div>
               )}
+
+              {/* Elegant Animated Divider */}
+              <div className="mobile-nav-item w-full max-w-[80%] h-px bg-gray-200 dark:bg-white/10 my-2" />
 
               {navItems.map((item) => (
                 <NavLink 
@@ -187,36 +193,27 @@ export default function Sidebar() {
 
        {/* --- DESKTOP SIDEBAR CONTENT --- */}
        <div ref={desktopContainerRef} className="hidden md:flex w-full h-full">
-         <SpotlightCard className="flex flex-col gap-6 p-4 rounded-3xl transition-all duration-300 pointer-events-auto bg-transparent border border-transparent hover:border-white/5 h-fit w-full" spotlightColor="rgba(255, 255, 255, 0.06)">
+         <SpotlightCard className="flex flex-col gap-0 p-4 rounded-3xl transition-all duration-300 pointer-events-auto bg-transparent border border-transparent hover:border-white/5 h-fit w-full" spotlightColor="rgba(255, 255, 255, 0.06)">
               {/* Header: Profile & Identity */}
-              <div className="flex flex-col items-center">
-                  <div className="relative group cursor-default mb-4 flex flex-col items-center">
-                      <div className="w-24 h-24 rounded-full overflow-hidden transition-transform duration-700 ease-in-out group-hover:scale-105 relative border-2 border-green-500/20 dark:border-green-500/20 shadow-[0_0_20px_rgba(34,197,94,0.15)]">
+              <div className="flex flex-col items-center mb-6">
+                  <div className="relative group cursor-default mb-3 flex flex-col items-center">
+                      <div className="w-24 h-24 rounded-full overflow-hidden transition-transform duration-700 ease-in-out group-hover:scale-105 relative border border-gray-200 dark:border-white/10 shadow-sm">
                            <img src="/images/fotoprofile.png" alt="Profile" className="w-full h-full object-cover" />
                            
-                           {/* SVG #OPENTOWORK Curved Banner */}
-                           <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full pointer-events-none">
-                                <path id="opentowork-path" d="M 6 50 A 44 44 0 0 0 94 50" fill="none" stroke="#22c55e" strokeWidth="16" />
-                                <text fontSize="10.5" fontWeight="bold" fill="white" letterSpacing="0.5">
-                                    <textPath href="#opentowork-path" startOffset="50%" textAnchor="middle" dy="4">
-                                        #OPENTOWORK
-                                    </textPath>
-                                </text>
-                           </svg>
                       </div>
                   </div>
                   
-                  <div className="text-center">
+                  <div className="text-center flex flex-col items-center">
                       <div className="flex items-center justify-center gap-1.5">
-                          <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-tight">M. Delvin Julian</h1>
+                          <h1 className="text-xl font-bold text-gray-900 dark:text-white leading-none">M. Delvin Julian</h1>
                           <MdVerified className="text-[#1d9bf0] w-5 h-5 flex-shrink-0" />
                       </div>
-                      <p className="text-sm text-gray-500 mt-1">@Julianvin</p>
+                      <p className="text-sm text-gray-500 leading-none mt-1">@Julianvin</p>
                   </div>
               </div>
   
-              {/* Controls Row - Side by Side */}
-              <div className="flex items-center gap-3 w-full">
+               {/* Controls Row - Side by Side */}
+              <div className="flex items-center gap-3 w-full mb-0">
                   <a 
                     href="/Cv_Delvin_Julian.pdf" 
                     download="Muhammad_Delvin_Julian_Resume.pdf"
@@ -233,8 +230,8 @@ export default function Sidebar() {
                   </button>
               </div>
   
-              {/* Navigation */}
-              <nav className="flex flex-col gap-1.5 w-full">
+               {/* Navigation */}
+              <nav className="flex flex-col gap-1.5 w-full mt-6">
                   {navItems.map((item) => (
                       <NavLink
                         key={item.path}
