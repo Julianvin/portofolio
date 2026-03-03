@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchAchievements, deleteAchievement } from '../services/achievementService';
-import { FiPlus, FiEdit2, FiTrash2, FiChevronLeft, FiChevronRight, FiAlertTriangle, FiAward } from 'react-icons/fi';
+import { FiPlus, FiEdit2, FiTrash2, FiChevronLeft, FiChevronRight, FiAlertTriangle, FiAward, FiSearch, FiX } from 'react-icons/fi';
 import { getBadgeColor } from '../../utils/badgeColors';
 
 export default function AdminAchievements() {
@@ -13,13 +13,24 @@ export default function AdminAchievements() {
   const [error, setError] = useState(null);
   const [deleteModal, setDeleteModal] = useState(null);
   const [deleting, setDeleting] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const limit = 10;
+
+  // Debounce search query
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+      setPage(1); // Reset to first page on search
+    }, 500);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
 
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const result = await fetchAchievements(page, limit);
+      const result = await fetchAchievements(page, limit, debouncedQuery);
       setAchievements(result.data);
       setTotal(result.total);
     } catch (err) {
@@ -27,7 +38,7 @@ export default function AdminAchievements() {
     } finally {
       setLoading(false);
     }
-  }, [page]);
+  }, [page, debouncedQuery]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -56,18 +67,44 @@ export default function AdminAchievements() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Achievements</h1>
-          <p className="text-sm text-zinc-500 mt-1">{total} item{total !== 1 ? 's' : ''} total</p>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Achievements</h1>
+          <p className="text-sm text-zinc-500 mt-1">
+            {total} item{total !== 1 ? 's' : ''} total
+            {debouncedQuery && <span className="ml-1 text-blue-400 font-medium">found for "{debouncedQuery}"</span>}
+          </p>
         </div>
-        <button
-          onClick={() => navigate('/admin/achievements/new')}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-colors cursor-pointer"
-        >
-          <FiPlus className="w-4 h-4" />
-          New Achievement
-        </button>
+        
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 w-4 h-4" />
+            <input
+              type="text"
+              placeholder="Search title or issuer..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 pr-4 py-2 bg-zinc-900/50 border border-zinc-800 rounded-xl text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 transition-all w-full md:w-64"
+            />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition-colors cursor-pointer"
+              >
+                <FiX className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+
+          <button
+            onClick={() => navigate('/admin/achievements/new')}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all hover:shadow-lg hover:shadow-blue-900/20 active:scale-95 cursor-pointer shrink-0"
+          >
+            <FiPlus className="w-4 h-4" />
+            <span className="hidden sm:inline">New Achievement</span>
+            <span className="sm:hidden">New</span>
+          </button>
+        </div>
       </div>
 
       {/* Error */}

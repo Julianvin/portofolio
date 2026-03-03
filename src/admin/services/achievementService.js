@@ -2,19 +2,20 @@ import { supabase } from '../../lib/supabase';
 import { clearCache } from '../../hooks/useCachedFetch';
 
 // ── Fetch paginated achievements ──
-export async function fetchAchievements(page = 1, limit = 10) {
+export async function fetchAchievements(page = 1, limit = 10, search = '') {
   const from = (page - 1) * limit;
   const to = from + limit - 1;
 
-  // Get total count
-  const { count } = await supabase
+  let query = supabase
     .from('achievements')
-    .select('*', { count: 'exact', head: true });
+    .select('*', { count: 'exact' });
 
-  // Get paginated achievements, sorted by issue_date descending
-  const { data, error } = await supabase
-    .from('achievements')
-    .select('*')
+  if (search) {
+    query = query.or(`title.ilike.%${search}%,issuer.ilike.%${search}%`);
+  }
+
+  // Get data and count
+  const { data, count, error } = await query
     .order('issue_date', { ascending: false })
     .range(from, to);
 
