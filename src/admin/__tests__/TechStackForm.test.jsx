@@ -12,6 +12,12 @@ vi.mock('../services/techStackService', () => ({
   updateTechStack: vi.fn(),
 }));
 
+// ── Mock useCachedFetch (imported by service via clearCache) ──
+vi.mock('../../hooks/useCachedFetch', () => ({
+  default: vi.fn(),
+  clearCache: vi.fn(),
+}));
+
 import { fetchTechStackById, createTechStack, updateTechStack } from '../services/techStackService';
 
 // Helper to render the form in a router context

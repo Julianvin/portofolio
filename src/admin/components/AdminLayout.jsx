@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { FiLogOut, FiShield, FiHome, FiFolder, FiCpu, FiBriefcase, FiMenu, FiX } from 'react-icons/fi';
+import { FiLogOut, FiShield, FiHome, FiFolder, FiCpu, FiBriefcase, FiMenu, FiX, FiAward } from 'react-icons/fi';
 
 const NAV_ITEMS = [
   { to: '/admin/dashboard', label: 'Dashboard', icon: FiHome },
   { to: '/admin/projects', label: 'Projects', icon: FiFolder },
   { to: '/admin/tech-stacks', label: 'Tech Stacks', icon: FiCpu },
   { to: '/admin/experiences', label: 'Experiences', icon: FiBriefcase },
+  { to: '/admin/achievements', label: 'Achievements', icon: FiAward },
 ];
 
 export default function AdminLayout() {

@@ -21,6 +21,8 @@ import AdminTechStacks from './admin/pages/AdminTechStacks';
 import TechStackForm from './admin/pages/TechStackForm';
 import ExperiencesList from './admin/pages/ExperiencesList';
 import ExperienceForm from './admin/pages/ExperienceForm';
+import AdminAchievements from './admin/pages/AdminAchievements';
+import AchievementForm from './admin/pages/AchievementForm';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,6 +63,9 @@ export default function App() {
               <Route path="experiences" element={<ExperiencesList />} />
               <Route path="experiences/new" element={<ExperienceForm />} />
               <Route path="experiences/:id/edit" element={<ExperienceForm />} />
+              <Route path="achievements" element={<AdminAchievements />} />
+              <Route path="achievements/new" element={<AchievementForm />} />
+              <Route path="achievements/:id/edit" element={<AchievementForm />} />
             </Route>
           </Routes>
         </AuthProvider>

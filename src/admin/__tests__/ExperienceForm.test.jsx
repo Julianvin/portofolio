@@ -23,6 +23,12 @@ vi.mock('../services/experienceService', () => ({
   fetchExperienceById: vi.fn(),
 }));
 
+// Mock useCachedFetch (imported by service via clearCache)
+vi.mock('../../hooks/useCachedFetch', () => ({
+  default: vi.fn(),
+  clearCache: vi.fn(),
+}));
+
 describe('ExperienceForm Component', () => {
   beforeEach(() => {
     vi.clearAllMocks();
