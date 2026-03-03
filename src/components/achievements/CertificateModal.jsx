@@ -13,6 +13,14 @@ export default function CertificateModal({ item, onClose }) {
 
   if (!item) return null;
 
+  // Format the date if it's available and valid
+  const formattedDate = item.issue_date 
+    ? new Date(item.issue_date).toLocaleDateString('id-ID', {
+        month: 'long',
+        year: 'numeric'
+      })
+    : '-';
+
   return createPortal(
     <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
       {/* Backdrop */}
@@ -40,13 +48,17 @@ export default function CertificateModal({ item, onClose }) {
         {/* Left Side: Image (Full Display) */}
         <motion.div 
           layoutId={`image-container-${item.id}`}
-          className="relative bg-transparent w-full h-auto min-h-[50vh] max-h-[80vh] md:h-auto md:w-3/4 flex-shrink-0 flex items-center justify-center"
+          className="relative bg-transparent w-full h-auto min-h-[50vh] max-h-[80vh] md:h-auto md:w-3/4 flex-shrink-0 flex items-center justify-center overflow-hidden"
         >
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-full h-full object-cover md:object-contain object-center block"
-          />
+          {item.image_url ? (
+            <img
+              src={item.image_url}
+              alt={item.title}
+              className="w-full h-full object-cover md:object-contain object-center block"
+            />
+          ) : (
+             <div className="w-full h-full min-h-[50vh] bg-gradient-to-br from-neutral-200 to-neutral-300 dark:from-neutral-700 dark:to-neutral-800"></div>
+          )}
         </motion.div>
 
           {/* Right Side: Details */}
@@ -81,13 +93,13 @@ export default function CertificateModal({ item, onClose }) {
                     layoutId={`title-${item.id}`}
                     className="mb-2 text-2xl font-bold leading-tight text-neutral-900 dark:text-white"
                 >
-                    {item.name}
+                    {item.title}
                 </motion.h2>
                 <motion.p 
                     layoutId={`issuer-${item.id}`}
                     className="text-base font-medium text-neutral-500 dark:text-neutral-400"
                 >
-                    {item.issuing_organization}
+                    {item.issuer}
                 </motion.p>
                 </div>
 
@@ -98,7 +110,7 @@ export default function CertificateModal({ item, onClose }) {
                     ID Kredensial
                     </span>
                     <span className="font-mono text-sm text-neutral-800 break-all dark:text-neutral-300">
-                    {item.credential_id}
+                    {item.credential_id || '-'}
                     </span>
                 </div>
                 
@@ -125,16 +137,16 @@ export default function CertificateModal({ item, onClose }) {
                     Tanggal Terbit
                     </span>
                     <span className="text-sm font-medium text-neutral-800 dark:text-neutral-300">
-                    {item.issue_date}
+                    {formattedDate}
                     </span>
                 </div>
                 </div>
 
                 {/* Action Button */}
-                {item.url_credential && (
+                {item.credential_url && item.credential_url !== '-' && (
                   <div className="mt-8 pt-8 border-t border-neutral-100 dark:border-neutral-800">
                     <a
-                      href={item.url_credential}
+                      href={item.credential_url}
                       target="_blank"
                       rel="noreferrer"
                       className="flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 px-6 py-3 font-bold text-white transition-transform hover:bg-neutral-800 active:scale-95 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
