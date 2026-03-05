@@ -53,6 +53,23 @@ export default function About() {
     });
   };
 
+  // Format responsibility text: bold the part before the first colon
+  const formatResponsibility = (text) => {
+    if (!text) return text;
+    const colonIndex = text.indexOf(':');
+    if (colonIndex === -1) return text;
+
+    const before = text.substring(0, colonIndex + 1);
+    const after = text.substring(colonIndex + 1);
+
+    return (
+      <>
+        <span className="font-semibold text-gray-800 dark:text-gray-100">{before}</span>
+        {after}
+      </>
+    );
+  };
+
   return (
     <div ref={containerRef} className="max-w-4xl">
       {/* Header */}
@@ -162,7 +179,7 @@ export default function About() {
                               <li key={idx} className="flex gap-3 text-sm leading-relaxed">
                                 <span className="text-blue-500 dark:text-blue-400 mt-0.5 font-bold select-none">{idx + 1}.</span>
                                 <p className="text-gray-600 dark:text-gray-400">
-                                  {item}
+                                  {formatResponsibility(item)}
                                 </p>
                               </li>
                             ))}
