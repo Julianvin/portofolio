@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiDownload, FiMenu, FiX } from 'react-icons/fi';
+import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
 import { MdVerified } from 'react-icons/md';
 import { motion, LayoutGroup } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -110,16 +110,6 @@ export default function Sidebar() {
 
           {/* Right: Actions */}
           <div className="flex items-center gap-2">
-             {/* CV Download — pill with text */}
-             <a 
-               href="/Cv_Delvin_Julian.pdf" 
-               download 
-               className="flex items-center gap-1.5 px-3 py-1.5 bg-[#fbbf24] hover:bg-[#f59e0b] text-black rounded-full shadow-sm active:scale-95 transition-all text-xs font-bold"
-             >
-                <FiDownload className="w-3.5 h-3.5" />
-                <span>CV</span>
-             </a>
-             
              {/* Theme Toggle */}
              <button 
                onClick={toggleTheme} 
@@ -212,19 +202,11 @@ export default function Sidebar() {
                   </div>
               </div>
   
-               {/* Controls Row - Side by Side */}
+               {/* Theme Toggle */}
               <div className="flex items-center gap-3 w-full mb-0">
-                  <a 
-                    href="/Cv_Delvin_Julian.pdf" 
-                    download="Muhammad_Delvin_Julian_Resume.pdf"
-                    className="flex-1 bg-[#fbbf24] hover:bg-[#f59e0b] text-black text-xs font-bold py-2.5 rounded-xl flex items-center justify-center gap-2 transition-transform hover:scale-105 cursor-pointer shadow-lg shadow-yellow-500/10"
-                  >
-                      <span className="uppercase tracking-wider">CV</span>
-                      <FiDownload className="w-4 h-4" />
-                  </a>
                   <button 
                     onClick={toggleTheme}
-                    className="w-12 h-[38px] flex items-center justify-center bg-white dark:bg-[#1a1a1a] hover:bg-gray-100 dark:hover:bg-[#252525] border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-400 rounded-xl transition-colors hover:text-black dark:hover:text-white"
+                    className="flex-1 h-[38px] flex items-center justify-center bg-white dark:bg-[#1a1a1a] hover:bg-gray-100 dark:hover:bg-[#252525] border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-400 rounded-xl transition-colors hover:text-black dark:hover:text-white"
                    >
                       {theme === 'dark' ? <FiSun className="w-4 h-4" /> : <FiMoon className="w-4 h-4" />}
                   </button>
