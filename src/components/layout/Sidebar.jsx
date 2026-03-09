@@ -183,7 +183,7 @@ export default function Sidebar() {
 
        {/* --- DESKTOP SIDEBAR CONTENT --- */}
        <div ref={desktopContainerRef} className="hidden md:flex w-full h-full">
-         <SpotlightCard className="flex flex-col gap-0 p-4 rounded-3xl transition-all duration-300 pointer-events-auto bg-transparent border border-transparent hover:border-white/5 h-fit w-full" spotlightColor="rgba(255, 255, 255, 0.06)">
+         <SpotlightCard className="flex flex-col gap-0 p-4 rounded-3xl transition-all duration-300 pointer-events-auto bg-transparent border border-transparent hover:border-white/5 h-full w-full" spotlightColor="rgba(255, 255, 255, 0.06)">
               {/* Header: Profile & Identity */}
               <div className="flex flex-col items-center mb-6">
                   <div className="relative group cursor-default mb-3 flex flex-col items-center">
@@ -200,16 +200,6 @@ export default function Sidebar() {
                       </div>
                       <p className="text-sm text-gray-500 leading-none mt-1">@Julianvin</p>
                   </div>
-              </div>
-  
-               {/* Theme Toggle */}
-              <div className="flex items-center gap-3 w-full mb-0">
-                  <button 
-                    onClick={toggleTheme}
-                    className="flex-1 h-[38px] flex items-center justify-center bg-white dark:bg-[#1a1a1a] hover:bg-gray-100 dark:hover:bg-[#252525] border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-400 rounded-xl transition-colors hover:text-black dark:hover:text-white"
-                   >
-                      {theme === 'dark' ? <FiSun className="w-4 h-4" /> : <FiMoon className="w-4 h-4" />}
-                  </button>
               </div>
   
                {/* Navigation */}
@@ -240,7 +230,19 @@ export default function Sidebar() {
               </nav>
   
               {/* Footer */}
-              <div className="pt-4 mt-2 border-t border-gray-200 dark:border-[#1a1a1a] flex flex-col items-center gap-3">
+              <div className="pt-6 mt-auto border-t border-gray-200 dark:border-[#1a1a1a] flex flex-col items-center gap-4">
+                  {/* Minimal Theme Toggle */}
+                  <button 
+                    onClick={toggleTheme}
+                    className="w-10 h-10 flex items-center justify-center bg-white dark:bg-[#1a1a1a] hover:bg-gray-100 dark:hover:bg-[#252525] border border-gray-200 dark:border-[#333] text-gray-600 dark:text-gray-400 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 group shadow-sm"
+                    title={theme === 'dark' ? 'Nyalakan Mode Terang' : 'Nyalakan Mode Gelap'}
+                  >
+                      {theme === 'dark' ? 
+                        <FiSun className="w-5 h-5 group-hover:text-yellow-500 transition-colors" /> : 
+                        <FiMoon className="w-5 h-5 group-hover:text-blue-400 transition-colors" />
+                      }
+                  </button>
+
                   <p className="text-[10px] text-gray-500 dark:text-gray-600 uppercase tracking-widest leading-relaxed font-bold text-center">
                       © 2026 Delvin Julian • Built with Love
                   </p>
