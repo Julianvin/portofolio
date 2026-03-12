@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { GoOrganization, GoLocation } from 'react-icons/go';
+import { GoOrganization, GoLocation, GoCheckCircleFill, GoBriefcase } from 'react-icons/go';
 import Skills from '../components/home/Skills';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
@@ -58,16 +58,14 @@ export default function Home() {
                   </span>
               </div>
               
-              {/* Open To Work Pill */}
-              <div className="relative group cursor-pointer mt-1 md:mt-0">
-                  {/* Outer pulsating glow */}
-                  <div className="absolute -inset-0.5 bg-green-500/40 dark:bg-green-500/30 rounded-full blur-md animate-pulse"></div>
-                  <span className="relative flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border bg-white dark:bg-[#161b22] border-green-300 dark:border-green-500/30 text-green-700 dark:text-green-400 transition-transform duration-300 hover:-translate-y-1">
-                      <span className="relative flex h-2.5 w-2.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                      </span>
-                      <span className="font-bold tracking-wide">Tersedia untuk bekerja</span>
+              {/* Employed Status Pill */}
+              <div className="relative group cursor-default mt-1 md:mt-0">
+                  {/* Subtle ambient glow */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 dark:from-blue-500/15 dark:via-indigo-500/15 dark:to-purple-500/15 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <span className="relative flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-500/10 dark:via-indigo-500/10 dark:to-purple-500/10 border-blue-200/80 dark:border-indigo-500/25 text-indigo-700 dark:text-indigo-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_4px_15px_-3px_rgba(99,102,241,0.3)]">
+                      <GoBriefcase className="w-4 h-4 text-indigo-500 dark:text-indigo-400 transition-transform duration-300 group-hover:scale-110" />
+                      <span className="font-bold tracking-wide">Sudah Bekerja</span>
+                      <GoCheckCircleFill className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
                   </span>
               </div>
           </div>
