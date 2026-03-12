@@ -242,7 +242,7 @@ export default function AdminDashboard() {
               </div>
             </div>
             <div className="pt-4 mt-4 border-t border-zinc-800 text-center">
-              <p className="text-[10px] text-zinc-600">Built with Love by Delvin Julian © 2026</p>
+              <p className="text-[10px] text-zinc-600">Delvin Julian © 2026</p>
             </div>
           </div>
         </div>

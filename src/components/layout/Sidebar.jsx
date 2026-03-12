@@ -244,7 +244,7 @@ export default function Sidebar() {
                   </button>
 
                   <p className="text-[10px] text-gray-500 dark:text-gray-600 uppercase tracking-widest leading-relaxed font-bold text-center">
-                      © 2026 Delvin Julian • Built with Love
+                      © 2026 Delvin Julian
                   </p>
               </div>
         </SpotlightCard>
