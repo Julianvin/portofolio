@@ -64,7 +64,7 @@ export default function Home() {
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 dark:from-blue-500/15 dark:via-indigo-500/15 dark:to-purple-500/15 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <span className="relative flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-500/10 dark:via-indigo-500/10 dark:to-purple-500/10 border-blue-200/80 dark:border-indigo-500/25 text-indigo-700 dark:text-indigo-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_4px_15px_-3px_rgba(99,102,241,0.3)]">
                       <GoBriefcase className="w-4 h-4 text-indigo-500 dark:text-indigo-400 transition-transform duration-300 group-hover:scale-110" />
-                      <span className="font-bold tracking-wide">Sudah Bekerja</span>
+                      <span className="font-bold tracking-wide">Sedang Bekerja</span>
                       <GoCheckCircleFill className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
                   </span>
               </div>
