@@ -118,6 +118,7 @@ export default function AdminTechStacks() {
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 w-16">Icon</th>
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Name</th>
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 w-16">Color</th>
+                <th className="text-center px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 w-16">Home</th>
                 <th className="text-left px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500 hidden sm:table-cell">Identifier</th>
                 <th className="text-right px-6 py-4 text-xs font-medium uppercase tracking-wider text-zinc-500">Actions</th>
               </tr>
@@ -129,13 +130,14 @@ export default function AdminTechStacks() {
                     <td className="px-6 py-4"><div className="h-8 w-8 rounded bg-zinc-800 animate-pulse" /></td>
                     <td className="px-6 py-4"><div className="h-5 w-32 rounded bg-zinc-800 animate-pulse" /></td>
                     <td className="px-6 py-4"><div className="h-5 w-8 rounded-full bg-zinc-800 animate-pulse" /></td>
+                    <td className="px-6 py-4"><div className="h-5 w-5 mx-auto rounded-full bg-zinc-800 animate-pulse" /></td>
                     <td className="px-6 py-4 hidden sm:table-cell"><div className="h-5 w-24 rounded bg-zinc-800 animate-pulse" /></td>
                     <td className="px-6 py-4"><div className="h-5 w-20 ml-auto rounded bg-zinc-800 animate-pulse" /></td>
                   </tr>
                 ))
               ) : stacks.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-16 text-center">
+                   <td colSpan={6} className="px-6 py-16 text-center">
                     <div className="flex flex-col items-center gap-2">
                       <div className="w-12 h-12 rounded-2xl bg-zinc-800/50 flex items-center justify-center text-zinc-600 mb-2">
                         <FiSearch className="w-6 h-6" />
@@ -178,6 +180,9 @@ export default function AdminTechStacks() {
                         />
                         <code className="text-[10px] text-zinc-500 font-mono">{ts.color || '#656d76'}</code>
                       </div>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <span className={`inline-block w-2.5 h-2.5 rounded-full ${ts.is_show_on_home ? 'bg-green-400' : 'bg-zinc-600'}`} title={ts.is_show_on_home ? 'Visible on Home' : 'Hidden from Home'} />
                     </td>
                     <td className="px-6 py-4 hidden sm:table-cell">
                       <code className="text-xs px-2 py-1 rounded bg-zinc-800 text-zinc-400 font-mono">{ts.icon_identifier}</code>

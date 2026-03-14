@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { fetchTechStackById, createTechStack, updateTechStack } from '../services/techStackService';
 import DynamicIcon from '../components/DynamicIcon';
-import { FiSave, FiArrowLeft, FiAlertTriangle, FiCheck } from 'react-icons/fi';
+import { FiSave, FiArrowLeft, FiAlertTriangle, FiCheck, FiHome } from 'react-icons/fi';
 
 export default function TechStackForm() {
   const { id } = useParams();
@@ -12,6 +12,7 @@ export default function TechStackForm() {
   const [name, setName] = useState('');
   const [iconIdentifier, setIconIdentifier] = useState('');
   const [color, setColor] = useState('#656d76');
+  const [isShowOnHome, setIsShowOnHome] = useState(false);
   const [loading, setLoading] = useState(isEdit);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
@@ -26,6 +27,7 @@ export default function TechStackForm() {
         setName(ts.name || '');
         setIconIdentifier(ts.icon_identifier || '');
         setColor(ts.color || '#656d76');
+        setIsShowOnHome(ts.is_show_on_home ?? false);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -49,7 +51,8 @@ export default function TechStackForm() {
       const payload = { 
         name: name.trim(), 
         icon_identifier: iconIdentifier.trim(),
-        color: color.trim() || '#656d76'
+        color: color.trim() || '#656d76',
+        is_show_on_home: isShowOnHome
       };
       if (isEdit) {
         await updateTechStack(id, payload);
@@ -177,6 +180,35 @@ export default function TechStackForm() {
             <p className="text-xs text-zinc-600 mt-2">
               Standard hex code for the brand's primary color.
             </p>
+          </div>
+
+          {/* Show on Home Toggle */}
+          <div className="flex items-center justify-between p-4 rounded-xl bg-zinc-800/30 border border-zinc-700/50">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                <FiHome className="w-4 h-4 text-blue-400" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-white">Tampilkan di Home</p>
+                <p className="text-xs text-zinc-500">Tampilkan tech stack ini di halaman utama</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={isShowOnHome}
+              aria-label="Toggle show on home"
+              onClick={() => setIsShowOnHome((v) => !v)}
+              className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors duration-200 cursor-pointer ${
+                isShowOnHome ? 'bg-blue-600' : 'bg-zinc-700'
+              }`}
+            >
+              <span
+                className={`inline-block h-4 w-4 transform rounded-full bg-white shadow-sm transition-transform duration-200 ${
+                  isShowOnHome ? 'translate-x-6' : 'translate-x-1'
+                }`}
+              />
+            </button>
           </div>
         </div>
 

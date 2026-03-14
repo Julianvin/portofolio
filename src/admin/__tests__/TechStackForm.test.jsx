@@ -84,10 +84,13 @@ describe('TechStackForm', () => {
     await user.click(submitBtn);
 
     await waitFor(() => {
-      expect(createTechStack).toHaveBeenCalledWith({
-        name: 'React',
-        icon_identifier: 'FaReact',
-      });
+      expect(createTechStack).toHaveBeenCalledWith(
+        expect.objectContaining({
+          name: 'React',
+          icon_identifier: 'FaReact',
+          is_show_on_home: false,
+        })
+      );
     });
   });
 
@@ -112,6 +115,7 @@ describe('TechStackForm', () => {
       id: 'abc-123',
       name: 'Tailwind CSS',
       icon_identifier: 'SiTailwindcss',
+      is_show_on_home: true,
     });
 
     renderForm('/admin/tech-stacks/abc-123/edit');
@@ -130,6 +134,7 @@ describe('TechStackForm', () => {
       id: 'abc-123',
       name: 'Tailwind CSS',
       icon_identifier: 'SiTailwindcss',
+      is_show_on_home: true,
     });
     updateTechStack.mockResolvedValue({
       id: 'abc-123',
@@ -153,10 +158,14 @@ describe('TechStackForm', () => {
     await user.click(screen.getByRole('button', { name: /update/i }));
 
     await waitFor(() => {
-      expect(updateTechStack).toHaveBeenCalledWith('abc-123', {
-        name: 'Tailwind CSS v4',
-        icon_identifier: 'SiTailwindcss',
-      });
+      expect(updateTechStack).toHaveBeenCalledWith(
+        'abc-123',
+        expect.objectContaining({
+          name: 'Tailwind CSS v4',
+          icon_identifier: 'SiTailwindcss',
+          is_show_on_home: true,
+        })
+      );
     });
   });
 });

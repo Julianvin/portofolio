@@ -38,6 +38,7 @@ export default function Skills({ ready = false }) {
       const { data, error } = await supabase
         .from('tech_stacks')
         .select('*')
+        .eq('is_show_on_home', true)
         .order('name');
       if (error) throw error;
       return data || [];
