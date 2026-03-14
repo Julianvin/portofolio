@@ -81,7 +81,7 @@ export default function Home() {
       {/* Premium Skills Grid */}
       <section>
           <div className="bio-animate mb-8 flex items-center gap-2">
-              <h2 className="text-lg font-bold text-gray-900 dark:text-white">Teknologi yang Digunakan</h2>
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white">Teknologi yang saya Digunakan</h2>
               <span className="text-blue-600 dark:text-blue-500 font-mono text-xs bg-blue-50 dark:bg-blue-500/10 px-2 py-0.5 rounded border border-blue-200 dark:border-blue-500/20">Alat</span>
           </div>
           
