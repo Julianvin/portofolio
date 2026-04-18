@@ -58,14 +58,17 @@ export default function Home() {
                   </span>
               </div>
               
-              {/* Employed Status Pill */}
+              {/* Open To Work Status Pill */}
               <div className="relative group cursor-default mt-1 md:mt-0">
-                  {/* Subtle ambient glow */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 dark:from-blue-500/15 dark:via-indigo-500/15 dark:to-purple-500/15 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <span className="relative flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full border bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 dark:from-blue-500/10 dark:via-indigo-500/10 dark:to-purple-500/10 border-blue-200/80 dark:border-indigo-500/25 text-indigo-700 dark:text-indigo-300 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_4px_15px_-3px_rgba(99,102,241,0.3)]">
-                      <GoBriefcase className="w-4 h-4 text-indigo-500 dark:text-indigo-400 transition-transform duration-300 group-hover:scale-110" />
-                      <span className="font-bold tracking-wide">Sedang Bekerja</span>
-                      <GoCheckCircleFill className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
+                  {/* Noticeable ambient glow to make it pop */}
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500/50 via-green-500/50 to-emerald-500/50 dark:from-emerald-500/40 dark:via-green-500/40 dark:to-emerald-500/40 rounded-full blur-md opacity-60 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
+                  <span className="relative flex items-center gap-2.5 px-3 py-1.5 md:px-4 md:py-2 rounded-full border bg-gradient-to-r from-emerald-50 via-green-50 to-emerald-50 dark:from-emerald-500/10 dark:via-green-500/10 dark:to-emerald-500/10 border-emerald-400/80 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-300 transition-all duration-300 group-hover:-translate-y-1 shadow-[0_0_12px_rgba(16,185,129,0.4)] group-hover:shadow-[0_4px_20px_-3px_rgba(16,185,129,0.6)]">
+                      {/* Pinging dot for attention */}
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-full w-full bg-emerald-500"></span>
+                      </span>
+                      <span className="font-bold tracking-wide">Open To Work</span>
                   </span>
               </div>
           </div>
