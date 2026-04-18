@@ -82,8 +82,7 @@ Follow these steps to set up the project locally.
 **M. Delvin Julian**
 
 - **Role**: Software Developer #OPENTOWORK
-- **Location**: [Your Location Here]
-- **Contact**: [Your Email Here]
+- **Contact**: mdelvinjulian@gmail.com
 
 ---
 *Built with ❤️ using React*
