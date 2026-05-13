@@ -4,15 +4,13 @@ import Sidebar from './Sidebar';
 
 export default function Layout() {
   return (
-    <div className="h-screen w-full bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-gray-100 font-sans transition-colors duration-500 overflow-hidden flex justify-center relative">
-      {/* Background Ambiance */}
+    <div className="h-screen w-full bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-gray-100 font-sans overflow-hidden flex justify-center relative">
+      {/* Background Ambiance — lightweight radial gradients (no blur/blend/animation) */}
       <div className="fixed inset-0 pointer-events-none z-0">
-          {/* Subtle Noise Texture */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
-          
-          {/* Gradient Orb */}
-          <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow"></div>
-          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-500/10 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full opacity-[0.07]"
+            style={{ background: 'radial-gradient(circle, rgba(59,130,246,0.25), transparent 70%)' }} />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full opacity-[0.07]"
+            style={{ background: 'radial-gradient(circle, rgba(147,51,234,0.25), transparent 70%)' }} />
       </div>
 
       {/* Central Container: Full Height App Shell */}

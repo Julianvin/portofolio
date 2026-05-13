@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiMenu, FiX } from 'react-icons/fi';
+import { FiHome, FiUser, FiFolder, FiBriefcase, FiLayout, FiMail, FiChevronRight, FiCheckCircle, FiSun, FiMoon, FiMenu, FiX, FiFileText } from 'react-icons/fi';
 import { MdVerified } from 'react-icons/md';
 import { motion, LayoutGroup } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -16,6 +16,7 @@ export default function Sidebar() {
     { name: 'Tentang', path: '/about', icon: FiUser },
     { name: 'Pencapaian', path: '/achievements', icon: FiBriefcase }, 
     { name: 'Proyek', path: '/projects', icon: FiFolder },
+    { name: 'Blog', path: '/blogs', icon: FiFileText },
     { name: 'Dashboard', path: '/dashboard', icon: FiLayout },
     { name: 'Kontak', path: '/contact', icon: FiMail },
   ];
@@ -88,7 +89,7 @@ export default function Sidebar() {
        
        <LayoutGroup>
        {/* --- MOBILE FIXED HEADER --- */}
-       <div className="md:hidden fixed top-0 left-0 right-0 z-[60] px-4 py-2.5 flex items-center justify-between bg-white/40 dark:bg-[#0d1117]/50 backdrop-blur-2xl backdrop-saturate-150 border-b border-gray-200/30 dark:border-white/10 pointer-events-auto shadow-sm shadow-black/5">
+       <div className="md:hidden fixed top-0 left-0 right-0 z-[60] px-4 py-2.5 flex items-center justify-between bg-white/95 dark:bg-[#0d1117]/95 border-b border-gray-200/30 dark:border-white/10 pointer-events-auto shadow-sm shadow-black/5">
           {/* Left: Identity — conditionally rendered here when menu is CLOSED */}
           {!isMobileMenuOpen && (
             <motion.div 
@@ -131,7 +132,7 @@ export default function Sidebar() {
        {/* --- MOBILE OVERLAY NAVIGATION --- */}
        <div 
          ref={overlayRef}
-         className="md:hidden fixed inset-0 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-xl z-[50] flex flex-col justify-center items-center pointer-events-auto"
+         className="md:hidden fixed inset-0 bg-white dark:bg-neutral-900 z-[50] flex flex-col justify-center items-center pointer-events-auto"
          style={{ clipPath: "circle(0% at 100% 0%)" }} 
        >
           <div ref={menuItemsRef} className="flex flex-col gap-6 items-start w-full pl-10 pr-6">
