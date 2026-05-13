@@ -16,7 +16,7 @@ export default function Sidebar() {
     { name: 'Tentang', path: '/about', icon: FiUser },
     { name: 'Pencapaian', path: '/achievements', icon: FiBriefcase }, 
     { name: 'Proyek', path: '/projects', icon: FiFolder },
-    { name: 'Blog', path: '/blogs', icon: FiFileText },
+    // { name: 'Blog', path: '/blogs', icon: FiFileText }, // Belum launching
     { name: 'Dashboard', path: '/dashboard', icon: FiLayout },
     { name: 'Kontak', path: '/contact', icon: FiMail },
   ];
