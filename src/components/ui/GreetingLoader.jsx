@@ -45,8 +45,8 @@ function useResourceLoading() {
       // to guarantee the minimum display time is respected.
     };
 
-    // Minimum 5s display time so all enhanced animations play out
-    const minDelay = new Promise((r) => setTimeout(r, 5000));
+    // Minimum display time — synced with counter animation (~3.6s)
+    const minDelay = new Promise((r) => setTimeout(r, 3800));
     Promise.all([checkResources(), minDelay]).then(() => {
       if (!cancelled) {
         setProgress(100);
@@ -497,7 +497,7 @@ export default function GreetingLoader({ onComplete }) {
             ease: 'power4.inOut',
           }, '-=0.1');
         }, containerRef);
-      }, 800);
+      }, 200);
 
       return () => clearTimeout(exitDelay);
     }
