@@ -24,3 +24,23 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Drafts & internal docs
+blog-drafts/
+SEO_PLAN.md
+
+# Build artifacts & logs
+build.log
+build2.log
+build_log.txt
+build_output.txt
+
+# Test artifacts
+testsprite_tests/
+testsprite_run.log
+
+# Supabase local
+supabase/
+
+# AI tools
+.gemini/
