@@ -1,128 +1,205 @@
-import React, { useState, useEffect, memo } from 'react';
-import { FiBox } from 'react-icons/fi';
+import React, { memo } from 'react';
+import {
+  FaAws,
+  FaBootstrap,
+  FaCss3Alt,
+  FaDocker,
+  FaFigma,
+  FaGitAlt,
+  FaGithub,
+  FaGithubAlt,
+  FaGithubSquare,
+  FaGitlab,
+  FaHtml5,
+  FaJava,
+  FaJs,
+  FaJsSquare,
+  FaLaravel,
+  FaNodeJs,
+  FaNpm,
+  FaPhp,
+  FaPython,
+  FaReact,
+  FaSass,
+  FaVuejs,
+  FaWordpress,
+  FaWordpressSimple,
+} from 'react-icons/fa';
+import {
+  FiBox,
+  FiCloud,
+  FiCode,
+  FiCpu,
+  FiDatabase,
+  FiGithub,
+  FiGlobe,
+  FiLayers,
+  FiPackage,
+  FiServer,
+  FiTerminal,
+} from 'react-icons/fi';
+import {
+  SiAlpinedotjs,
+  SiAxios,
+  SiBootstrap,
+  SiCloudflare,
+  SiCloudflarepages,
+  SiCloudflareworkers,
+  SiCloudinary,
+  SiCss3,
+  SiDocker,
+  SiExpress,
+  SiFigma,
+  SiFilament,
+  SiFirebase,
+  SiFramer,
+  SiGit,
+  SiGithub,
+  SiGithubactions,
+  SiGithubpages,
+  SiGitlab,
+  SiHtml5,
+  SiInertia,
+  SiJavascript,
+  SiJquery,
+  SiLaravel,
+  SiLivewire,
+  SiMongodb,
+  SiMysql,
+  SiNetlify,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNuxtdotjs,
+  SiOpenai,
+  SiPhp,
+  SiPostgresql,
+  SiPrisma,
+  SiReact,
+  SiReactquery,
+  SiReactrouter,
+  SiRedis,
+  SiRedux,
+  SiSanity,
+  SiSass,
+  SiShadcnui,
+  SiStrapi,
+  SiStripe,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+  SiVite,
+  SiVitest,
+  SiVuedotjs,
+} from 'react-icons/si';
 
-// ── Map icon prefix → react-icons module path ──
-const ICON_FAMILIES = {
-  Fa: () => import('react-icons/fa'),
-  Fi: () => import('react-icons/fi'),
-  Si: () => import('react-icons/si'),
-  Md: () => import('react-icons/md'),
-  Io: () => import('react-icons/io5'),
-  Bi: () => import('react-icons/bi'),
-  Hi: () => import('react-icons/hi'),
-  Bs: () => import('react-icons/bs'),
-  Ai: () => import('react-icons/ai'),
-  Ri: () => import('react-icons/ri'),
-  Tb: () => import('react-icons/tb'),
-  Lu: () => import('react-icons/lu'),
-  Gi: () => import('react-icons/gi'),
-  Ti: () => import('react-icons/ti'),
-  Vsc: () => import('react-icons/vsc'),
-  Di: () => import('react-icons/di'),
-  Gr: () => import('react-icons/gr'),
-  Cg: () => import('react-icons/cg'),
-  Im: () => import('react-icons/im'),
-  Go: () => import('react-icons/go'),
-  Pi: () => import('react-icons/pi'),
-  Lia: () => import('react-icons/lia'),
-  Tfi: () => import('react-icons/tfi'),
-  Rx: () => import('react-icons/rx'),
-  Ci: () => import('react-icons/ci'),
-  Sl: () => import('react-icons/sl'),
-};
+const ICON_REGISTRY = Object.freeze({
+  FaAws,
+  FaBootstrap,
+  FaCss3Alt,
+  FaDocker,
+  FaFigma,
+  FaGitAlt,
+  FaGithub,
+  FaGithubAlt,
+  FaGithubSquare,
+  FaGitlab,
+  FaHtml5,
+  FaJava,
+  FaJs,
+  FaJsSquare,
+  FaLaravel,
+  FaNodeJs,
+  FaNpm,
+  FaPhp,
+  FaPython,
+  FaReact,
+  FaSass,
+  FaVuejs,
+  FaWordpress,
+  FaWordpressSimple,
+  FiCloud,
+  FiCode,
+  FiCpu,
+  FiDatabase,
+  FiGithub,
+  FiGlobe,
+  FiLayers,
+  FiPackage,
+  FiServer,
+  FiTerminal,
+  SiAlpinedotjs,
+  SiAxios,
+  SiBootstrap,
+  SiCloudflare,
+  SiCloudflarepages,
+  SiCloudflareworkers,
+  SiCloudinary,
+  SiCss3,
+  SiDocker,
+  SiExpress,
+  SiFigma,
+  SiFilament,
+  SiFirebase,
+  SiFramer,
+  SiGit,
+  SiGithub,
+  SiGithubactions,
+  SiGithubpages,
+  SiGitlab,
+  SiHtml5,
+  SiInertia,
+  SiJavascript,
+  SiJquery,
+  SiLaravel,
+  SiLivewire,
+  SiMongodb,
+  SiMysql,
+  SiNetlify,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiNuxtdotjs,
+  SiOpenai,
+  SiPhp,
+  SiPostgresql,
+  SiPrisma,
+  SiReact,
+  SiReactquery,
+  SiReactrouter,
+  SiRedis,
+  SiRedux,
+  SiSanity,
+  SiSass,
+  SiShadcnui,
+  SiStrapi,
+  SiStripe,
+  SiSupabase,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+  SiVite,
+  SiVitest,
+  SiVuedotjs,
+});
 
-// Cache loaded icons to avoid re-importing
-const iconCache = new Map();
-
-/**
- * Parses the icon prefix from an identifier string.
- * Handles multi-char prefixes like "Vsc", "Lia", "Tfi" before two-char ones.
- */
-function getPrefix(identifier) {
-  // Try 3-char prefixes first
-  const three = identifier.substring(0, 3);
-  if (ICON_FAMILIES[three]) return three;
-  // Then 2-char
-  const two = identifier.substring(0, 2);
-  if (ICON_FAMILIES[two]) return two;
-  return null;
+function getRegisteredIcon(iconIdentifier) {
+  if (!iconIdentifier || typeof iconIdentifier !== 'string') return null;
+  return ICON_REGISTRY[iconIdentifier.trim()] || null;
 }
 
-/**
- * DynamicIcon — renders a react-icons icon from its identifier string.
- *
- * @param {string} iconIdentifier - e.g. "FaReact", "SiTailwindcss", "FiGithub"
- * @param {string} [className]    - Tailwind/CSS classes
- * @param {number} [size]         - Icon size in px
- */
 const DynamicIcon = memo(function DynamicIcon({ iconIdentifier, className = '', size = 20, ...rest }) {
-  const [IconComponent, setIconComponent] = useState(null);
-  const [failed, setFailed] = useState(false);
+  const IconComponent = getRegisteredIcon(iconIdentifier);
 
-  useEffect(() => {
-    if (!iconIdentifier || typeof iconIdentifier !== 'string') {
-      setFailed(true);
-      setIconComponent(null);
-      return;
-    }
-
-    // Check cache first
-    if (iconCache.has(iconIdentifier)) {
-      setIconComponent(() => iconCache.get(iconIdentifier));
-      setFailed(false);
-      return;
-    }
-
-    let cancelled = false;
-
-    const loadIcon = async () => {
-      const prefix = getPrefix(iconIdentifier);
-      if (!prefix) {
-        if (!cancelled) setFailed(true);
-        return;
-      }
-
-      try {
-        const module = await ICON_FAMILIES[prefix]();
-        const Icon = module[iconIdentifier];
-
-        if (!cancelled) {
-          if (Icon) {
-            iconCache.set(iconIdentifier, Icon);
-            setIconComponent(() => Icon);
-            setFailed(false);
-          } else {
-            setFailed(true);
-          }
-        }
-      } catch {
-        if (!cancelled) setFailed(true);
-      }
-    };
-
-    setFailed(false);
-    setIconComponent(null);
-    loadIcon();
-
-    return () => { cancelled = true; };
-  }, [iconIdentifier]);
-
-  if (failed || (!IconComponent && !iconIdentifier)) {
+  if (!IconComponent) {
     return <FiBox className={className} size={size} data-testid="icon-fallback" {...rest} />;
   }
 
-  if (!IconComponent) {
-    // Loading state — small pulsing box
-    return (
-      <span
-        className={`inline-block rounded bg-zinc-700 animate-pulse ${className}`}
-        style={{ width: size, height: size }}
-        data-testid="icon-loading"
-      />
-    );
-  }
-
-  return <IconComponent className={className} size={size} data-testid="icon-resolved" {...rest} />;
+  return React.createElement(IconComponent, {
+    className,
+    size,
+    'data-testid': 'icon-resolved',
+    ...rest,
+  });
 });
 
 export default DynamicIcon;

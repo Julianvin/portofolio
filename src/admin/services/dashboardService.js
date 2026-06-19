@@ -38,7 +38,7 @@ export async function fetchDashboardStats() {
 
 export async function checkSystemStatus() {
   try {
-    const { data, error } = await supabase.from('projects').select('id', { count: 'exact', head: true });
+    const { error } = await supabase.from('projects').select('id', { count: 'exact', head: true });
     if (error) throw error;
     return true;
   } catch (err) {

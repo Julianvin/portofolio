@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { FiMail, FiLock, FiArrowRight, FiAlertTriangle, FiShield } from 'react-icons/fi';
+import { Helmet } from 'react-helmet-async';
 
 export default function Login() {
   const { login, isAuthenticated, loading: authLoading } = useAuth();
@@ -63,6 +64,10 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 relative overflow-hidden">
+      <Helmet>
+        <title>Admin Login | Restricted</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Background accents */}
       <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-600/8 blur-[140px] rounded-full" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] bg-purple-600/8 blur-[140px] rounded-full" />

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { FiLogOut, FiShield, FiHome, FiFolder, FiCpu, FiBriefcase, FiMenu, FiX, FiAward } from 'react-icons/fi';
+import { FiLogOut, FiShield, FiHome, FiFolder, FiCpu, FiBriefcase, FiMenu, FiX, FiAward, FiFileText, FiTag } from 'react-icons/fi';
+import { Helmet } from 'react-helmet-async';
 
 const NAV_ITEMS = [
   { to: '/admin/dashboard', label: 'Dashboard', icon: FiHome },
   { to: '/admin/projects', label: 'Projects', icon: FiFolder },
   { to: '/admin/tech-stacks', label: 'Tech Stacks', icon: FiCpu },
   { to: '/admin/experiences', label: 'Experiences', icon: FiBriefcase },
+  { to: '/admin/blogs', label: 'Blogs', icon: FiFileText },
+  { to: '/admin/categories-tags', label: 'Categories & Tags', icon: FiTag },
   { to: '/admin/achievements', label: 'Achievements', icon: FiAward },
 ];
 
@@ -30,6 +33,9 @@ export default function AdminLayout() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100 font-sans">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Top Header Bar */}
       <header className="sticky top-0 z-50 h-16 border-b border-zinc-800 bg-[#0a0a0a]/80 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 flex items-center justify-between">

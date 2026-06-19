@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { fetchDashboardStats, checkSystemStatus } from '../services/dashboardService';
 import { 
   FiFolder, 
@@ -15,7 +14,6 @@ import {
 } from 'react-icons/fi';
 
 export default function AdminDashboard() {
-  const { user } = useAuth();
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
   const [isOnline, setIsOnline] = useState(false);
