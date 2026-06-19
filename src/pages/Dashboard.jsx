@@ -7,6 +7,7 @@ import {
 import {
   ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
+import { Helmet } from 'react-helmet-async';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 
 // ── Umami API Config ───────────────────────────────────────────────
@@ -190,6 +191,9 @@ export default function Dashboard() {
 
   return (
     <div className="w-full min-h-[80vh] px-2 md:px-8 py-8 md:py-12">
+      <Helmet>
+        <meta name="robots" content="noindex, follow" />
+      </Helmet>
       {/* ── Header (Matching Site Style) ────────────────────────────────────────── */}
       <div className="mb-8 md:mb-12 flex items-center gap-4">
          <motion.div

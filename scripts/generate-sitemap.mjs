@@ -8,8 +8,6 @@ const STATIC_ROUTES = [
   { path: '/about', priority: '0.8' },
   { path: '/achievements', priority: '0.8' },
   { path: '/projects', priority: '0.8' },
-  { path: '/blogs', priority: '0.9' },
-  { path: '/dashboard', priority: '0.5' },
   { path: '/contact', priority: '0.7' },
 ];
 
@@ -58,6 +56,7 @@ const routes = STATIC_ROUTES.map((route) => ({
   priority: route.priority,
 }));
 
+/*
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY;
 
@@ -86,6 +85,7 @@ if (supabaseUrl && supabaseAnonKey) {
     console.warn(`Skipping blog sitemap entries: ${error.message}`);
   }
 }
+*/
 
 const xml = [
   '<?xml version="1.0" encoding="UTF-8"?>',
