@@ -43,8 +43,12 @@ function RouteFallback() {
     );
 }
 
+const VALID_ROUTES = ['/', '/about', '/achievements', '/projects', '/contact'];
+
 export default function App() {
-    const [isLoading, setIsLoading] = useState(true);
+    const path = window.location.pathname;
+    const isKnownRoute = VALID_ROUTES.includes(path) || path.startsWith('/admin');
+    const [isLoading, setIsLoading] = useState(isKnownRoute);
 
     return (
         <HelmetProvider>
