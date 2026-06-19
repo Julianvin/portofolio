@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import DynamicIcon from '../../admin/components/DynamicIcon';
 
-/**
- * TechPill — A reusable, highly-optimized tech stack badge with dynamic glow effects.
- * 
- * @param {Object} tech - Tech object containing name, color, and icon_identifier (or iconIdentifier).
- * @param {Object} [variants] - Optional Framer Motion variants for staggered animations.
- */
 export default function TechPill({ tech, variants }) {
   const [isHovered, setIsHovered] = useState(false);
   const brandColor = tech.color || '#656d76';

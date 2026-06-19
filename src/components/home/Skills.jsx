@@ -30,6 +30,8 @@ const pillVariants = {
   },
 };
 
+const SKELETON_WIDTHS = [88, 124, 104, 136, 96, 118, 144, 108, 132, 92, 126, 112];
+
 // ── Main Component ──
 export default function Skills({ ready = false }) {
   const { data: techStacks, isLoading: loading } = useCachedFetch(
@@ -53,7 +55,7 @@ export default function Skills({ ready = false }) {
           <div
             key={i}
             className="h-10 rounded-full bg-white/5 border border-white/5 animate-pulse"
-            style={{ width: `${80 + Math.random() * 60}px` }}
+            style={{ width: `${SKELETON_WIDTHS[i]}px` }}
           />
         ))}
       </div>

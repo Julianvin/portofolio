@@ -13,7 +13,7 @@ const inflightRequests = new Map();
 
 function getCachedData(key) {
   try {
-    const raw = sessionStorage.getItem(CACHE_PREFIX + key);
+    const raw = localStorage.getItem(CACHE_PREFIX + key);
     if (!raw) return null;
 
     const { data, expiresAt } = JSON.parse(raw);
@@ -22,10 +22,10 @@ function getCachedData(key) {
     }
 
     // Expired — clean up
-    sessionStorage.removeItem(CACHE_PREFIX + key);
+    localStorage.removeItem(CACHE_PREFIX + key);
     return null;
   } catch {
-    sessionStorage.removeItem(CACHE_PREFIX + key);
+    localStorage.removeItem(CACHE_PREFIX + key);
     return null;
   }
 }
@@ -33,39 +33,26 @@ function getCachedData(key) {
 function setCachedData(key, data, ttl) {
   try {
     const entry = { data, expiresAt: Date.now() + ttl };
-    sessionStorage.setItem(CACHE_PREFIX + key, JSON.stringify(entry));
+    localStorage.setItem(CACHE_PREFIX + key, JSON.stringify(entry));
   } catch (err) {
-    // sessionStorage full or serialization error — silently skip
+    // localStorage full or serialization error — silently skip
     console.warn('[useCachedFetch] Failed to write cache:', err);
   }
 }
 
 // ── Public Utility: Cache Invalidation ──
 
-/**
- * Clear cached data for one or more keys.
- * Call this after successful mutations (create/update/delete)
- * to ensure the next fetch returns fresh data.
- *
- * @param {...string} keys - Cache keys to invalidate (e.g. 'techStacks', 'publicProjects')
- */
+
 export function clearCache(...keys) {
   keys.forEach((key) => {
-    sessionStorage.removeItem(CACHE_PREFIX + key);
+    localStorage.removeItem(CACHE_PREFIX + key);
     inflightRequests.delete(key);
   });
 }
 
 // ── Custom Hook ──
 
-/**
- * Fetch data with sessionStorage caching, TTL, AbortController, and in-flight dedup.
- *
- * @param {string} cacheKey   - Unique cache key (e.g. 'techStacks')
- * @param {Function} fetchFn  - Async function that returns the data. Receives no arguments.
- * @param {Object} [options]  - { ttl?: number } in milliseconds
- * @returns {{ data: any, isLoading: boolean, error: Error|null }}
- */
+
 export default function useCachedFetch(cacheKey, fetchFn, options = {}) {
   const { ttl = DEFAULT_TTL } = options;
 

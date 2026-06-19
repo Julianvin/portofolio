@@ -4,7 +4,7 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi';
 import SpotlightCard from '../ui/SpotlightCard';
 import TechPill from '../ui/TechPill';
 
-export default function ProjectCard({ project, index, onClick }) {
+export default function ProjectCard({ project, onClick }) {
   return (
     <motion.div
       layoutId={`project-card-${project.id}`}

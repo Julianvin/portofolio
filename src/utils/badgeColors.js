@@ -1,11 +1,4 @@
-/**
- * Returns Tailwind css classes for badge pill depending on type or category name
- * 
- * Target styling: bg-color/10 text-color border border-color/20
- * 
- * @param {string} value Enum value from `type` or `category` constraints.
- * @returns {string} Tailwind css classes for the badge.
- */
+
 export function getBadgeColor(value) {
     if (!value) return "bg-gray-500/10 text-gray-400 border-gray-500/20";
     

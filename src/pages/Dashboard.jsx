@@ -89,7 +89,7 @@ const cardVariants = {
 };
 
 // ── Helpers ────────────────────────────────────────────────────────
-function formatXAxisDate(dateStr) {
+function FORMAT_XAXIS_DATE(dateStr) {
   // dateStr will be like "Aug 15" or "2024-08-15" — handle both
   const d = new Date(dateStr);
   if (!isNaN(d)) {
@@ -190,23 +190,45 @@ export default function Dashboard() {
 
   return (
     <div className="w-full min-h-[80vh] px-2 md:px-8 py-8 md:py-12">
-      {/* ── Header ────────────────────────────────────────── */}
+      {/* ── Header (Matching Site Style) ────────────────────────────────────────── */}
+      <div className="mb-8 md:mb-12 flex items-center gap-4">
+         <motion.div
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
+           className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 hidden sm:flex"
+         >
+           <FiBarChart2 className="w-5 h-5 text-blue-500" />
+         </motion.div>
+         <motion.h1 
+           initial={{ opacity: 0, x: -20 }}
+           animate={{ opacity: 1, x: 0 }}
+           className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white"
+         >
+           Statistik
+         </motion.h1>
+         <motion.div 
+           initial={{ scaleX: 0 }}
+           animate={{ scaleX: 1 }}
+           style={{ transformOrigin: 'left' }}
+           className="h-px flex-grow bg-neutral-200 dark:bg-neutral-800"
+         />
+         <motion.span 
+           initial={{ opacity: 0, x: 20 }}
+           animate={{ opacity: 1, x: 0 }}
+           className="text-neutral-500 font-mono text-sm uppercase tracking-widest hidden md:block dark:text-neutral-400"
+         >
+            Analitik Pengunjung
+         </motion.span>
+      </div>
+
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-10"
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="mb-10 flex flex-col items-start"
       >
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center">
-            <FiBarChart2 className="w-5 h-5 text-blue-500" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0d1117] dark:text-[#e6edf3]">
-            Statistik Pengunjung
-          </h1>
-        </div>
         <p className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-2xl leading-relaxed">
-          Ikhtisar performa portofolio dan interaksi pengunjung.
+          Ikhtisar performa portofolio dan interaksi pengunjung secara real-time.
         </p>
 
         {error && (

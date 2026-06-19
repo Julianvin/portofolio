@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiCheck } from 'react-icons/fi';
 
-export default function FilterDropdown({ label, value, options, onChange, placeholder }) {
+export default function FilterDropdown({ value, options, onChange, placeholder }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 

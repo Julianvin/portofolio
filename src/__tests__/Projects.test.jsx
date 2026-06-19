@@ -4,13 +4,23 @@ import { render, screen, waitFor } from '@testing-library/react';
 
 
 // ── Helper to filter non-DOM props from framer-motion ──
+const NON_DOM_PROPS = [
+  'initial',
+  'animate',
+  'exit',
+  'transition',
+  'variants',
+  'layoutId',
+  'whileHover',
+  'whileTap',
+  'whileInView',
+  'onAnimationComplete',
+  'spotlightColor',
+];
+
 function filterDomProps(props) {
-  const {
-    initial, animate, exit, transition, variants, layoutId,
-    whileHover, whileTap, whileInView, onAnimationComplete,
-    spotlightColor,
-    ...domProps
-  } = props;
+  const domProps = { ...props };
+  NON_DOM_PROPS.forEach((prop) => delete domProps[prop]);
   return domProps;
 }
 
@@ -18,9 +28,11 @@ function filterDomProps(props) {
 vi.mock('framer-motion', () => ({
   motion: {
     div: React.forwardRef(({ children, ...props }, ref) => <div ref={ref} {...filterDomProps(props)}>{children}</div>),
+    h1: React.forwardRef(({ children, ...props }, ref) => <h1 ref={ref} {...filterDomProps(props)}>{children}</h1>),
     h2: React.forwardRef(({ children, ...props }, ref) => <h2 ref={ref} {...filterDomProps(props)}>{children}</h2>),
     h3: React.forwardRef(({ children, ...props }, ref) => <h3 ref={ref} {...filterDomProps(props)}>{children}</h3>),
     p: React.forwardRef(({ children, ...props }, ref) => <p ref={ref} {...filterDomProps(props)}>{children}</p>),
+    span: React.forwardRef(({ children, ...props }, ref) => <span ref={ref} {...filterDomProps(props)}>{children}</span>),
     img: React.forwardRef((props, ref) => <img ref={ref} {...filterDomProps(props)} />),
   },
   AnimatePresence: ({ children }) => <>{children}</>,
@@ -96,6 +108,7 @@ import Projects from '../pages/Projects';
 describe('Projects — Bilingual Rendering', () => {
   beforeEach(() => {
     mockProjectsData = MOCK_PROJECTS_FULL;
+    localStorage.clear();
     sessionStorage.clear();
   });
 
@@ -112,10 +125,14 @@ describe('Projects — Bilingual Rendering', () => {
   // ═══════════════════════════════════════════
   // Additional: Loading and error states
   // ═══════════════════════════════════════════
-  it('shows loading spinner initially', () => {
+  it('shows loading skeleton initially', async () => {
     render(<Projects />);
-    const spinner = document.querySelector('.animate-spin');
-    expect(spinner).toBeInTheDocument();
+    const skeleton = document.querySelector('.animate-pulse');
+    expect(skeleton).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(screen.getByText('My Portfolio')).toBeInTheDocument();
+    });
   });
 
   it('renders project card with tech stack badge', async () => {

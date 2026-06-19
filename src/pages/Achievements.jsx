@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { gsap } from 'gsap';
-import { FiSearch, FiFilter, FiX } from 'react-icons/fi';
+import { FiSearch, FiFilter, FiX, FiAward } from 'react-icons/fi';
 import CertificateCard from '../components/achievements/CertificateCard';
 import CertificateModal from '../components/achievements/CertificateModal';
 import FilterDropdown from '../components/achievements/FilterDropdown';
@@ -65,66 +65,73 @@ export default function Achievements() {
     setSelectedCategory('');
   };
 
+  // Filters — animate once on mount (header uses Framer Motion now)
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Header entrance
-      gsap.fromTo(
-        '.animate-header',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.1 }
-      );
-
-      // Divider line grows in
-      gsap.fromTo(
-        '.animate-divider',
-        { scaleX: 0, transformOrigin: 'left center' },
-        { scaleX: 1, duration: 0.8, ease: 'power2.out', delay: 0.3 }
-      );
-
-      // Subtitle fades in
-      gsap.fromTo(
-        '.animate-subtitle',
-        { opacity: 0, x: 20 },
-        { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out', delay: 0.5 }
-      );
-
-      // Animate filter bar
       gsap.fromTo(
         '.animate-filters',
         { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.6 }
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', delay: 0.3 }
       );
-
-      // Only animate cards after loading completes and items exist
-      if (!isLoading) {
-        gsap.fromTo(
-          '.animate-card',
-          { y: 60, opacity: 0, scale: 0.95 },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 0.7,
-            stagger: 0.1,
-            ease: 'power3.out',
-            delay: 0.4,
-          }
-        );
-      }
     }, containerRef);
 
     return () => ctx.revert();
-  }, [isLoading]); // Re-run GSAP when loading finishes
+  }, []);
+
+  // Cards — animate when data finishes loading
+  useEffect(() => {
+    if (isLoading) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.animate-card',
+        { y: 60, opacity: 0, scale: 0.95 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power3.out',
+          delay: 0.2,
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [isLoading]);
 
   return (
-    <div ref={containerRef} className="max-w-4xl pt-20 md:pt-0">
+    <div ref={containerRef} className="w-full min-h-[80vh] px-2 md:px-8 py-8 md:py-12">
       {/* Header */}
       <div className="mb-8 md:mb-12 flex items-center gap-4">
-         <h1 className="animate-header text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white">Pencapaian</h1>
-         <div className="animate-divider h-px flex-grow bg-neutral-200 dark:bg-neutral-800"></div>
-         <span className="animate-subtitle text-neutral-500 font-mono text-sm uppercase tracking-widest hidden md:block dark:text-neutral-400">
+         <motion.div
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
+           className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 hidden sm:flex"
+         >
+           <FiAward className="w-5 h-5 text-amber-500" />
+         </motion.div>
+         <motion.h1
+           initial={{ opacity: 0, x: -20 }}
+           animate={{ opacity: 1, x: 0 }}
+           className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white"
+         >
+           Pencapaian
+         </motion.h1>
+         <motion.div
+           initial={{ scaleX: 0 }}
+           animate={{ scaleX: 1 }}
+           style={{ transformOrigin: 'left' }}
+           className="h-px flex-grow bg-neutral-200 dark:bg-neutral-800"
+         />
+         <motion.span
+           initial={{ opacity: 0, x: 20 }}
+           animate={{ opacity: 1, x: 0 }}
+           className="text-neutral-500 font-mono text-sm uppercase tracking-widest hidden md:block dark:text-neutral-400"
+         >
             Sertifikasi & Penghargaan
-         </span>
+         </motion.span>
       </div>
 
       {/* Search & Filter Toolbar */}

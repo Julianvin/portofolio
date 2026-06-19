@@ -10,31 +10,21 @@ export default function Home() {
   const [skillsReady, setSkillsReady] = useState(false);
 
   useEffect(() => {
-    // Reset state dulu untuk memastikan animasi ulang saat refresh (opsional, tapi bagus untuk debug)
-    setSkillsReady(false);
-
     const ctx = gsap.context(() => {
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        // Hero Fade Up
         tl.fromTo(
             '.hero-animate',
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1, stagger: 0.15 } // Stagger teks header
+            { y: 30, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 }
         )
-        // Bio Fade Up
         .fromTo(
             '.bio-animate',
-            { y: 30, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.8 },
-            '-=0.5' 
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6 },
+            '-=0.4'
         )
-        // Set state skill menjadi true SETELAH animasi selesai
-        .to({}, { duration: 0.2 }) // Dummy wait sebentar
-        .call(() => {
-             console.log("Triggering Skills Animation..."); // Cek console browser
-             setSkillsReady(true);
-        });
+        .call(() => setSkillsReady(true), null, '-=0.1');
 
     }, containerRef);
 

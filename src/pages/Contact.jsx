@@ -66,23 +66,48 @@ export default function Contact() {
   ];
 
   return (
-    <div className="w-full min-h-[80vh] flex items-center justify-center px-4 md:px-20 py-12 md:py-16">
+    <div className="w-full min-h-[80vh] px-2 md:px-8 py-8 md:py-12">
       <div className="max-w-4xl w-full">
         
         {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
+        <div className="mb-12 md:mb-16 flex items-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="w-10 h-10 rounded-xl bg-emerald-600/10 border border-emerald-500/20 flex items-center justify-center shrink-0 hidden sm:flex"
+          >
+            <FiMail className="w-5 h-5 text-emerald-500" />
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-3xl md:text-5xl font-bold text-[#0d1117] dark:text-[#e6edf3]"
+          >
+            Hubungi Saya
+          </motion.h1>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            style={{ transformOrigin: 'left' }}
+            className="h-px flex-grow bg-neutral-200 dark:bg-neutral-800"
+          />
+          <motion.span
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-neutral-500 font-mono text-sm uppercase tracking-widest hidden md:block dark:text-neutral-400"
+          >
+             Mari Terhubung
+          </motion.span>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          transition={{ delay: 0.2 }}
+          className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-2xl leading-relaxed mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-[#0d1117] dark:text-[#e6edf3] mb-4">
-             Hubungi Saya
-          </h1>
-          <p className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-xl mx-auto leading-relaxed">
-             Punya pertanyaan atau ingin bekerja sama? Saya selalu terbuka untuk diskusi baru.
-          </p>
-        </motion.div>
+           Punya pertanyaan atau ingin bekerja sama? Saya selalu terbuka untuk diskusi baru.
+        </motion.p>
 
         {/* Contact Grid */}
         <motion.div 

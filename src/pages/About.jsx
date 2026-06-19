@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { GoLocation, GoCalendar, GoChevronDown } from 'react-icons/go';
+import { FiUser } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import useCachedFetch from '../hooks/useCachedFetch';
@@ -26,19 +27,16 @@ export default function About() {
     school: 'SMK Wikrama Bogor',
     major: 'Pengembangan Perangkat Lunak dan Gim',
     location: 'Bogor, Indonesia',
-    period: '2022 - 2025'
+    period: '2022 - 2026'
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Small delay to ensure items are in DOM if loading finishes fast
-      setTimeout(() => {
-        gsap.fromTo(
-          '.animate-item',
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power2.out', delay: 0.2 }
-        );
-      }, 300);
+      gsap.fromTo(
+        '.animate-item',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out', delay: 0.1 }
+      );
     }, containerRef);
 
     return () => ctx.revert();
@@ -71,11 +69,42 @@ export default function About() {
   };
 
   return (
-    <div ref={containerRef} className="max-w-4xl">
-      {/* Header */}
-      <div className="mb-8 md:mb-12 animate-item">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4 tracking-tight">Tentang Saya</h1>
-        <p className="text-base md:text-lg text-gray-600 dark:text-gray-500">Membangun pengalaman digital yang bermakna melalui kode.</p>
+    <div ref={containerRef} className="w-full min-h-[80vh] px-2 md:px-8 py-8 md:py-12">
+      {/* Header (Matching Site Style) */}
+      <div className="mb-8 md:mb-12 flex items-center gap-4">
+         <motion.div
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
+           className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 hidden sm:flex"
+         >
+           <FiUser className="w-5 h-5 text-blue-500" />
+         </motion.div>
+         <motion.h1
+           initial={{ opacity: 0, x: -20 }}
+           animate={{ opacity: 1, x: 0 }}
+           className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white tracking-tight"
+         >
+           Tentang Saya
+         </motion.h1>
+         <motion.div
+           initial={{ scaleX: 0 }}
+           animate={{ scaleX: 1 }}
+           style={{ transformOrigin: 'left' }}
+           className="h-px flex-grow bg-neutral-200 dark:bg-neutral-800"
+         />
+         <motion.span
+           initial={{ opacity: 0, x: 20 }}
+           animate={{ opacity: 1, x: 0 }}
+           className="text-neutral-500 font-mono text-sm uppercase tracking-widest hidden md:block dark:text-neutral-400"
+         >
+            Profil & Perjalanan
+         </motion.span>
+      </div>
+
+      <div className="mb-10 animate-item">
+        <p className="text-[#656d76] dark:text-[#7d8590] text-lg max-w-2xl leading-relaxed">
+          Membangun pengalaman digital yang bermakna melalui baris kode.
+        </p>
       </div>
 
       {/* Bio */}

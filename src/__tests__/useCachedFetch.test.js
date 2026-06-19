@@ -1,30 +1,30 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { renderHook, waitFor, act } from '@testing-library/react';
+import { renderHook, waitFor } from '@testing-library/react';
 import useCachedFetch, { clearCache } from '../hooks/useCachedFetch';
 
 // ── sessionStorage mock ──
 const store = {};
-const sessionStorageMock = {
+const localStorageMock = {
   getItem: vi.fn((key) => store[key] ?? null),
   setItem: vi.fn((key, value) => { store[key] = value; }),
   removeItem: vi.fn((key) => { delete store[key]; }),
   clear: vi.fn(() => { Object.keys(store).forEach((k) => delete store[k]); }),
 };
 
-Object.defineProperty(window, 'sessionStorage', { value: sessionStorageMock });
+Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
 describe('useCachedFetch', () => {
   beforeEach(() => {
-    sessionStorageMock.clear();
+    localStorageMock.clear();
     vi.clearAllMocks();
   });
 
   afterEach(() => {
     // Clean up any leftover cache entries
-    sessionStorageMock.clear();
+    localStorageMock.clear();
   });
 
-  it('fetches data and stores it in sessionStorage when cache is empty', async () => {
+  it('fetches data and stores it in localStorage when cache is empty', async () => {
     const mockData = [{ id: 1, name: 'React' }];
     const fetchFn = vi.fn().mockResolvedValue(mockData);
 
@@ -41,8 +41,8 @@ describe('useCachedFetch', () => {
     expect(result.current.error).toBeNull();
     expect(fetchFn).toHaveBeenCalledTimes(1);
 
-    // Verify sessionStorage was written
-    expect(sessionStorageMock.setItem).toHaveBeenCalledWith(
+    // Verify localStorage was written
+    expect(localStorageMock.setItem).toHaveBeenCalledWith(
       'cache_test_empty',
       expect.stringContaining('"data"')
     );
@@ -121,17 +121,17 @@ describe('useCachedFetch', () => {
 
 describe('clearCache', () => {
   beforeEach(() => {
-    sessionStorageMock.clear();
+    localStorageMock.clear();
     vi.clearAllMocks();
   });
 
-  it('removes specific cache keys from sessionStorage', () => {
+  it('removes specific cache keys from localStorage', () => {
     store['cache_techStacks'] = JSON.stringify({ data: [], expiresAt: Date.now() + 300000 });
     store['cache_publicProjects'] = JSON.stringify({ data: [], expiresAt: Date.now() + 300000 });
 
     clearCache('techStacks');
 
-    expect(sessionStorageMock.removeItem).toHaveBeenCalledWith('cache_techStacks');
+    expect(localStorageMock.removeItem).toHaveBeenCalledWith('cache_techStacks');
     expect(store['cache_publicProjects']).toBeDefined(); // Should NOT be removed
   });
 
@@ -141,8 +141,8 @@ describe('clearCache', () => {
 
     clearCache('techStacks', 'publicProjects');
 
-    expect(sessionStorageMock.removeItem).toHaveBeenCalledWith('cache_techStacks');
-    expect(sessionStorageMock.removeItem).toHaveBeenCalledWith('cache_publicProjects');
+    expect(localStorageMock.removeItem).toHaveBeenCalledWith('cache_techStacks');
+    expect(localStorageMock.removeItem).toHaveBeenCalledWith('cache_publicProjects');
   });
 
   it('forces re-fetch after cache is cleared', async () => {
