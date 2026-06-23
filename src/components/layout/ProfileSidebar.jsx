@@ -29,7 +29,7 @@ export default function ProfileSidebar() {
           @Julianvin
         </h2>
         <p className="text-[#0d1117] dark:text-[#e6edf3] text-[16px] leading-snug mb-4">
-          Backend Developer passionate about crafting scalable systems.
+          Software Developer dengan spesialisasi pengembangan Full Stack Web.
         </p>
 
         <button className="w-full btn-primary mb-4 bg-[#238636] hover:bg-[#2ea043] text-white font-medium py-1.5 px-3 rounded-md border border-[rgba(240,246,252,0.1)] transition-colors shadow-sm text-sm">
